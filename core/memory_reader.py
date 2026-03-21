@@ -1,0 +1,1 @@
+# Lecture mémoire (fallback)

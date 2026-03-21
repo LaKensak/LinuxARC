@@ -1,0 +1,218 @@
+================================================================
+  GUIDE DUAL-BOOT LINUX POUR ARC RAIDERS RADAR
+================================================================
+
+PRÉREQUIS
+---------
+- Clé USB 8 Go minimum
+- 50 Go d'espace disque libre (idéalement sur le SSD)
+- Rufus (déjà sur Windows): https://rufus.ie
+- ISO Linux (voir choix ci-dessous)
+
+
+CHOIX DE LA DISTRO
+------------------
+Recommandé par ordre de préférence:
+
+1. NOBARA (basée sur Fedora, optimisée gaming)
+   https://nobaraproject.org/download-nobara/
+   -> Drivers GPU pré-installés, Steam pré-installé
+   -> Le plus simple pour le gaming
+
+2. LINUX MINT 22 (basée sur Ubuntu, stable)
+   https://linuxmint.com/download.php
+   -> Très simple, bonne compatibilité matérielle
+
+3. UBUNTU 24.04 LTS
+   https://ubuntu.com/download/desktop
+   -> Le plus documenté, beaucoup de support en ligne
+
+
+ÉTAPE 1: PRÉPARER (INSTALLATION SUR 2ème SSD SAMSUNG)
+------------------------------------------------------
+Avantage: on ne touche PAS au SSD Windows. Linux va sur le Samsung.
+
+1. Vérifie que le Samsung SSD est bien détecté:
+   - Win+X > Gestion des disques
+   - Repère le Samsung (note sa taille pour le reconnaître plus tard)
+   - Si il y a des données dessus que tu veux garder, sauvegarde-les
+
+2. Désactive le démarrage rapide de Windows:
+   - Panneau de config > Options d'alimentation
+   - "Choisir l'action des boutons d'alimentation"
+   - "Modifier des paramètres actuellement non disponibles"
+   - Décoche "Activer le démarrage rapide"
+   - Enregistrer
+
+3. Désactive Secure Boot dans le BIOS (optionnel mais recommandé):
+   - Redémarre > entre dans le BIOS (Del, F2 ou F12 selon ta carte mère)
+   - Cherche "Secure Boot" > Disable
+   - Sauvegarde et redémarre sur Windows
+
+
+ÉTAPE 2: CRÉER LA CLÉ USB
+--------------------------
+1. Télécharge l'ISO de ta distro choisie
+
+2. Ouvre Rufus
+   - Sélectionne ta clé USB
+   - Sélectionne l'ISO
+   - Schéma de partition: GPT
+   - Système cible: UEFI
+   - Système de fichiers: laisser par défaut
+   - Clique "Démarrer"
+
+3. Attends que ce soit fini (~5 min)
+
+
+ÉTAPE 3: INSTALLER LINUX
+-------------------------
+1. Redémarre le PC
+
+2. Au boot, appuie sur F12 (ou F8/F11 selon ta carte mère)
+   pour le menu de boot
+
+3. Sélectionne ta clé USB (mode UEFI, pas Legacy)
+
+4. L'installeur Linux démarre — choisis "Installer"
+
+5. Pendant l'installation:
+   - Langue: Français
+   - Clavier: Français
+   - Type d'installation: choisis "Autre chose" / "Custom" / "Manual"
+     (NE PAS choisir "Effacer le disque entier" sinon ça peut toucher Windows)
+
+   IMPORTANT — BIEN SÉLECTIONNER LE BON DISQUE:
+   - Tu verras 2 disques: ton SSD Windows + le Samsung
+   - Repère le Samsung par sa taille
+   - Windows est souvent /dev/nvme0n1, Samsung /dev/sda ou /dev/nvme1n1
+     (vérifie la taille pour être sûr!)
+
+   Sur le Samsung:
+   - Supprime toutes les partitions existantes (si tu n'as rien à garder)
+   - Crée une partition:
+     * Taille: tout l'espace
+     * Type: ext4
+     * Point de montage: /
+   - BOOTLOADER: installe GRUB sur le Samsung (pas sur le SSD Windows!)
+     Ex: /dev/sda ou /dev/nvme1n1 (le disque entier, pas une partition)
+
+6. Continue l'installation (utilisateur, mot de passe, etc.)
+
+7. Redémarre quand demandé, retire la clé USB
+
+
+ÉTAPE 4: PREMIER BOOT LINUX
+-----------------------------
+1. Au démarrage, GRUB te propose Windows ou Linux
+   -> Choisis Linux
+
+2. Connecte-toi à Internet (WiFi ou Ethernet)
+
+3. Ouvre un terminal (Ctrl+Alt+T)
+
+4. Copie le dossier du projet depuis Windows:
+
+   # Monter la partition Windows
+   sudo mkdir -p /mnt/windows
+   sudo mount /dev/nvme0n1p3 /mnt/windows    # adapte le numéro de partition
+
+   # Trouver le bon disque:
+   lsblk -f    # cherche la partition NTFS avec "Raid" dessus
+
+   # Copier les fichiers
+   cp -r "/mnt/windows/Raid/pythonProject4/tools" ~/arc-radar/
+
+5. Lance le script de setup:
+
+   cd ~/arc-radar
+   sudo bash setup_linux.sh
+
+6. Suis les instructions affichées à la fin du script
+
+
+ÉTAPE 5: CONFIGURER STEAM + PROTON
+------------------------------------
+1. Lance Steam (il est installé par le script)
+   $ steam
+
+2. Connecte-toi à ton compte Steam
+
+3. Settings > Compatibility:
+   - Active "Enable Steam Play for all other titles"
+   - Choisis "Proton Experimental"
+   - Applique
+
+4. Installe Arc Raiders depuis ta bibliothèque
+
+5. IMPORTANT - avant de lancer le jeu:
+   - Clic droit sur Arc Raiders > Properties
+   - Compatibility > Force: Proton Experimental
+   - Launch Options: laisse vide
+
+
+ÉTAPE 6: LANCER LE RADAR
+--------------------------
+1. Lance Arc Raiders via Steam (attend le menu principal)
+
+2. Ouvre un second terminal (Ctrl+Alt+T)
+
+3. Lance le radar:
+   cd ~/arc-radar
+   sudo python3 radar.py
+
+4. Ouvre Firefox: http://localhost:8888
+
+5. Entre en match dans le jeu
+
+6. Le radar devrait afficher les joueurs sur la carte web
+
+
+DÉPANNAGE
+---------
+Q: Le jeu ne se lance pas
+A: Vérifie les drivers GPU:
+   - NVIDIA: nvidia-smi doit afficher ta carte
+   - AMD: vulkaninfo doit marcher
+   Essaie GE-Proton au lieu de Proton Experimental
+
+Q: Le jeu se lance mais kick immédiatement
+A: Le serveur vérifie peut-être le heartbeat EAC.
+   C'est un risque connu — le playtest 2 ne vérifiait pas.
+
+Q: "GWorld non trouvé"
+A: Les offsets sont obsolètes. Il faut les re-dumper.
+   Vérifier sur UC (UnknownCheats) les nouveaux offsets.
+
+Q: Le radar ne détecte pas le jeu
+A: Vérifie: pgrep -a PioneerGame
+   Si rien, le jeu n'est pas lancé ou le nom a changé.
+   Sous Proton le processus peut s'appeler autrement.
+   Essaie: ps aux | grep -i pioneer
+
+Q: Pas de joueurs sur le radar
+A: - Tu dois être EN MATCH (pas au menu)
+   - Les offsets changent à chaque mise à jour
+   - Vérifie la valeur de GWorld dans les logs
+
+Q: Je veux revenir sur Windows
+A: Redémarre, GRUB affiche le choix. Sélectionne Windows.
+   OU change l'ordre de boot dans le BIOS pour mettre le SSD Windows en premier.
+   Ton Windows n'est pas touché.
+
+Q: Je veux supprimer Linux plus tard
+A: C'est facile — Linux est sur un disque séparé:
+   1. Dans le BIOS, remets le SSD Windows comme disque de boot principal
+   2. Formate le Samsung depuis Windows (Gestion des disques)
+   3. C'est tout — aucun résidu sur ton SSD Windows
+
+
+NOTES
+-----
+- Le Samsung entier est pour Linux — le jeu s'installe dessus aussi
+  (le jeu fait ~30 Go + Steam ~1 Go + Proton ~2 Go)
+- Le F: (SteamLibrary) Windows est accessible en lecture depuis Linux
+  mais tu ne peux PAS lancer le jeu depuis la partition Windows
+- Il faut RE-télécharger Arc Raiders sur Linux via Steam
+- Pour choisir quel OS boot: touche F12 au démarrage (ou F8/F11)
+  OU configurer l'ordre de boot dans le BIOS

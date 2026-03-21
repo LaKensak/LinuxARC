@@ -1,0 +1,23 @@
+# Cœur du système
+scapy==2.5.0
+numpy==1.26.4
+pygame==2.5.2
+pywin32==306
+
+# Utilitaires
+psutil==5.9.8
+pymem==1.13.1
+cryptography==42.0.5
+colorama==0.4.6
+
+# Machine Learning (optionnel - pour détection avancée)
+scikit-learn==1.4.0
+tensorflow==2.16.0
+
+# Interface
+keyboard==0.13.5
+Pillow==10.2.0
+
+# Tests
+pytest==8.0.0
+pytest-cov==4.1.0

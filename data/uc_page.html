@@ -1,0 +1,4243 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+<base href="https://www.unknowncheats.me/forum/">
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta name="generator" content="vBulletin">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="game hacks, game cheats, free game hacks, cheat downloads, game hacking, game modding, cheat injector, game mods, hack tools, wallhack, esp cheats, undetected cheats, aimbot, modding community, hack downloads, anti-cheat bypass, cheat software, game tutorials, cheat guides, game hack forum, game cheat tools, cheat source code">
+
+    
+        <meta name="description" content="Hey guys , iam trying to be inject a DLL into EAC-protected process (ARC RAIDERS) from Kernel Driver but i keep getting BSODs and failures everytime i">
+        <meta property="og:description" content="Hey guys , iam trying to be inject a DLL into EAC-protected process (ARC RAIDERS) from Kernel Driver but i keep getting BSODs and failures everytime i">
+    
+    <meta property="og:url" content="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver.html">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2026-02-22T11:18:10-05:00">
+    <meta property="article:section" content="ARC Raiders">
+    <meta property="og:site_name" content="UnKnoWnCheaTs">
+    <meta property="og:title" content="Injecting DLL into EAC-protected process from Kernel Driver">
+    <meta property="og:image" content="https://www.unknowncheats.me/forum/ambience/misc/embed_small.png">
+    <meta property="datePublished" content="2026-02-22T11:18:10-05:00">
+    <script type="application/ld+json">{"@context":"http://schema.org","@type":"DiscussionForumPosting","headline":"Injecting DLL into EAC-protected process from Kernel Driver","articleBody":"Hey guys , iam trying to be inject a DLL into EAC-protected process (ARC RAIDERS) from Kernel Driver but i keep getting BSODs and failures everytime i","url":"https://www.unknowncheats.me/forum/showthread.php?t=739720","image":"https://www.unknowncheats.me/forum/ambience/misc/embed_small.png","author":{"@type":"Person","url":"https://www.unknowncheats.me/forum/member.php?u=3732463","name":"Un1xCr3w"},"publisher":{"@type":"Organization","name":"UnKnoWnCheaTs","logo":{"@type":"ImageObject","url":"https://www.unknowncheats.me/forum/ambience/misc/embed_small.png"}},"datePublished":"2026-02-22T11:18:10-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://www.unknowncheats.me/forum/showthread.php?t=739720"}}</script>
+    <link rel="canonical" href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver.html">
+
+
+<link rel="icon" href="https://www.unknowncheats.me/favicon.ico" type="image/x-icon">
+<!-- CSS Stylesheet -->
+<style type="text/css" id="vbulletin_css">
+@import url("clientscript/vbulletin_css/style-ca48acdb-00033.css");
+</style>
+<link rel="stylesheet" type="text/css" href="https://www.unknowncheats.me/forum/clientscript/vbulletin_important.css?v=387" />
+<!-- / CSS Stylesheet -->
+<script src="clientscript/yui/yahoo-dom-event/yahoo-dom-event.js?v=387"></script><script src="clientscript/yui/connection/connection-min.js?v=387"></script>
+<script>
+<!--
+var SESSIONURL = "s=8e0612f0433b7c41cace3bd7aa20da48&";var SECURITYTOKEN = "guest";var IMGDIR_MISC = "ambience/misc";var vb_disable_ajax = parseInt("0", 10);
+// -->
+</script>
+<script src="clientscript/vbulletin_global.js?v=387"></script>
+<script type="text/javascript" src="clientscript/vbulletin_menu.js?v=387"></script>
+
+	<link rel="alternate" type="application/rss+xml" title="UnKnoWnCheaTs - Multiplayer Game Hacking and Cheats RSS Feed" href="https://www.unknowncheats.me/forum/external.php?type=RSS2">
+	
+		<link rel="alternate" type="application/rss+xml" title="UnKnoWnCheaTs - Multiplayer Game Hacking and Cheats - ARC Raiders - RSS Feed" href="https://www.unknowncheats.me/forum/external.php?type=RSS2&amp;forumids=769">
+	
+
+
+<link href="https://www.unknowncheats.me/forum/clientscript/prettify/prettify.css?v=2" type="text/css" rel="stylesheet">
+<script src="clientscript/prettify/run_prettify.js"></script>
+
+<!-- dnr -->
+
+<script async src="https://cdn.fuseplatform.net/publift/tags/2/3924/fuse.js"></script>
+
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-T6SKJV5F');</script>
+<!-- / dnr -->
+<script>if(location.hostname!="un"+"know"+"nche"+"ats."+"me"&&location.hostname!="www"+".unkno"+"wnch"+"eats."+"me"&&location.hostname!="webcache.googleusercontent.com"){location.href="htt"+"ps:"+"//ww"+"w.unkn"+"ownc"+"heat"+"s.me";}</script>
+			<link rel="stylesheet" type="text/css" href="https://www.unknowncheats.me/forum/clientscript/vbulletin_css/livetopic.css" id="livetopic" /><script src="//www.unknowncheats.me/forum/clientscript/uc_imageresizer.js"></script>
+<style>
+<!--
+table.ncode_imageresizer_warning{background:#FFFFE1;color:#000;border:1px solid #CCC;cursor:pointer}table.ncode_imageresizer_warning td{font-size:10px;vertical-align:middle;text-decoration:none}table.ncode_imageresizer_warning td.td1{padding:5px;padding:2px}
+-->
+</style>
+<script>
+<!--
+NcodeImageResizer.MODE='enlarge';NcodeImageResizer.MAXWIDTH=800;NcodeImageResizer.MAXHEIGHT=0;NcodeImageResizer.BBURL='https://www.unknowncheats.me/forum';vbphrase['ncode_imageresizer_warning_small']='Click this bar to view the full image.';vbphrase['ncode_imageresizer_warning_filesize']='This image has been resized. Click this bar to view the full image. The original image is sized %1$sx%2$s and weights %3$sKB.';vbphrase['ncode_imageresizer_warning_no_filesize']='This image has been resized. Click this bar to view the full image. The original image is sized %1$sx%2$s.';vbphrase['ncode_imageresizer_warning_fullsize']='Click this bar to view the small image.';
+//-->
+</script>
+	<title>[Discuss] Injecting DLL into EAC-protected process from Kernel Driver </title>
+	<script type="text/javascript" src="clientscript/vbulletin_post_loader.js?v=387"></script>
+	<style type="text/css" id="vbulletin_showthread_css">
+	<!--
+	
+	#tag_edit_list { list-style:none; margin:0px; padding:0px; }
+	#tag_edit_list li { float:left; display:block; width:200px; }
+	#tag_edit_list li.mine { font-weight:bold; }
+	
+	#links div { white-space: nowrap; }
+	#links img { vertical-align: middle; }
+	-->
+	</style>
+</head>
+<body onload="">
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T6SKJV5F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<table style="background-color: #f7f7f7; width: 100%; margin: 0 auto; border-collapse: collapse;" class="border">
+<tr>   
+<td style="text-align: left; vertical-align: top;">
+
+<table id="headerImage" style="width: 100%; border-collapse: separate; border-spacing: 0;">
+  <tr>
+    
+      <td id="forumbanner" style="height: 159px; text-align: left; vertical-align: top; padding: 0;">
+	<picture>
+	  <source srcset="ambience/misc/forum_banner_mobile.png" media="(max-width: 600px)">
+	  <img id="bannerImage" src="https://www.unknowncheats.me/forum/ambience/misc/custom_headers/spring_2026.png" height="159" width="744" alt="UnknownCheats - Leading the game hacking and cheat development scene since 2000">
+	</picture>
+      </td>
+      <td id="forumbannerx" style="width: 100%; height: 159px; text-align: left; vertical-align: top; padding: 0;">
+	<picture>
+	  <source srcset="ambience/misc/forum_banner_x.png" media="(max-width: 600px)">
+      <img id="bannerRepeat" src="https://www.unknowncheats.me/forum/ambience/misc/custom_headers/spring_2026_x.png" style="width: 100%; height: 159px;" alt="">
+    </picture>
+      </td>
+    
+  </tr>
+</table>
+
+<table id="navbar" style="width: 100%; background-color: #f7f7f7; background-image: url(ambience/misc/ambience_nav_x.png); border: none; border-collapse: separate; border-spacing: 0;">
+<tr>
+<td style="text-align: center; vertical-align: top;">
+<table style="width: 10%; margin: -1px auto; border: none; border-collapse: separate; border-spacing: 0;">
+<tr> 
+
+<td style="width: 48px; height: 25px; vertical-align: top; padding: 0;">
+<a href="//www.unknowncheats.me/forum/portal.php" accesskey="2"><img src="https://www.unknowncheats.me/forum/ambience/misc/ambience_nav_home.png" alt="UnKnoWnCheaTs Game Hacking Portal" width="48" height="25" style="border: 0;"></a>
+</td>
+
+<td style="width: 55px; height: 25px; vertical-align: top; padding: 0;">
+<a href="//www.unknowncheats.me/forum/index.php" accesskey="3"><img src="https://www.unknowncheats.me/forum/ambience/misc/ambience_navi_forum.png" alt="UnKnoWnCheaTs Game Hacking Forum – Cheats, Hacks, and Tutorials" width="55" height="25" style="border: 0;"></a>
+</td>
+
+<td style="width: 75px; height: 25px; vertical-align: top; padding: 0;">
+<a href="//www.unknowncheats.me/forum/downloads.php" accesskey="4"><img src="https://www.unknowncheats.me/forum/ambience/misc/ambience_nav_downloads.png" alt="Download Game Hacks, Cheats and Hacking Tools – UnKnoWnCheaTs" width="75" height="25" style="border: 0;"></a>
+</td>
+
+
+
+
+
+          	
+	  
+
+
+
+
+
+
+ 
+
+<td style="width: 38px; height: 25px; vertical-align: top; padding: 0;">
+<a href="//www.unknowncheats.me/wiki/"><img src="https://www.unknowncheats.me/forum/ambience/misc/ambience_nav_wiki.png" alt="Game Hacking Wiki – Tutorials and Guides on UnKnoWnCheaTs" width="38" height="25" style="border: 0;"></a>
+</td>
+
+<td style="width: 74px; height: 25px; vertical-align: top; padding: 0;">
+<a href="javascript:toggle_dark_theme();"><img src="https://www.unknowncheats.me/forum/ambience/misc/ambience_nav_toggledark.png" alt="Toggle Dark Mode" width="74" height="25" style="border: 0;"></a>
+</td> 
+
+
+<td style="width: 63px; height: 25px; vertical-align: top; padding: 0;">
+<a rel="nofollow" href="//www.unknowncheats.me/forum/register.php"><img src="https://www.unknowncheats.me/forum/ambience/misc/ambience_nav_reg.png" alt="Register at UnKnoWnCheaTs – Join the Greatest Game Hacking Community" width="63" height="25" style="border: 0;"></a>
+</td>
+
+
+
+
+
+
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<div id="top_header_slot" style="width:auto;height:100px;position:absolute;top:26px;right:5px;">
+  <div data-fuse="top_leaderboard"></div>
+</div>
+
+
+<!-- NAVBAR POPUP MENUS -->
+	
+
+
+
+
+
+	
+
+	
+
+	
+
+<!-- / NAVBAR POPUP MENUS -->
+
+<!-- PAGENAV POPUP -->
+
+	<div class="vbmenu_popup" id="pagenav_menu" style="display:none">
+		<table cellpadding="4" cellspacing="1" style="border: 0;">
+		<tr>
+			<td class="thead" nowrap="nowrap">Go to Page...</td>
+		</tr>
+		<tr>
+			<td class="vbmenu_option" title="nohilite">
+			<form action="https://www.unknowncheats.me/forum/index.php" method="get" onsubmit="return this.gotopage()" id="pagenav_form">
+				<input type="text" class="bginput" id="pagenav_itxt" style="font-size:11px" size="4" />
+				<input type="button" class="button" id="pagenav_ibtn" value="Go" />
+			</form>
+			</td>
+		</tr>
+		</table>
+	</div>
+
+<!-- / PAGENAV POPUP -->
+
+
+<!-- begin main inner table area-->
+
+<table style="width: 100%; background-color: #F7F7F7; padding: 10px;">
+<tr>
+<td>
+
+<!-- content table -->
+
+<table cellpadding="0" cellspacing="0" style="width: 100%; background-color: #ededed;">
+<tr>
+<td>
+
+<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+
+
+<!-- nav buttons bar -->
+
+
+
+
+
+
+
+<!-- / nav buttons bar -->
+
+
+
+<script> 
+
+<!-- 
+function log_out(){ht=document.getElementsByTagName("html");ht[0].style.filter="progid:DXImageTransform.Microsoft.BasicImage(grayscale=1)";if(confirm('Are you sure you want to log out?')){return true}else{ht[0].style.filter="";return false}}
+//--> 
+</script>
+
+<br> 
+
+<!-- breadcrumb, login, pm info --> 
+<table id="breadcrumb" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;"><tr><td class="alt1" style="width: 75%;">
+
+
+<table cellpadding="0" cellspacing="0" id="Table2" style="border: none;">
+<tr style="vertical-align: bottom;">
+<td><a rel="nofollow" href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver.html#" onclick="history.back(1); return false;"><img src="https://www.unknowncheats.me/forum/ambience/misc/navbits_start.gif" alt="Go Back" style="border: 0;"></a></td> 
+<td>&nbsp;</td> 
+<td style="width: 100%;">
+<span class="navbar"><a href="//www.unknowncheats.me/forum/index.php" accesskey="1">UnKnoWnCheaTs - Multiplayer Game Hacking and Cheats</a></span> 
+<nav itemscope itemtype="https://schema.org/BreadcrumbList">
+<ul style="list-style: none; margin: 0; padding: 0;">
+	<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+	<span class="navbar"><a itemprop="url" href="https://www.unknowncheats.me/forum/first-person-shooters/?s=8e0612f0433b7c41cace3bd7aa20da48"><span itemprop="name">First-Person Shooters</span></a></span>
+	<meta itemprop="position" content="First-Person Shooters">
+	<meta itemprop="item" content="https://www.unknowncheats.me/forum/forumdisplay.php?s=8e0612f0433b7c41cace3bd7aa20da48&amp;f=156">
+	</li>
+</ul>
+</nav>
+
+<nav itemscope itemtype="https://schema.org/BreadcrumbList">
+<ul style="list-style: none; margin: 0; padding: 0;">
+	<li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+	<span class="navbar"><a itemprop="url" href="https://www.unknowncheats.me/forum/arc-raiders/?s=8e0612f0433b7c41cace3bd7aa20da48"><span itemprop="name">ARC Raiders</span></a></span>
+	<meta itemprop="position" content="ARC Raiders">
+	<meta itemprop="item" content="https://www.unknowncheats.me/forum/forumdisplay.php?s=8e0612f0433b7c41cace3bd7aa20da48&amp;f=769">
+	</li>
+</ul>
+</nav>
+</td> </tr> 
+<tr> 
+<td class="navbar" style="font-size:10pt; padding-top:1px" colspan="3">
+
+<a href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver.html"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/misc/navbits_finallink.gif" alt="Reload this Page" style="border: 0;"></a>
+ 
+
+        <strong>[Discuss] Injecting DLL into EAC-protected process from Kernel Driver</strong>
+
+</td></tr></table>			 
+ 
+<hr>
+<!-- banner ads -->
+
+<div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 5px; max-width: 100%;">
+  <a rel="sponsored noopener" href="https://www.unknowncheats.me/forum/misc.php?do=tad&amp;rad=ab_sw_banner" target="_blank" style="width: 301px; height: 60px; display: block;">
+    <video autoplay loop muted playsinline width="301" height="60" style="width: 100%; height: 100%; border:1px solid; display: block;">
+      <source src="https://www.unknowncheats.me/forum/images/ez/ab.webm" type="video/webm">
+      <img src="https://www.unknowncheats.me/forum/images/ez/ab.png" alt="Advertisement" width="301" height="60" style="width: 100%; height: 100%; display: block;">
+    </video>
+  </a>
+  <a rel="sponsored noopener" href="https://www.unknowncheats.me/forum/misc.php?do=tad&amp;rad=cv_sw_banner" target="_blank" style="width: 301px; height: 60px; display: block;">
+    <video autoplay loop muted playsinline width="301" height="60" style="width: 100%; height: 100%; border:1px solid; display: block;">
+      <source src="https://www.unknowncheats.me/forum/images/ez/cv.webm" type="video/webm">
+      <img src="https://www.unknowncheats.me/forum/images/ez/cv.png" alt="Advertisement" width="301" height="60" style="width: 100%; height: 100%; display: block;">
+    </video>
+  </a>
+</div>
+
+    <div style="text-align: center; font-size: 9px; font-family: Arial; padding-top: 2px;">
+advertisements</div>
+<!-- banner ads -->
+</td>	 
+
+
+
+<td class="alt2" style="padding: 0; white-space: nowrap;">
+<!-- login form --> 
+<form action="https://www.unknowncheats.me/forum/login.php" method="post" onsubmit="md5hash(vb_login_password, vb_login_md5password, vb_login_md5password_utf, 1)" id="Form2"> 
+<script src="clientscript/vbulletin_md5.js"></script> 
+
+<table cellpadding="0" cellspacing="3" id="Table4" style="border: none; margin: 0 auto;">
+<tr><td>
+<label for="navbar_username">User Name:</label><br>
+<input type="text" class="bginput" style="font-size: 11px" name="vb_login_username" id="navbar_username" size="12" accesskey="u">
+</td>
+<td>
+<label for="Password1">Password:</label><br>
+<input type="password" class="bginput" style="font-size: 11px" name="vb_login_password" size="12" accesskey="p" id="Password1">
+</td>
+</tr>
+<tr>
+<td style="text-align: left;">
+<label for="cb_cookieuser_navbar">
+<input type="checkbox" name="cookieuser" value="1" id="cb_cookieuser_navbar" accesskey="c"><span style="color: black;">Remember Me?</span>
+</label>
+</td>
+<td class="smallfont" style="text-align: center;">
+<input type="submit" class="button" value="Log in" title="Enter your username and password in the boxes provided to login, or click the 'register' button to create a profile for yourself." accesskey="s" id="Submit2" name="Submit2" style="width: 80px;">
+</td>
+</tr></table>
+
+<input type="hidden" name="s" value="8e0612f0433b7c41cace3bd7aa20da48" id="Hidden8">
+<input type="hidden" name="securitytoken" value="guest"> 
+<input type="hidden" name="do" value="login" id="Hidden9">		 
+<input type="hidden" name="vb_login_md5password" id="Hidden10"> 
+<input type="hidden" name="vb_login_md5password_utf" id="Hidden11">
+<input type="hidden" name="url" value="/forum/index.php">
+</form> 
+
+<!-- / login form --> 
+</td></tr></table> 
+<!-- / breadcrumb, login, pm info --> 
+<!-- guest welcome message -->
+
+<!-- / guest welcome message -->
+
+
+
+
+    <br>
+
+
+
+
+
+
+<a name="poststop" id="poststop"></a>
+
+<!-- controls above postbits -->
+<table cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 3px; border: none;">
+<tr style="vertical-align: bottom;">
+	
+		<td class="smallfont">
+                    <a href="https://www.unknowncheats.me/forum/newreply.php?do=newreply&amp;noquote=1&amp;p=4603247&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow"><img src="https://www.unknowncheats.me/forum/ambience/buttons/reply.gif" alt="Reply" title="Reply" style="border: 0;"></a>
+
+
+<ul style="list-style-type:none; margin:3px; padding:0; display:inline-block;"><li class="smallfont" style="width:auto; float:left; text-align:left; margin-right:10px;">
+	
+		<a rel="nofollow" href="http://reddit.com/submit?url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720&amp;title=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver" target="socialbookmark">
+			<img src="https://www.unknowncheats.me/forum/ambience/misc/bookmarksite_reddit.png" border="0" alt="Submit Thread to Reddit" class="inlineimg" style="vertical-align:middle;" /></a>&nbsp;<a rel="nofollow" href="http://reddit.com/submit?url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720&amp;title=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver" target="socialbookmark" style="text-decoration:none; vertical-align:middle;">Reddit</a>
+	
+</li><li class="smallfont" style="width:auto; float:left; text-align:left; margin-right:10px;">
+	
+		<a rel="nofollow" href="https://twitter.com/intent/tweet?text=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver&amp;url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark">
+			<img src="https://www.unknowncheats.me/forum/ambience/misc/bookmarksite_twitter.png" border="0" alt="Submit Thread to Twitter" class="inlineimg" style="vertical-align:middle;" /></a>&nbsp;<a rel="nofollow" href="https://twitter.com/intent/tweet?text=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver&amp;url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark" style="text-decoration:none; vertical-align:middle;">Twitter</a>
+	
+</li><li class="smallfont" style="width:auto; float:left; text-align:left; margin-right:10px;">
+	
+		<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark">
+			<img src="https://www.unknowncheats.me/forum/ambience/misc/bookmarksite_facebook.png" border="0" alt="Submit Thread to Facebook" class="inlineimg" style="vertical-align:middle;" /></a>&nbsp;<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark" style="text-decoration:none; vertical-align:middle;">Facebook</a>
+	
+</li></ul>
+
+
+</td>
+	
+
+
+
+</tr>
+</table>
+<!-- / controls above postbits -->
+
+<!-- toolbar -->
+<table class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none; border-bottom-width: 0px;">
+<tr>
+	<td class="tcat" style="width: 100%;">
+		<div class="smallfont">
+		
+		&nbsp;
+		</div>
+	</td>
+
+
+	<td class="vbmenu_control" id="threadtools" style="white-space: nowrap;">
+		<a rel="nofollow" href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver.html?nojs=1#goto_threadtools">Thread Tools</a>
+		<script type="text/javascript"> vbmenu_register("threadtools"); </script>
+	</td>
+	
+	
+	
+
+	
+
+</tr>
+</table>
+<!-- / toolbar -->
+
+
+
+<!-- end content table -->
+
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+<!-- / end content table -->
+
+
+
+
+
+<div id="posts"><!-- post #4603247 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4603247" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<table class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<thead>
+<tr>
+<td class="tcat" style="text-align: center;"> <strong>Injecting DLL into EAC-protected process from Kernel Driver</strong></td>
+</tr>
+</thead>
+</table>
+
+<!-- End top category table setup -->
+
+<table id="post4603247" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4603247"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			22nd February 2026, 11:18 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4603247-post1.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4603247" name="1"><strong>1</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4603247">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/3732463.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+Un1xCr3w
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4603247", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=green>Member</font><br> <img src=star.gif><img src=star.gif><img src=star.gif><img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3732463.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/images/noavatar_default.gif" 
+         width="74" height="74" 
+         alt="Un1xCr3w's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Jan 2021</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 71
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4603247_3732463">103</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 126</span>
+
+<br><span id="repinfoDots_4603247_3732463"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="Un1xCr3w is officially drafted by UC" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="Un1xCr3w is officially drafted by UC" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=3732463&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 3,854, Level: 6</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 3,854, Level: 6" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 3,854, Level: 6" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 8%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 3,854, Level: 6" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 29%, 646 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 29%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 29%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 29%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 29%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 27.5%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 27.5%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 27.5%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 27.5%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 27.5%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div> 
+<div class="info">
+<fieldset class="alt">
+<legend>Last Achievements</legend>
+
+<img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/calendar_16.png" title="1000 Days registered"><img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/spheres_iridescent_16.png" title="First 1000 Experience Points">
+
+</fieldset>
+</div>
+
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4603247">
+	
+	
+		
+			<!-- icon and title -->
+			<div class="smallfont">
+				<img class="inlineimg" src="https://www.unknowncheats.me/forum/images/smilies/help.gif" alt="Question" border="0" />
+				<strong>Injecting DLL into EAC-protected process from Kernel Driver</strong>
+			</div>
+			<hr style="height: 1px; background-color: #181B16; border: none;">
+			<!-- / icon and title -->
+		
+		
+		<!-- message -->
+		<div id="post_message_4603247">Hey guys , iam trying to be inject a DLL into EAC-protected process (ARC RAIDERS) from Kernel Driver <br />
+<br />
+but i keep getting BSODs and failures everytime i try something <br />
+<br />
+here is what i tried <br />
+<br />
+<br />
+<br />
+### Test 1: Manual Map + InstrumentationCallback + Free VAD after DllMain<br />
+- **Method**: Manually map DLL (resolve imports, relocations, etc.), use IC to call DllMain, then free the entire allocation after DllMain returns<br />
+- **Allocation**: Section-based (ZwCreateSection PAGE_READWRITE + ZwMapViewOfSection &#8594; MEM_MAPPED VAD)<br />
+- **Execution**: NX bits cleared via PTE manipulation from kernel, IC set via ZwSetInformationProcess<br />
+- **DLL**: No-op test DLL (DllMain returns TRUE, does nothing else)<br />
+- **Result**: SURVIVED — **Survived 5 minutes** (only test that survived)<br />
+- **Note**: The memory was freed immediately after DllMain — there was no persistent allocation. This is the only configuration that didn't get detected.<br />
+<br />
+### Test 2: Manual Map + InstrumentationCallback (persistent allocation)<br />
+- **Method**: Same as Test 1, but memory stays allocated after DllMain (normal injection — DLL stays loaded)<br />
+- **Allocation**: Section-based (MEM_MAPPED, PAGE_READWRITE VAD)<br />
+- **Execution**: NX cleared via PTE manipulation from kernel<br />
+- **Result**: DETECTED — **Game closes within seconds**<br />
+- **Analysis**: EAC detects the persistent MEM_MAPPED region with execute capability. Even though VAD says READWRITE and it's section-backed, EAC likely walks PTEs or probes execution.<br />
+<br />
+### Test 3: Manual Map + IC + VAD Protection Spoof<br />
+- **Method**: After mapping, spoof the VAD flags to look like PAGE_READONLY<br />
+- **Allocation**: Section-based, then modify MMVAD.Flags to change protection bits<br />
+- **Result**: DETECTED — **Still detected, game closes**<br />
+- **Analysis**: EAC doesn't rely solely on VAD protection flags.<br />
+<br />
+### Test 4: Manual Map + IC + VAD Unlinking<br />
+- **Method**: Unlink the MMVAD node from the AVL tree entirely (remove our allocation from the VAD list)<br />
+- **Result**: FAILED — **BSOD**<br />
+- **Analysis**: Unlinking VAD nodes causes crashes on process teardown or when the memory manager walks the tree.<br />
+<br />
+### Test 5: Manual Map + IC + Physical Page Remapping<br />
+- **Method**: After mapping, remap the physical pages backing the allocation to different physical pages, effectively hiding the content<br />
+- **Result**: DETECTED — **Still detected**<br />
+- **Analysis**: EAC likely detects the allocation itself (VAD entry exists), not just the content.<br />
+<br />
+### Test 6: Private memory allocation (VirtualAllocEx-style)<br />
+- **Method**: Allocate with MEM_COMMIT | MEM_RESERVE instead of section-based<br />
+- **Result**: DETECTED — **Detected faster than section-based**<br />
+- **Analysis**: Private (MEM_PRIVATE) allocations with execute permissions are even more suspicious to EAC.<br />
+<br />
+### Test 7: Section-based + NX-clear only (no execute in VAD)<br />
+- **Method**: Allocate section with PAGE_READWRITE only (no execute permission anywhere in VAD or section object). Clear NX bit in PTEs from kernel to allow execution.<br />
+- **Allocation**: ZwCreateSection(PAGE_READWRITE) + ZwMapViewOfSection<br />
+- **Result**: DETECTED — **Game still closes instantly**<br />
+- **Analysis**: We confirmed NX was cleared and code executed (DllMain returned 1). EAC must be detecting the VAD itself — ANY new VAD with unusual characteristics seems to trigger detection.<br />
+<br />
+### Test 8: LdrLoadDll Hook (ntdll code patching)<br />
+- **Method**: Completely different approach. Instead of manual mapping:<br />
+  1. Allocate small 2-page buffer for hook context + PIC shellcode<br />
+  2. Save first 12 bytes of ntdll!LdrLoadDll<br />
+  3. Write 12-byte trampoline (`mov rax, &lt;pic&gt;; jmp rax`) over LdrLoadDll<br />
+  4. PIC unhooks LdrLoadDll (restores bytes), forward original call, then calls LdrLoadDll for our DLL<br />
+  5. Windows loader loads our DLL normally (file-backed section, module list entry)<br />
+  6. Free the hook buffer after completion<br />
+- **Trampoline install**: Via kernel — ZwProtectVirtualMemory(PAGE_EXECUTE_READWRITE) to trigger COW, then MmCopyVirtualMemory to write 12 bytes, then restore protection<br />
+- **Result**: DETECTED — **Game crashes within ~2 seconds, then BSOD on cleanup**<br />
+- **Analysis**: EAC checksums ntdll code pages. The 12-byte trampoline was sitting on LdrLoadDll for the entire time we waited for the game to naturally call LoadLibrary. EAC detected the code modification and killed the process. BSOD was secondary — caused by cleanup running on a dead process.<br />
+<br />
+<br />
+<br />
+here is what i asked the ai about the EAC detection <br />
+Based on the test matrix, here's what I can infer:<br />
+<br />
+1. **ANY persistent VAD with execute capability** -- Even if VAD says READWRITE, even if it's section-backed (MEM_MAPPED), even if execute comes only from PTE-level NX clearing from kernel. The only surviving test was one where the VAD was **freed immediately** after DllMain.<br />
+<br />
+2. **ntdll code integrity** -- Modifying even 12 bytes of LdrLoadDll was detected within seconds (Test 8).<br />
+<br />
+3. **VAD manipulation** -- Spoofing VAD flags or unlinking VAD nodes doesn't help (Tests 3, 4).<br />
+<br />
+4. **Physical page remapping** -- Doesn't bypass detection if the VAD still exists (Test 5).<br />
+<br />
+<br />
+<br />
+please take in mind that the account i was trying the injection with got banned without even try any cheat on it i just got ban because i was try the injection methods on it , so lets say <b><u>the detected things got my account banned </u></b><br />
+<br />
+<br />
+<b><u>Any insights on what detection vector is getting us and how to evade it would be appreciated.</u></b><br />
+<br />
+<br />
+<br />
+if u wanna suggest any articles or posts related to this and will solve my problems please share them here with me <br />
+<br />
+<br />
+last thing to state here that i dont need code i just need to understand to create my own <br />
+<br />
+thanks a lot boiz &lt;3</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+Un1xCr3w is offline
+
+
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4603247 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4603247_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">Un1xCr3w</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3732463.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=3732463&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by Un1xCr3w</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4603247 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+  <div data-fuse="forum_thread_inline_1"></div>
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4603247 --><!-- post #4603720 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4603720" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4603720" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4603720"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			22nd February 2026, 08:59 PM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4603720-post2.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4603720" name="2"><strong>2</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4603720">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/7031026.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+YumikoImagwa
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4603720", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=green>Member</font><br> <img src=star.gif><img src=star.gif><img src=star.gif><img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/7031026.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/customavatars/avatar7031026_3.gif" 
+         width="200" height="200" 
+         alt="YumikoImagwa's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Sep 2025</span></div>
+
+
+
+<div class="info"><span style="color: black;">Location: Mars</span></div>
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 58
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4603720_7031026">-52</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 0</span>
+
+<br><span id="repinfoDots_4603720_7031026"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_neg.gif" alt="YumikoImagwa is becoming an outcast" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=7031026&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 569, Level: 1</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 569, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 569, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 1%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 569, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 34%, 331 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 34%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 34%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 34%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 34%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 11.9%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 11.9%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 11.9%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 11.9%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 11.9%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div>
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4603720">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4603720">it might be just me but when i ran hooks from inside the game with an injected dll i got detected and the test account did get banned, i'm assuming the way to go for this game is external even with hooks</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+
+
+<span style="color: #FF7800; font-weight: bold;">YumikoImagwa is online now</span>
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4603720 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4603720_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">YumikoImagwa</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/7031026.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=7031026&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by YumikoImagwa</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4603720 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4603720 --><!-- post #4603781 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4603781" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4603781" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4603781"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			22nd February 2026, 09:59 PM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4603781-post3.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4603781" name="3"><strong>3</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4603781">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/3732463.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+Un1xCr3w
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4603781", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=green>Member</font><br> <img src=star.gif><img src=star.gif><img src=star.gif><img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3732463.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/images/noavatar_default.gif" 
+         width="74" height="74" 
+         alt="Un1xCr3w's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<div class="info"><span style="color: black;"> <!-- Threadauthor -->
+
+
+<center><b>Threadstarter</b></center>
+<!-- / Threadauthor --></span></div>
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Jan 2021</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 71
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4603781_3732463">103</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 126</span>
+
+<br><span id="repinfoDots_4603781_3732463"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="Un1xCr3w is officially drafted by UC" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="Un1xCr3w is officially drafted by UC" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=3732463&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 3,854, Level: 6</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 3,854, Level: 6" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 3,854, Level: 6" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 8%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 3,854, Level: 6" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 29%, 646 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 29%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 29%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 29%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 29%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 27.5%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 27.5%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 27.5%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 27.5%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 27.5%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div> 
+<div class="info">
+<fieldset class="alt">
+<legend>Last Achievements</legend>
+
+<img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/calendar_16.png" title="1000 Days registered"><img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/spheres_iridescent_16.png" title="First 1000 Experience Points">
+
+</fieldset>
+</div>
+
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4603781">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4603781"><div style="margin:20px; margin-top:5px; ">
+	<div class="smallfont" style="margin-bottom:2px">Quote:</div>
+	<table cellpadding="6" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td class="alt2" style="border:1px inset">
+			
+				<div>
+					Originally Posted by <strong>YumikoImagwa</strong>
+					<a href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver-post4603720.html#post4603720" rel="nofollow"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/buttons/viewpost.gif" border="0" alt="View Post"></a>
+				</div>
+				<div style="font-style:italic">it might be just me but when i ran hooks from inside the game with an injected dll i got detected and the test account did get banned, i'm assuming the way to go for this game is external even with hooks</div>
+			
+		</td>
+	</tr>
+	</table>
+</div>yeah my account got banned too , and iam trying to get it to work internally cuz there is a lot of things can be done with internal hooking and alot of cheat developers here got the injection to work fine without bans but all of them are gate keeping i think <img src="https://www.unknowncheats.me/forum/images/smilies/sad.gif" border="0" alt="" title="Frown" class="inlineimg" /><br />
+<br />
+<br />
+if i found anything new i will let u know buddy</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+Un1xCr3w is offline
+
+
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4603781 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4603781_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">Un1xCr3w</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3732463.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=3732463&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by Un1xCr3w</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4603781 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4603781 --><!-- post #4610137 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4610137" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4610137" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4610137"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			2nd March 2026, 02:30 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4610137-post4.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4610137" name="4"><strong>4</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4610137">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/2362562.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+Haxsc
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4610137", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=cyan>n00bie</font><br> <img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/2362562.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/images/noavatar_default.gif" 
+         width="74" height="74" 
+         alt="Haxsc's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Mar 2018</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 17
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4610137_2362562">7</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 0</span>
+
+<br><span id="repinfoDots_4610137_2362562"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="Haxsc has a near-average in quality posting ability" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=2362562&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 5,901, Level: 8</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 5,901, Level: 8" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 5,901, Level: 8" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 11%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 5,901, Level: 8" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 46%, 599 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 46%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 46%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 46%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 46%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 5.0%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 5.0%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 5.0%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 5.0%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 5.0%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div> 
+<div class="info">
+<fieldset class="alt">
+<legend>Last Achievements</legend>
+
+<img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/spheres_iridescent_16.png" title="First 1000 Experience Points"><img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/calendar_16.png" title="1000 Days registered">
+
+</fieldset>
+</div>
+
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4610137">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4610137">I'm facing the same problem.</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+
+
+<span style="color: #FF7800; font-weight: bold;">Haxsc is online now</span>
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4610137 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4610137_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">Haxsc</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/2362562.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=2362562&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by Haxsc</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4610137 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4610137 --><!-- post #4610140 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4610140" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4610140" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4610140"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			2nd March 2026, 02:43 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4610140-post5.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4610140" name="5"><strong>5</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4610140">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/2847249.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+<span style="color: #2F4F4F; font-weight: bold;">beck123x</span>
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4610140", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><b><font color=gold>Super H4x0r</font></b><br> <img src=starmod.gif><img src=starmod.gif><img src=starmod.gif><img src=starmod.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/2847249.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/customavatars/avatar2847249_2.gif" 
+         width="200" height="200" 
+         alt="beck123x's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Jul 2019</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 321
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4610140_2847249">8480</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 174</span>
+
+<br><span id="repinfoDots_4610140_2847249"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="beck123x DEFINES UNKNOWNCHEATS" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=2847249&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<div class="info">
+<fieldset class="alt">
+<legend>Recognitions</legend>
+<img src="https://www.unknowncheats.me/forum/images/medals/medal-green.gif" alt="Members who have contributed financial support towards UnKnoWnCheaTs." style="vertical-align: middle; border: none;">
+
+<a rel="nofollow" href="https://www.unknowncheats.me/forum/members/2847249.html?tab=myawards&amp;s=8e0612f0433b7c41cace3bd7aa20da48#aw_issue2692"><span class="smallfont"><abbr title="Awarded: 7th May 2024">Donator</abbr></span></a>
+
+<!-- rover addition to display issue reason next to award image -->
+<!-- issue reason is used for the number of times someone has gotten that award -->
+
+
+
+<!-- winslow small addition to prevent huge motm paragraph from showing in postbit -->
+
+
+  <span style="font-family: Verdana, sans-serif; font-size: 11px; color: #26353F;">(1)</span>
+
+
+
+
+<br>
+</fieldset>
+</div>
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 21,517, Level: 20</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 21,517, Level: 20" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 21,517, Level: 20" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 28%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 21,517, Level: 20" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 45%, 883 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 45%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 45%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 45%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 45%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 18.4%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 18.4%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 18.4%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 18.4%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 18.4%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div> 
+<div class="info">
+<fieldset class="alt">
+<legend>Last Achievements</legend>
+
+<img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/calendar_16.png" title="1000 Days registered"><img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/spheres_iridescent_16.png" title="First 1000 Experience Points">
+
+</fieldset>
+</div>
+
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4610140">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4610140">Attack the anticheat, this is the only way of being UD on EAC or any other decent kernel AC nowadays.<br />
+You can spoof VAD as you want, once they see it's not executable in there, but is it in PTE, they'll just crash your game and ban, this is not 2018 anymore to hide with VAD spoofing and [removed].<br />
+Even if you unlink VAD with no BSOD, do you think they care? once they get process CR3 and walk every present page, and find one with no VAD, but PTE is somehow executable, that won't save you lol.<br />
+<br />
+Or just abuse some signed DLL Xd, although it's very hard on EAC.</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+
+
+<span style="color: #FF7800; font-weight: bold;">beck123x is online now</span>
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4610140 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4610140_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">beck123x</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/2847249.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=2847249&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by beck123x</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4610140 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+  
+    <div data-fuse="forum_thread_inline_2"></div>
+     
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4610140 --><!-- post #4627183 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4627183" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4627183" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4627183"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			Yesterday, 01:58 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4627183-post6.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4627183" name="6"><strong>6</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4627183">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/6502107.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+<span style="color: #2d7009; font-weight: bold;">IEmulateEAC</span>
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4627183", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><b><font color=gold>Supreme G0d</font></b><br> <img src=starmod.gif><img src=starmod.gif><img src=starmod.gif><img src=starmod.gif><img src=starmod.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/6502107.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/customavatars/avatar6502107_99.gif" 
+         width="1" height="1" 
+         alt="IEmulateEAC's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Nov 2024</span></div>
+
+
+
+<div class="info"><span style="color: black;">Location: .ubx</span></div>
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 367
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4627183_6502107">14345</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 51</span>
+
+<br><span id="repinfoDots_4627183_6502107"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="IEmulateEAC 's rep takes up 1 gig of server space" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=6502107&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<div class="info">
+<fieldset class="alt">
+<legend>Recognitions</legend>
+<img src="https://www.unknowncheats.me/forum/images/medals/medal-green.gif" alt="Members who have contributed financial support towards UnKnoWnCheaTs." style="vertical-align: middle; border: none;">
+
+<a rel="nofollow" href="https://www.unknowncheats.me/forum/members/6502107.html?tab=myawards&amp;s=8e0612f0433b7c41cace3bd7aa20da48#aw_issue2923"><span class="smallfont"><abbr title="Awarded: 11th March 2026">Donator</abbr></span></a>
+
+<!-- rover addition to display issue reason next to award image -->
+<!-- issue reason is used for the number of times someone has gotten that award -->
+
+
+
+<!-- winslow small addition to prevent huge motm paragraph from showing in postbit -->
+
+
+  <span style="font-family: Verdana, sans-serif; font-size: 11px; color: #26353F;">(2)</span>
+
+
+
+
+<br>
+</fieldset>
+</div>
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 16,646, Level: 17</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 16,646, Level: 17" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 16,646, Level: 17" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 24%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 16,646, Level: 17" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 18%, 1,154 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 18%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 18%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 18%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 18%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 78.6%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 78.6%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 78.6%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 78.6%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 78.6%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div> 
+<div class="info">
+<fieldset class="alt">
+<legend>Last Achievements</legend>
+
+<img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/dude4_16.png" title="Got three Friends"><img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/spheres_iridescent_16.png" title="First 1000 Experience Points">
+
+</fieldset>
+</div>
+
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4627183">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4627183"><div style="margin:20px; margin-top:5px; ">
+	<div class="smallfont" style="margin-bottom:2px">Quote:</div>
+	<table cellpadding="6" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td class="alt2" style="border:1px inset">
+			
+				<div>
+					Originally Posted by <strong>beck123x</strong>
+					<a href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver-post4610140.html#post4610140" rel="nofollow"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/buttons/viewpost.gif" border="0" alt="View Post"></a>
+				</div>
+				<div style="font-style:italic">Attack the anticheat, this is the only way of being UD on EAC or any other decent kernel AC nowadays.<br />
+You can spoof VAD as you want, once they see it's not executable in there, but is it in PTE, they'll just crash your game and ban, this is not 2018 anymore to hide with VAD spoofing and [removed].<br />
+Even if you unlink VAD with no BSOD, do you think they care? once they get process CR3 and walk every present page, and find one with no VAD, but PTE is somehow executable, that won't save you lol.<br />
+<br />
+Or just abuse some signed DLL Xd, although it's very hard on EAC.</div>
+			
+		</td>
+	</tr>
+	</table>
+</div>it is not the only way lol, what are you on</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+
+
+<span style="color: #FF7800; font-weight: bold;">IEmulateEAC is online now</span>
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4627183 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4627183_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">IEmulateEAC</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/6502107.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=6502107&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by IEmulateEAC</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4627183 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4627183 --><!-- post #4627774 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4627774" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4627774" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4627774"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			Yesterday, 08:43 PM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4627774-post7.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4627774" name="7"><strong>7</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4627774">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/3410894.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+xuso15
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4627774", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=cyan>n00bie</font><br> <img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3410894.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/images/noavatar_default.gif" 
+         width="74" height="74" 
+         alt="xuso15's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Aug 2020</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 1
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4627774_3410894">10</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 136</span>
+
+<br><span id="repinfoDots_4627774_3410894"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="xuso15 has made posts that are generally average in quality" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=3410894&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 1, Level: 1</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 1, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 1, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 1%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 1, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 0%, 1 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 0%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 0%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 0%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 0%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 0%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 0%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 0%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 0%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 0%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div>
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4627774">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4627774">What I do is, before launching EAC and the game, I load a custom driver into the kernel using a vulnerable driver. This custom driver stays in memory with my memory-reading methods (no writing). Once loaded, I remove the driver loader, which is detected by EAC from the Windows tables and registers, so EAC doesn't know the kernel was modified on the fly, nor is it aware of the methods I can later call externally from any custom-made software.<br />
+<br />
+If you need more information, look up: BYOVD<br />
+<br />
+Regards.</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+xuso15 is offline
+
+
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4627774 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4627774_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">xuso15</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3410894.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=3410894&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by xuso15</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4627774 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4627774 --><!-- post #4628181 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4628181" style="padding:0px 0px 6px 0px">
+	<!-- this is not the last post shown on the page -->
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4628181" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4628181"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			Today, 10:50 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4628181-post8.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4628181" name="8"><strong>8</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4628181">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/3156083.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+<span style="color: #2F4F4F; font-weight: bold;">R7flex2</span>
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4628181", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=green>Member</font><br> <img src=star.gif><img src=star.gif><img src=star.gif><img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3156083.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/images/avatars/14ava.gif" 
+           
+         alt="R7flex2's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Apr 2020</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 57
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4628181_3156083">7003</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 152</span>
+
+<br><span id="repinfoDots_4628181_3156083"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_highpos.gif" alt="R7flex2 DEFINES UNKNOWNCHEATS" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=3156083&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 13,765, Level: 15</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 13,765, Level: 15" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 13,765, Level: 15" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 21%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 13,765, Level: 15" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 12%, 1,235 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 12%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 12%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 12%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 12%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 4.8%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 4.8%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 4.8%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 4.8%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 4.8%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div> 
+<div class="info">
+<fieldset class="alt">
+<legend>Last Achievements</legend>
+
+<img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/calendar_16.png" title="1000 Days registered"><img alt="Injecting DLL into EAC-protected process from Kernel Driver" class="inlineimg" style="border: 0;" width="16" height="16" src="https://www.unknowncheats.me/forum/xperience/icons/spheres_iridescent_16.png" title="First 1000 Experience Points">
+
+</fieldset>
+</div>
+
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4628181">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4628181">hypervisor</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+R7flex2 is offline
+
+
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4628181 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4628181_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">R7flex2</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/3156083.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=3156083&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by R7flex2</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4628181 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4628181 --><!-- post #4628184 -->
+
+	<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+	<div id="edit4628184" style="padding:0px 0px 6px 0px">
+	
+
+
+<!-- top category table setup -->
+<!-- below line added by lm to hide empty block above posts, but because vb this is also used for the thread title, which is the exception 'parentid == 0' -->
+
+<!-- End top category table setup -->
+
+<table id="post4628184" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; margin: 0 auto; border: none;">
+<tr>
+	
+		<td class="thead" style="font-weight:normal" >		
+			<!-- status icon and date -->
+			<a name="post4628184"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/statusicon/post_old.gif" alt="Old" border="0"></a>
+			Today, 10:53 AM
+			
+			<!-- / status icon and date -->				
+		</td>
+
+
+
+		<td class="thead" style="font-weight: normal; text-align: right;">
+
+                        &nbsp;
+			#<a href="https://www.unknowncheats.me/forum/4628184-post9.html?s=8e0612f0433b7c41cace3bd7aa20da48" target="new"  id="postcount4628184" name="9"><strong>9</strong></a>
+
+			
+		</td>
+	
+</tr>
+<tr style="vertical-align: top;">
+	<td class="alt2" style="width: 200px;">
+			<div id="postmenu_4628184">
+				
+
+<div style="text-align: center;">
+<a class="bigusername" rel="nofollow" href="https://www.unknowncheats.me/forum/members/7158585.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+SecretPaster
+</a>
+</div>
+		
+<script>vbmenu_register("postmenu_4628184", true);</script>
+
+</div>
+
+
+<div class="smallfont" style="text-align: center;"><font color=cyan>n00bie</font><br> <img src=star.gif></div>
+
+
+
+
+
+	
+		<div class="smallfont">
+			<br>
+<div style="text-align: center;">
+  <a rel="nofollow" href="https://www.unknowncheats.me/forum/members/7158585.html?s=8e0612f0433b7c41cace3bd7aa20da48">
+    <img src="https://www.unknowncheats.me/forum/images/noavatar_default.gif" 
+         width="74" height="74" 
+         alt="SecretPaster's Avatar" 
+         style="border: 0;">
+  </a>
+</div>
+
+		</div>
+	
+
+<br>
+
+<!-- thread starter begin (lm) -->
+
+<!-- thread starter end (lm) -->
+
+<div class="info"><span style="color: black;">Join Date: Dec 2025</span></div>
+
+
+
+
+
+
+<div class="info">
+  <span style="color: black;">
+    Posts: 13
+  </span>
+</div>
+				
+
+<div class="info">
+<span style="color: black;">Reputation: <span id="repinfoRep_4628184_7158585">30</span></span>
+<br>
+
+
+<span style="color: black;">Rep Power: 7</span>
+
+<br><span id="repinfoDots_4628184_7158585"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/reputation/reputation_pos.gif" alt="SecretPaster has made posts that are generally average in quality" border="0"></span>
+</div>
+
+				
+
+	
+<!-- <div class="info">
+<a href="https://www.unknowncheats.me/forum/album.php?u=7158585&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">View Picture Albums</a>
+</div> -->
+
+<!-- v3 Arcade -->
+
+<!-- /v3 Arcade -->
+
+<!-- awards system -->
+<!-- show awards -->
+
+<!-- /show awards -->
+<!-- /awards system -->
+
+ <div class="info">
+<div style="text-align: left;">
+	
+                <table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr>
+			<td><div class="smallfont">Points: 250, Level: 1</div></td>
+		</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/red_faded.png)">
+				<td style="width: 5px; height: 11px;">
+<img alt="Points: 250, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Points: 250, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red.png" style="width: 1%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Points: 250, Level: 1" src="https://www.unknowncheats.me/forum/xperience/images/red_right.png" height="11"></td>
+		</tr>
+		</table>
+	
+
+	
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">	
+			<tr>
+				<td><div class="smallfont">Level up: 63%, 150 Points needed</div></td>
+			</tr>
+			</table>
+		
+		
+			<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/grey_faded.png)"> 
+				<td style="width: 5px; height: 11px;">
+<img alt="Level up: 63%" src="https://www.unknowncheats.me/forum/xperience/images/grey_left.png" height="11"></td>
+				<td style="width: 100%; height: 11px;">
+<img alt="Level up: 63%" src="https://www.unknowncheats.me/forum/xperience/images/grey.png" style="width: 63%; height: 11px;"></td>
+				<td style="width: 1px; height: 11px;">
+<img alt="Level up: 63%" src="https://www.unknowncheats.me/forum/xperience/images/grey_right.png" height="11"></td>
+			</tr>
+			</table>
+		
+		
+
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+			<tr>
+				<td><div class="smallfont">Activity: 14.3%</div></td>
+			</tr>
+		</table>
+	
+	
+	
+		<table style="width: 98%;" cellpadding="0" cellspacing="0">
+		<tr style="background-image:url(https://www.unknowncheats.me/forum/xperience/images/green_faded.png)"> 
+			<td style="width: 5px; height: 11px;">
+<img alt="Activity: 14.3%" src="https://www.unknowncheats.me/forum/xperience/images/green_left.png" height="11"></td>
+			<td style="width: 100%; height: 11px;">
+<img alt="Activity: 14.3%" src="https://www.unknowncheats.me/forum/xperience/images/green.png" style="width: 14.3%; height: 11px;"></td>
+			<td style="width: 1px; height: 11px;">
+<img alt="Activity: 14.3%" src="https://www.unknowncheats.me/forum/xperience/images/green_right.png"></td>
+		</tr>
+		</table>
+		
+</div>
+</div>
+
+	</td>
+
+	
+	<td class="alt1" id="td_post_4628184">
+	
+	
+		
+		
+		<!-- message -->
+		<div id="post_message_4628184">holy moly you want us to talk to your AI?</div>
+		<!-- / message -->
+
+ 		
+ 		
+
+		
+		
+		<!-- sig -->		
+		
+		<!-- / sig -->
+		
+
+	
+	</td>
+</tr>
+<tr>
+	<td class="alt2">
+	<div style="text-align: center;"><span class="smallfont">
+
+
+
+<span style="color: #FF7800; font-weight: bold;">SecretPaster is online now</span>
+
+
+
+</span></div>
+        
+
+<div style="text-align: center;">
+	
+	
+</div>
+		
+	</td>
+	
+	<td class="alt1" style="text-align: right;">
+	
+		<!-- controls -->
+
+
+
+    
+
+
+
+		
+		   
+
+
+		
+
+<!-- 
+
+-->
+
+
+
+		
+
+		
+		
+		
+		
+			
+			
+		<!-- / controls -->
+	</td>
+</tr>
+</table>
+
+<!-- post 4628184 popup menu -->
+<div class="vbmenu_popup" id="postmenu_4628184_menu" style="display:none">
+	<table cellpadding="4" cellspacing="1" style="border: 0;">
+	<tr>
+		<td class="thead">SecretPaster</td>
+	</tr>
+
+
+	
+		<tr><td class="vbmenu_option"><a rel="nofollow" href="https://www.unknowncheats.me/forum/members/7158585.html?s=8e0612f0433b7c41cace3bd7aa20da48">View Public Profile</a></td></tr>
+	
+
+
+	
+	<!---->
+	
+		<tr><td class="vbmenu_option"><a href="https://www.unknowncheats.me/forum/search.php?do=finduser&amp;u=7158585&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Find More Posts by SecretPaster</a></td></tr>
+	
+	
+
+
+
+</table>
+</div>
+<!-- / post 4628184 popup menu -->
+
+  <!-- bottom table setup -->
+    <table style="width: 100%;" class="thead" cellpadding="0" cellspacing="0">
+      <tr>
+        <td style="width: 100%; height: 5px;"><img src="https://www.unknowncheats.me/forum/ambience/misc/trans.gif"  height="5" alt=" " style="border: 0;"></td>
+      </tr>
+    </table>
+   <!-- End bottom table setup -->
+
+
+
+  
+    <div data-fuse="forum_thread_inline_3"></div>
+     
+
+
+
+
+	</div>
+	
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+
+<!-- / post #4628184 --><div id="lastpost"></div></div>
+
+<!-- <script type="text/javascript">
+if ( location.hash && location.hash.match(/^#post\d+$/) && document.getElementById( location.hash.substr(1) ) == null ) location.href = "/forum/showthread.php?p=" + location.hash.substr(5);
+</script> -->
+
+<!-- start content table -->
+<!-- open content container -->
+
+<div style="text-align: center;">
+	<div class="page" style="width:100%; text-align:left">
+            <div style="padding: 0px 25px 0px 25px; text-align: left;">
+
+<!-- / start content table -->
+
+<!-- controls below postbits -->
+<table cellpadding="0" cellspacing="0" style="border: 0; width:100%; margin-top:-3px">
+<tr style="vertical-align: top;">
+	
+		<td class="smallfont"><a href="https://www.unknowncheats.me/forum/newreply.php?do=newreply&amp;noquote=1&amp;p=4628184&amp;s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow"><img src="https://www.unknowncheats.me/forum/ambience/buttons/reply.gif" alt="Reply" title="Reply" style="border: 0;"></a>
+
+
+<ul style="list-style-type:none; margin:3px; padding:0; display:inline-block;"><li class="smallfont" style="width:auto; float:left; text-align:left; margin-right:10px;">
+	
+		<a rel="nofollow" href="http://reddit.com/submit?url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720&amp;title=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver" target="socialbookmark">
+			<img src="https://www.unknowncheats.me/forum/ambience/misc/bookmarksite_reddit.png" border="0" alt="Submit Thread to Reddit" class="inlineimg" style="vertical-align:middle;" /></a>&nbsp;<a rel="nofollow" href="http://reddit.com/submit?url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720&amp;title=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver" target="socialbookmark" style="text-decoration:none; vertical-align:middle;">Reddit</a>
+	
+</li><li class="smallfont" style="width:auto; float:left; text-align:left; margin-right:10px;">
+	
+		<a rel="nofollow" href="https://twitter.com/intent/tweet?text=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver&amp;url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark">
+			<img src="https://www.unknowncheats.me/forum/ambience/misc/bookmarksite_twitter.png" border="0" alt="Submit Thread to Twitter" class="inlineimg" style="vertical-align:middle;" /></a>&nbsp;<a rel="nofollow" href="https://twitter.com/intent/tweet?text=Injecting+DLL+into+EAC-protected+process+from+Kernel+Driver&amp;url=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark" style="text-decoration:none; vertical-align:middle;">Twitter</a>
+	
+</li><li class="smallfont" style="width:auto; float:left; text-align:left; margin-right:10px;">
+	
+		<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark">
+			<img src="https://www.unknowncheats.me/forum/ambience/misc/bookmarksite_facebook.png" border="0" alt="Submit Thread to Facebook" class="inlineimg" style="vertical-align:middle;" /></a>&nbsp;<a rel="nofollow" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.unknowncheats.me%2Fforum%2Fshowthread.php%3Ft%3D739720" target="socialbookmark" style="text-decoration:none; vertical-align:middle;">Facebook</a>
+	
+</li></ul>
+
+
+</td>
+	
+	
+</tr>
+</table>
+<!-- / controls below postbits -->
+
+
+
+
+
+
+<!-- lightbox scripts -->
+	<script type="text/javascript" src="clientscript/vbulletin_lightbox.js?v=387"></script>
+	<script type="text/javascript">
+	<!--
+	vBulletin.register_control("vB_Lightbox_Container", "posts", 1);
+	//-->
+	</script>
+<!-- / lightbox scripts -->
+
+
+
+
+
+
+
+
+
+
+<br>
+<div style="text-align:center;">
+  <div style="margin: 0 auto;">
+    <div data-fuse="forum_showthread"></div>
+  </div>
+</div>
+
+
+<br>
+<table id="similarthreads" class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; border: 0; text-align: center;">
+<thead>
+	<tr>
+		<td class="tcat" colspan="5" style="width: 100%;">
+			<a style="float:right" href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver.html#top" onclick="return toggle_collapse('similarthreads')"><img id="collapseimg_similarthreads" src="https://www.unknowncheats.me/forum/ambience/buttons/collapse_tcat.gif" alt="collapse similar threads" style="border: 0;"></a>
+			Similar Threads<a name="similarthreads"></a>
+		</td>
+	</tr>
+</thead>
+<tbody id="collapseobj_similarthreads" style="">
+<tr class="thead" style="text-align: center;">
+	<td class="thead" style="width: 40%;">Thread</td>
+	<td class="thead" style="width: 15%; white-space: nowrap;">Thread Starter</td>
+	<td class="thead" style="width: 20%;">Forum</td>
+	<td class="thead" style="width: 5%;">Replies</td>
+	<td class="thead" style="width: 20%;">Last Post</td>
+</tr>
+<tr>
+	<td class="alt1" style="text-align: left;">
+		
+		<span class="smallfont">[Discuss] <a href="https://www.unknowncheats.me/forum/crossfire/681541-inject-dll-ace-protected-crossfire-exe-process-ring3.html?s=8e0612f0433b7c41cace3bd7aa20da48" title="How to inject dll into the ace-protected crossfire.exe process at ring3?">How to inject dll into the ace-protected crossfire.exe process at ring3</a></span>
+	</td>
+	<td class="alt2" style="white-space: nowrap;"><span class="smallfont">ZhrHan</span></td>
+	<td class="alt1" style="white-space: nowrap;"><span class="smallfont">CrossFire</span></td>
+	<td class="alt2" style="text-align: center;"><span class="smallfont">5</span></td>
+	<td class="alt1" style="text-align: right;"><span class="smallfont">16th January 2025 <span class="time">08:06 AM</span></span></td>
+</tr>
+<tr>
+	<td class="alt1" style="text-align: left;">
+		
+		<span class="smallfont">[Question] <a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/590294-injecting-dll-eac-protected-game.html?s=8e0612f0433b7c41cace3bd7aa20da48" title="how can i inject dll to a protected eac game">Injecting dll to a eac protected game</a></span>
+	</td>
+	<td class="alt2" style="white-space: nowrap;"><span class="smallfont">xGenocide</span></td>
+	<td class="alt1" style="white-space: nowrap;"><span class="smallfont">Anti-Cheat Bypass</span></td>
+	<td class="alt2" style="text-align: center;"><span class="smallfont">5</span></td>
+	<td class="alt1" style="text-align: right;"><span class="smallfont">2nd July 2023 <span class="time">06:24 PM</span></span></td>
+</tr>
+<tr>
+	<td class="alt1" style="text-align: left;">
+		
+		<span class="smallfont">[Question] <a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/417465-injecting-dll-protected-process.html?s=8e0612f0433b7c41cace3bd7aa20da48" title="Hi there,  
+ 
+FallGuys got EAC this week, and I'm thinking about rewriting the SharpMonoInjector in the Kernel.  
+SharpMonoInjector injects the DLL using CreateRemoteThread. 
+ 
+I've researched a bit...">Injecting DLL into protected process</a></span>
+	</td>
+	<td class="alt2" style="white-space: nowrap;"><span class="smallfont">VollRagm</span></td>
+	<td class="alt1" style="white-space: nowrap;"><span class="smallfont">Anti-Cheat Bypass</span></td>
+	<td class="alt2" style="text-align: center;"><span class="smallfont">14</span></td>
+	<td class="alt1" style="text-align: right;"><span class="smallfont">24th September 2020 <span class="time">07:57 AM</span></span></td>
+</tr>
+<tr>
+	<td class="alt1" style="text-align: left;">
+		
+		<span class="smallfont">[Question] <a href="https://www.unknowncheats.me/forum/anti-cheat-bypass/336775-inject-dll-eac-protected-game-suspend-eac-kernel-thread.html?s=8e0612f0433b7c41cace3bd7aa20da48" title="Can i inject dll into eac protected game with just suspend the eac kernel thread?">Can i inject dll into eac protected game with just suspend the eac kernel thread?</a></span>
+	</td>
+	<td class="alt2" style="white-space: nowrap;"><span class="smallfont">MaskJhin</span></td>
+	<td class="alt1" style="white-space: nowrap;"><span class="smallfont">Anti-Cheat Bypass</span></td>
+	<td class="alt2" style="text-align: center;"><span class="smallfont">3</span></td>
+	<td class="alt1" style="text-align: right;"><span class="smallfont">18th May 2019 <span class="time">05:45 AM</span></span></td>
+</tr>
+<tr>
+	<td class="alt1" style="text-align: left;">
+		
+		<span class="smallfont">[Help] <a href="https://www.unknowncheats.me/forum/general-programming-and-reversing/232375-injecting-dll-xigncode-protected-game.html?s=8e0612f0433b7c41cace3bd7aa20da48" title="I'm currently using Extreme Injector as my injector. The problem I'm having is quite strange. Whenever I bypass XignCode(Till 5 Minute heartbeat kicks me). I inject, my speed hack works. But whenever...">Problems injecting a dll into a xigncode protected game.</a></span>
+	</td>
+	<td class="alt2" style="white-space: nowrap;"><span class="smallfont">PropGamer</span></td>
+	<td class="alt1" style="white-space: nowrap;"><span class="smallfont">General Programming and Reversing</span></td>
+	<td class="alt2" style="text-align: center;"><span class="smallfont">11</span></td>
+	<td class="alt1" style="text-align: right;"><span class="smallfont">19th September 2017 <span class="time">07:07 PM</span></span></td>
+</tr>
+
+</tbody>
+</table>
+
+<br>
+
+
+
+
+<!-- thread tags -->
+
+	<table class="tborder" cellpadding="6" cellspacing="1" style="width: 100%; border: 0; text-align: left;">
+	<tr>
+		<td class="thead">
+			
+			<a name="taglist"></a>
+			<a href="https://www.unknowncheats.me/forum/tags/?s=8e0612f0433b7c41cace3bd7aa20da48">Tags</a>
+		</td>
+	</tr>
+	<tr>
+		<td class="alt1 smallfont" id="tag_list_cell"><a href="https://www.unknowncheats.me/forum/tags/vad.html?s=8e0612f0433b7c41cace3bd7aa20da48">vad</a>, <a href="https://www.unknowncheats.me/forum/tags/test.html?s=8e0612f0433b7c41cace3bd7aa20da48">test</a>, <a href="https://www.unknowncheats.me/forum/tags/detected.html?s=8e0612f0433b7c41cace3bd7aa20da48">detected</a>, <a href="https://www.unknowncheats.me/forum/tags/eac.html?s=8e0612f0433b7c41cace3bd7aa20da48">eac</a>, <a href="https://www.unknowncheats.me/forum/tags/%23%23%23.html?s=8e0612f0433b7c41cace3bd7aa20da48">###</a>, <a href="https://www.unknowncheats.me/forum/tags/dllmain.html?s=8e0612f0433b7c41cace3bd7aa20da48">dllmain</a>, <a href="https://www.unknowncheats.me/forum/tags/allocation.html?s=8e0612f0433b7c41cace3bd7aa20da48">allocation</a>, <a href="https://www.unknowncheats.me/forum/tags/dll.html?s=8e0612f0433b7c41cace3bd7aa20da48">dll</a>, <a href="https://www.unknowncheats.me/forum/tags/kernel.html?s=8e0612f0433b7c41cace3bd7aa20da48">kernel</a>, <a href="https://www.unknowncheats.me/forum/tags/execute.html?s=8e0612f0433b7c41cace3bd7aa20da48">execute</a> <img src="https://www.unknowncheats.me/forum/ambience/misc/11x11progress.gif" id="tag_form_progress" class="inlineimg" style="display:none" alt="" /></td>
+	</tr>
+	</table>
+
+	<script type="text/javascript" src="clientscript/vbulletin_ajax_taglist.js?v=387"></script>
+		<script type="text/javascript" src="clientscript/vbulletin_ajax_tagsugg.js?v=387"></script>
+<!-- / thread tags -->
+
+
+
+<!-- next / previous links -->
+	<br>
+	<div class="smallfont" style="text-align: center;">
+		<strong>&laquo;</strong>
+			<a href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver-prev-thread.html?s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Previous Thread</a>
+			|
+			<a href="https://www.unknowncheats.me/forum/arc-raiders/739720-injecting-dll-eac-protected-process-kernel-driver-next-thread.html?s=8e0612f0433b7c41cace3bd7aa20da48" rel="nofollow">Next Thread</a>
+		<strong>&raquo;</strong>
+	</div>
+<!-- / next / previous links -->
+
+
+
+
+
+<!-- popup menu contents -->
+<br>
+
+<!-- thread tools menu -->
+<div class="vbmenu_popup" id="threadtools_menu" style="display:none">
+<form action="https://www.unknowncheats.me/forum/postings.php?t=739720&amp;pollid=" method="post" name="threadadminform">
+	<table cellpadding="4" cellspacing="1" border="0">
+	<tr>
+		<td class="thead">Thread Tools<a name="goto_threadtools"></a></td>
+	</tr>
+	<tr>
+		<td class="vbmenu_option"><img class="inlineimg" src="https://www.unknowncheats.me/forum/ambience/buttons/printer.gif" alt="Show Printable Version" /> <a href="https://www.unknowncheats.me/forum/printthread.php?t=739720&amp;s=8e0612f0433b7c41cace3bd7aa20da48" accesskey="3" rel="nofollow">Show Printable Version</a></td>
+	</tr>
+	
+	
+	
+	</table>
+</form>
+</div>
+<!-- / thread tools menu -->
+
+<!-- **************************************************** -->
+
+
+
+<!-- **************************************************** -->
+
+
+
+<!-- / popup menu contents -->
+
+
+<!-- forum rules and admin links -->
+<table cellpadding="0" cellspacing="0" style="width: 100%; border: 0; text-align: center;">
+<tr style="vertical-align: bottom;">
+	<td style="width: 100%; vertical-align: top;">
+		
+	</td>
+	<td class="smallfont" style="text-align: right;">
+		<table cellpadding="0" cellspacing="0" style="border: 0;">
+		
+		<tr>
+			<td>
+			<div class="smallfont" style="text-align:left; white-space:nowrap">
+	<form action="https://www.unknowncheats.me/forum/forumdisplay.php" method="get">
+	<input type="hidden" name="s" value="8e0612f0433b7c41cace3bd7aa20da48" />
+	<input type="hidden" name="daysprune" value="" />
+	<strong>Forum Jump</strong><br />
+	<select name="f" onchange="this.form.submit();">
+		<optgroup label="Site Areas">
+			<option value="cp" >User Control Panel</option>
+			<option value="pm" >Private Messages</option>
+			<option value="subs" >Subscriptions</option>
+			<option value="wol" >Who's Online</option>
+			<option value="search" >Search Forums</option>
+			<option value="home" >Forums Home</option>
+		</optgroup>
+		
+		<optgroup label="Forums">
+		<option value="1" class="fjdpth0" > General UC</option>
+<option value="87" class="fjdpth1" >&nbsp; &nbsp;  Information and Announcements</option>
+<option value="584" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Member of the Month</option>
+<option value="191" class="fjdpth1" >&nbsp; &nbsp;  Forum General</option>
+<option value="765" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Introductions</option>
+<option value="192" class="fjdpth1" >&nbsp; &nbsp;  Off Topic</option>
+<option value="608" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Music and Videos</option>
+<option value="94" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Spam</option>
+<option value="476" class="fjdpth1" >&nbsp; &nbsp;  Forum Feedback</option>
+<option value="156" class="fjdpth0" > First-Person Shooters</option>
+<option value="769" class="fjsel" selected="selected">&nbsp; &nbsp;  ARC Raiders</option>
+<option value="599" class="fjdpth1" >&nbsp; &nbsp;  ARMA Series</option>
+<option value="600" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  ARMA 2</option>
+<option value="602" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ARMA 2 Scripting</option>
+<option value="621" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="622" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="601" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  ARMA 3</option>
+<option value="623" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="624" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="660" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  DayZ SA</option>
+<option value="699" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="700" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="567" class="fjdpth1" >&nbsp; &nbsp;  All Points Bulletin</option>
+<option value="580" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  APB:RU (Innova)</option>
+<option value="615" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="616" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="653" class="fjdpth1" >&nbsp; &nbsp;  Alliance of Valiant Arms</option>
+<option value="389" class="fjdpth1" >&nbsp; &nbsp;  America's Army Operations</option>
+<option value="544" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  America's Army Operations 2.x</option>
+<option value="546" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  2.x Coding and Tutorials</option>
+<option value="545" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  America's Army Operations 3.x</option>
+<option value="547" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  3.x Coding and Tutorials</option>
+<option value="620" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="657" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  America's Army: Proving Grounds</option>
+<option value="726" class="fjdpth1" >&nbsp; &nbsp;  Apex Legends</option>
+<option value="367" class="fjdpth1" >&nbsp; &nbsp;  Battlefield Series</option>
+<option value="369" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 1942</option>
+<option value="370" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield Vietnam</option>
+<option value="368" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 2</option>
+<option value="445" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 2142</option>
+<option value="539" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield Bad Company 2</option>
+<option value="514" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield Heroes</option>
+<option value="564" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield Play4Free</option>
+<option value="572" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 3</option>
+<option value="644" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 4</option>
+<option value="672" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield Hardline</option>
+<option value="694" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 1</option>
+<option value="719" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield V</option>
+<option value="738" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 2042</option>
+<option value="766" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Battlefield 6</option>
+<option value="40" class="fjdpth1" >&nbsp; &nbsp;  Call of Duty Series</option>
+<option value="71" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call Of Duty 1</option>
+<option value="208" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty 2</option>
+<option value="492" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty 4: Modern Warfare</option>
+<option value="503" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty 5: World at War</option>
+<option value="536" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty 6: Modern Warfare 2</option>
+<option value="538" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty 6: Code Section</option>
+<option value="574" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty 6: alterIWnet</option>
+<option value="627" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="628" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="563" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops</option>
+<option value="575" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Modern Warfare 3</option>
+<option value="631" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="632" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="593" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops 2</option>
+<option value="678" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops 3</option>
+<option value="656" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Ghosts</option>
+<option value="658" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="659" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="669" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Advanced Warfare</option>
+<option value="723" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops 4</option>
+<option value="731" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Modern Warfare</option>
+<option value="736" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops Cold War</option>
+<option value="740" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Vanguard</option>
+<option value="743" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Modern Warfare II</option>
+<option value="751" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Modern Warfare III</option>
+<option value="761" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops 6</option>
+<option value="768" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Call of Duty: Black Ops 7</option>
+<option value="500" class="fjdpth1" >&nbsp; &nbsp;  Combat Arms</option>
+<option value="629" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="630" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="400" class="fjdpth1" >&nbsp; &nbsp;  Counter Strike</option>
+<option value="481" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  CounterStrike Source</option>
+<option value="482" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  CounterStrike 1.5, 1.6 and Mods</option>
+<option value="582" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Counterstrike Global Offensive</option>
+<option value="705" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  CS:GO Releases</option>
+<option value="744" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Counter-Strike 2</option>
+<option value="745" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Counter-Strike 2 Releases</option>
+<option value="525" class="fjdpth1" >&nbsp; &nbsp;  CrossFire</option>
+<option value="595" class="fjdpth1" >&nbsp; &nbsp;  Crysis Series</option>
+<option value="596" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Crysis</option>
+<option value="597" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Crysis 2</option>
+<option value="598" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Crysis 3</option>
+<option value="451" class="fjdpth1" >&nbsp; &nbsp;  Day of Defeat</option>
+<option value="757" class="fjdpth1" >&nbsp; &nbsp;  Deadlock</option>
+<option value="716" class="fjdpth1" >&nbsp; &nbsp;  Escape from Tarkov</option>
+<option value="195" class="fjdpth1" >&nbsp; &nbsp;  FEAR</option>
+<option value="91" class="fjdpth1" >&nbsp; &nbsp;  Far Cry</option>
+<option value="502" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Far Cry 2</option>
+<option value="677" class="fjdpth1" >&nbsp; &nbsp;  Grand Theft Auto V</option>
+<option value="715" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Alternative Online Mods</option>
+<option value="670" class="fjdpth1" >&nbsp; &nbsp;  H1Z1</option>
+<option value="62" class="fjdpth1" >&nbsp; &nbsp;  Halo</option>
+<option value="755" class="fjdpth1" >&nbsp; &nbsp;  HELLDIVERS 2</option>
+<option value="89" class="fjdpth1" >&nbsp; &nbsp;  Joint Operations &amp; DFX</option>
+<option value="763" class="fjdpth1" >&nbsp; &nbsp;  Marvel Rivals</option>
+<option value="17" class="fjdpth1" >&nbsp; &nbsp;  Medal Of Honor Series</option>
+<option value="32" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Allied Assault</option>
+<option value="494" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Educational\Informational</option>
+<option value="30" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Breakthrough</option>
+<option value="31" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  SpearHead</option>
+<option value="553" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Medal of Honor 2010</option>
+<option value="591" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Medal of Honor: Warfighter</option>
+<option value="524" class="fjdpth1" >&nbsp; &nbsp;  Operation 7</option>
+<option value="683" class="fjdpth1" >&nbsp; &nbsp;  Overwatch</option>
+<option value="696" class="fjdpth1" >&nbsp; &nbsp;  Paladins</option>
+<option value="754" class="fjdpth1" >&nbsp; &nbsp;  Palworld</option>
+<option value="654" class="fjdpth1" >&nbsp; &nbsp;  Payday 2</option>
+<option value="668" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Payday: The Heist</option>
+<option value="750" class="fjdpth1" >&nbsp; &nbsp;  Payday 3</option>
+<option value="592" class="fjdpth1" >&nbsp; &nbsp;  PlanetSide 2</option>
+<option value="20" class="fjdpth1" >&nbsp; &nbsp;  Quake Series</option>
+<option value="352" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Coding Section</option>
+<option value="41" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Quake 1 - 4</option>
+<option value="42" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Quake 3 - 4 Mods</option>
+<option value="508" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Quake Live</option>
+<option value="706" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Quake Champions</option>
+<option value="701" class="fjdpth1" >&nbsp; &nbsp;  Rainbow Six Siege</option>
+<option value="714" class="fjdpth1" >&nbsp; &nbsp;  Radical Heights</option>
+<option value="729" class="fjdpth1" >&nbsp; &nbsp;  Red Dead Redemption 2</option>
+<option value="661" class="fjdpth1" >&nbsp; &nbsp;  Rust</option>
+<option value="711" class="fjdpth1" >&nbsp; &nbsp;  Rules of Survival</option>
+<option value="712" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  RoS Releases</option>
+<option value="730" class="fjdpth1" >&nbsp; &nbsp;  Sea of Thieves</option>
+<option value="737" class="fjdpth1" >&nbsp; &nbsp;  Splitgate</option>
+<option value="680" class="fjdpth1" >&nbsp; &nbsp;  Star Wars Battlefront</option>
+<option value="708" class="fjdpth1" >&nbsp; &nbsp;  Star Wars Battlefront 2</option>
+<option value="531" class="fjdpth1" >&nbsp; &nbsp;  Sudden Attack</option>
+<option value="183" class="fjdpth1" >&nbsp; &nbsp;  Swat 4</option>
+<option value="666" class="fjdpth1" >&nbsp; &nbsp;  Titanfall</option>
+<option value="487" class="fjdpth1" >&nbsp; &nbsp;  Team Fortress 2</option>
+<option value="635" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="636" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="752" class="fjdpth1" >&nbsp; &nbsp;  THE FINALS</option>
+<option value="690" class="fjdpth1" >&nbsp; &nbsp;  Tom Clancy's The Division</option>
+<option value="527" class="fjdpth1" >&nbsp; &nbsp;  Unreal Tournament</option>
+<option value="528" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  UT 99</option>
+<option value="529" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  UT 2K4</option>
+<option value="530" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  UT 3</option>
+<option value="732" class="fjdpth1" >&nbsp; &nbsp;  Valorant</option>
+<option value="568" class="fjdpth1" >&nbsp; &nbsp;  War Inc</option>
+<option value="457" class="fjdpth1" >&nbsp; &nbsp;  War Rock</option>
+<option value="671" class="fjdpth1" >&nbsp; &nbsp;  Warface</option>
+<option value="756" class="fjdpth1" >&nbsp; &nbsp;  xDefiant</option>
+<option value="217" class="fjdpth1" >&nbsp; &nbsp;  Other FPS Games</option>
+<option value="541" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Alien vs Predator</option>
+<option value="747" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  BattleBit Remastered</option>
+<option value="252" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Black Hawk Down</option>
+<option value="633" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Source Code</option>
+<option value="634" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Tutorials</option>
+<option value="746" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Combat Master</option>
+<option value="489" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  ET: Quake Wars</option>
+<option value="748" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Farlight 84</option>
+<option value="496" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Frontlines: FOW</option>
+<option value="697" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Garry's Mod</option>
+<option value="358" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Ghost Recon</option>
+<option value="398" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Half Life</option>
+<option value="698" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Insurgency</option>
+<option value="27" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Raven Shield</option>
+<option value="722" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Ring of Elysium</option>
+<option value="542" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  RTCW Series</option>
+<option value="29" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Return To Castle Wolfenstein</option>
+<option value="520" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  Return To Castle Wolfenstein 2</option>
+<option value="720" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Scum</option>
+<option value="21" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Soldier Of Fortune 2</option>
+<option value="59" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Star Wars Jedi Knight</option>
+<option value="49" class="fjdpth0" > MMO and Strategy Games</option>
+<option value="734" class="fjdpth1" >&nbsp; &nbsp;  Among Us</option>
+<option value="33" class="fjdpth1" >&nbsp; &nbsp;  Command &amp; Conquer Series</option>
+<option value="34" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Generals and Zero Hour</option>
+<option value="35" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Renegade</option>
+<option value="505" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Red Alert 3</option>
+<option value="475" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Tiberium Wars</option>
+<option value="548" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Command and Conquer 4</option>
+<option value="36" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Other</option>
+<option value="50" class="fjdpth1" >&nbsp; &nbsp;  Diablo Series</option>
+<option value="679" class="fjdpth1" >&nbsp; &nbsp;  Elite: Dangerous</option>
+<option value="742" class="fjdpth1" >&nbsp; &nbsp;  Genshin Impact</option>
+<option value="477" class="fjdpth1" >&nbsp; &nbsp;  Guild Wars</option>
+<option value="590" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Guild Wars 2</option>
+<option value="69" class="fjdpth1" >&nbsp; &nbsp;  Gunbound</option>
+<option value="449" class="fjdpth1" >&nbsp; &nbsp;  GunZ</option>
+<option value="588" class="fjdpth1" >&nbsp; &nbsp;  Infestation Survivor Stories Series</option>
+<option value="686" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Infestation Survivor Stories: Classic</option>
+<option value="637" class="fjdpth3" >&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  ISS Emulators</option>
+<option value="689" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Infestation Survivor Stories: Aftermath</option>
+<option value="688" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Infestation Survivor Stories: NewZ</option>
+<option value="687" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Infestation Survivor Stories: World</option>
+<option value="594" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  ISS Coding</option>
+<option value="682" class="fjdpth1" >&nbsp; &nbsp;  League of Legends</option>
+<option value="753" class="fjdpth1" >&nbsp; &nbsp;  Lethal Company</option>
+<option value="218" class="fjdpth1" >&nbsp; &nbsp;  Maple Story</option>
+<option value="692" class="fjdpth1" >&nbsp; &nbsp;  Minecraft</option>
+<option value="749" class="fjdpth1" >&nbsp; &nbsp;  Palia</option>
+<option value="735" class="fjdpth1" >&nbsp; &nbsp;  Phasmophobia</option>
+<option value="739" class="fjdpth1" >&nbsp; &nbsp;  New World</option>
+<option value="58" class="fjdpth1" >&nbsp; &nbsp;  Ragnarok</option>
+<option value="770" class="fjdpth1" >&nbsp; &nbsp;  Roblox</option>
+<option value="450" class="fjdpth1" >&nbsp; &nbsp;  RuneScape</option>
+<option value="741" class="fjdpth1" >&nbsp; &nbsp;  Tower of Fantasy</option>
+<option value="556" class="fjdpth1" >&nbsp; &nbsp;  Transformice</option>
+<option value="168" class="fjdpth1" >&nbsp; &nbsp;  World of Warcraft</option>
+<option value="207" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Wow Exploits Guides</option>
+<option value="205" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Wow Hacks and Bots</option>
+<option value="55" class="fjdpth1" >&nbsp; &nbsp;  Other MMORPG and Strategy</option>
+<option value="767" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Age of Empires</option>
+<option value="625" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Neverwinter</option>
+<option value="455" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Rakion</option>
+<option value="430" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  SilkRoad</option>
+<option value="61" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  WarCraft 3</option>
+<option value="509" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Warhammer</option>
+<option value="3" class="fjdpth0" > Anti-Cheat Software &amp; Programming</option>
+<option value="255" class="fjdpth1" >&nbsp; &nbsp;  General Programming and Reversing</option>
+<option value="493" class="fjdpth1" >&nbsp; &nbsp;  Programming for Beginners</option>
+<option value="185" class="fjdpth1" >&nbsp; &nbsp;  Anti-Cheat Bypass</option>
+<option value="257" class="fjdpth1" >&nbsp; &nbsp;  Assembly</option>
+<option value="263" class="fjdpth1" >&nbsp; &nbsp;  C and C++</option>
+<option value="543" class="fjdpth1" >&nbsp; &nbsp;  C#</option>
+<option value="681" class="fjdpth1" >&nbsp; &nbsp;  Game Development</option>
+<option value="728" class="fjdpth1" >&nbsp; &nbsp;  Rust (Language)</option>
+<option value="250" class="fjdpth1" >&nbsp; &nbsp;  Direct3D</option>
+<option value="453" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  D3D Tutorials and Source</option>
+<option value="516" class="fjdpth1" >&nbsp; &nbsp;  Game Engine Programming</option>
+<option value="519" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Quake 3 and 4</option>
+<option value="550" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  FrostBite</option>
+<option value="587" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Source Engine</option>
+<option value="517" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Unreal Engine 2</option>
+<option value="518" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Unreal Engine 3</option>
+<option value="702" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Unreal Engine 4</option>
+<option value="725" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Unity</option>
+<option value="251" class="fjdpth1" >&nbsp; &nbsp;  OpenGL</option>
+<option value="454" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  OGL Tutorials and Source</option>
+<option value="269" class="fjdpth1" >&nbsp; &nbsp;  VB.NET</option>
+<option value="289" class="fjdpth1" >&nbsp; &nbsp;  Web and Scripting</option>
+<option value="353" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  mIRC</option>
+<option value="295" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  HTML</option>
+<option value="307" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  PHP</option>
+<option value="581" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Java</option>
+<option value="300" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Javascript</option>
+<option value="612" class="fjdpth0" > Other Gaming</option>
+<option value="710" class="fjdpth1" >&nbsp; &nbsp;  Other Games</option>
+<option value="248" class="fjdpth1" >&nbsp; &nbsp;  Console Gaming</option>
+<option value="236" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  XBOX</option>
+<option value="240" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  PlayStation</option>
+<option value="244" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Nintendo</option>
+<option value="709" class="fjdpth1" >&nbsp; &nbsp;  Smart Devices</option>
+<option value="613" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  Android</option>
+<option value="614" class="fjdpth2" >&nbsp; &nbsp; &nbsp; &nbsp;  iOS</option>
+<option value="504" class="fjdpth0" > Hardware and Software</option>
+<option value="498" class="fjdpth1" >&nbsp; &nbsp;  PC Hardware</option>
+<option value="499" class="fjdpth1" >&nbsp; &nbsp;  PC Software</option>
+<option value="604" class="fjdpth1" >&nbsp; &nbsp;  Other Hardware</option>
+<option value="605" class="fjdpth1" >&nbsp; &nbsp;  Other Software</option>
+<option value="606" class="fjdpth0" > Graphic Design</option>
+<option value="171" class="fjdpth1" >&nbsp; &nbsp;  General Graphics</option>
+<option value="607" class="fjdpth1" >&nbsp; &nbsp;  Signatures and Avatars</option>
+<option value="610" class="fjdpth1" >&nbsp; &nbsp;  Wallpapers</option>
+<option value="758" class="fjdpth0" > Single Player Cheats</option>
+<option value="759" class="fjdpth1" >&nbsp; &nbsp;  Cheat Engine Tables</option>
+<option value="764" class="fjdpth1" >&nbsp; &nbsp;  Cheat Engine Support</option>
+<option value="762" class="fjdpth1" >&nbsp; &nbsp;  Other Single Player Games</option>
+
+		</optgroup>
+		
+	</select><input type="submit" class="button" value="Go"  />
+	</form>
+</div>
+			</td>
+		</tr>
+		</table>
+	</td>
+</tr>
+</table>
+<!-- /forum rules and admin links -->
+
+<br>
+
+
+
+
+
+<br>
+<div class="smallfont" style="text-align: left;">
+  All times are GMT. The time now is <span class="time">05:08 PM</span>.
+  <br>
+  Copyright &copy;2000-2026, Unknowncheats™
+</div>
+
+
+		</div>
+	</div>
+</div>
+
+<!-- / close content container -->
+<!-- /content area table -->
+
+<form action="https://www.unknowncheats.me/forum/index.php" method="get" style="clear:left">
+
+<table cellpadding="6" cellspacing="0" class="page" style="width: 100%; border: 0; text-align: center;">
+<tr>
+	
+	
+
+<td class="tfoot" style="text-align: right; width: 100%;">
+<div class="smallfont">
+<strong>
+
+<script>var toggle_dark_theme = function() {
+	var f = function( v ) { return 'darktheme_enabled=' + v + ';path=/forum/;Expires=31 Dec 2029 23:59:59 GMT"'; };
+	if ( fetch_cookie( "darktheme_enabled" ) === "0" || fetch_cookie( "darktheme_enabled" ) === null ) document.cookie = f( '1' );
+	else document.cookie = f( '0' );
+	window.location.reload();
+};</script>
+
+<a rel="nofollow" href="/cdn-cgi/l/email-protection#dfacb6abbabebbb2b6b19faab1b4b1b0a8b1bcb7babeabacf1b2ba">DMCA</a> -
+<a rel="nofollow" href="/cdn-cgi/l/email-protection#a8dbc1dccdc9ccc5c1c6e8ddc6c3c6c7dfc6cbc0cdc9dcdb86c5cd">Contact</a>
+
+
+
+<br>
+<a href="https://www.unknowncheats.me/forum/tou.html" target="_blank">Terms of Use</a> - <a href="https://www.unknowncheats.me/forum/pp.html" target="_blank">Privacy Policy</a> - <a rel="nofollow" href="https://www.unknowncheats.me/forum/faq.php?faq=vb_faq#faq_rules" target="_blank">Forum Rules</a>
+
+</strong>
+
+</div>
+</td>
+
+</tr>
+</table>
+<!-- <center>Copyright &copy;2000-2025, Unknowncheats™</center> -->
+
+<div class="smallfont" style="opacity: 0; text-align: center;">
+	<!-- Do not remove cronimage or your scheduled tasks will cease to function -->
+	
+	<!-- Do not remove cronimage or your scheduled tasks will cease to function -->
+</div>
+</form>
+
+
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+<!--
+	vBulletin_init();
+//-->
+</script>
+
+<script type="text/javascript">
+var seq = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65], cur = 0, banners = [
+	["halloween_2015.png", "halloween_2015_right.png"],
+	["banner42.png", "b4rep.png"],
+	["forum_header_halloween.gif", "halloween_top_x.jpg"],
+	["xmas_2011.png", "xmas_2011_fade.png"],
+	["xmas_2014.png", "xmas_2014_fade.png"],
+	["uc_halloween_banner_2014_2.png", "uc_halloween_banner_2014_repeat3.jpg"],
+	["feck_header.jpg", "feck_top_x.jpg"],
+	["xmas_2012.png", "xmas_2012_fade.png"],
+	["uc_summer2015banner.png", "uc_summer2015banner_x.png"],
+	["xmas_2015.png", "xmas_2015_fade.png"],
+    ["summer_2022_2.png", "summer_2022_2_x.png"],
+    ["halloween2020.jpg", "halloween2020fade.jpg"]
+], BASE_PATH = "/forum/ambience/misc/custom_headers/";
+document.addEventListener("keyup", function(e) {
+	if (e.keyCode == seq[cur]) {
+		if (++cur == seq.length) {
+			cur = 0;
+			var e = document.getElementsByTagName("img"),
+				banner = banners[Math.floor(banners.length * Math.random())];
+			e[0].src = BASE_PATH + banner[0];
+			if (banner[1])
+				e[1].src = BASE_PATH + banner[1];
+		}
+	} else cur = 0;
+});
+</script>
+<script type="text/javascript">(function(){if(typeof jQuery=="undefined"){var jqscript=document.createElement("script");jqscript.src="https://www.unknowncheats.me/forum/clientscript/jquery.js";jqscript.type="text/javascript";document.head.appendChild(jqscript);}})();</script><div id="presence-container"><div class="presence-contents">no new posts</div></div><script src="clientscript/yui/animation/animation-min.js" type="text/javascript"></script>
+			<script type="text/javascript" src="clientscript/livetopic.js"></script>
+			<script type="text/javascript">
+				var threadid = 739720;
+				var ajax_last_edit = 0;
+				livetopic.old_topic = 1800;
+				livetopic.interval_time = 30000;
+				livetopic.ajax_max_visibleposts = 40;
+
+				vbphrase["livetopic_maxpostnotice"] = "The maximum amount of posts on this page can display has been reached. Posts will now start to disappear from oldest to newest.";
+				vbphrase["livetopic_edit_message"] = "<img alt=\'live topic\' src=\'images/statusicon/thread_livetopic.gif\' title=\'live topic\'/>&nbsp; <span style=\'font-weight: bold;\'>This post has been edited.</span> <br /><br />Since this is an active topic, this post has been automatically updated while you were reading it. If you are replying to this thread you might want to re-read this post before doing so.";
+				vbphrase["livetopic_newresponses"] = "%1 new responses (<a href=\'showthread.php?t=%2&goto=newpost\'>live topic</a>)";
+			</script>
+			
+
+<!-- temp -->
+<div style="display:none">
+	<!-- thread rate -->
+	
+		
+	
+	<!-- / thread rate -->
+</div>
+
+</body>
+</html>

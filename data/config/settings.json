@@ -1,0 +1,23 @@
+{
+  "network": {
+    "ports": [
+      4549,
+      7200,
+      4175,
+      4179,
+      4171
+    ],
+    "port_ranges": [[7000, 7999]],
+    "buffer_size": 65536,
+    "interface": "Ethernet"
+  },
+  "overlay": {
+    "width": 1024,
+    "height": 768,
+    "zoom": 1.0
+  },
+  "threat": {
+    "danger_distance": 40,
+    "critical_health": 30
+  }
+}

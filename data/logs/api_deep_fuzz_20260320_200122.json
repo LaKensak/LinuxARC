@@ -1,0 +1,271 @@
+{
+  "found": [
+    {
+      "method": "GET",
+      "path": "/v1/pioneer/inventory",
+      "status": 200,
+      "size": 481870,
+      "body": "{\"items\":[{\"amount\":1,\"durability\":1,\"etag\":\"1kahhlnmsen1q\",\"gameAssetId\":421801273,\"instanceId\":\"004c2902-1b6d-48c8-840b-6a2901819307\",\"maxDurability\":1,\"slots\":null,\"updatedAt\":1773881260629943000},{\"amount\":1,\"durability\":1,\"etag\":\"v0l042g0o8c2\",\"gameAssetId\":1440007245,\"instanceId\":\"005d4c9e-de27-419b-b21b-6ef6c4526fe0\",\"maxDurability\":1,\"slots\":null,\"updatedAt\":1769698934305993000},{\"amount\":1,\"durability\":1,\"etag\":\"uypejxolxu91\",\"gameAssetId\":1440007245,\"instanceId\":\"006022b7-c14e-4360-8f6"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/pioneer/inventory",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/pioneer/quests",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/pioneer/quests",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/profile",
+      "status": 200,
+      "size": 436,
+      "body": "{\"accountId\":2861568149698259187,\"countryCode\":\"FR\",\"createdAt\":1764797129,\"dateOfBirth\":\"2003-04-17T00:00:00Z\",\"displayName\":{\"discriminator\":\"0463\",\"name\":\"Kensaku\"},\"displayNameCooldownEndsAt\":1767389137,\"email\":\"\",\"emailIsVerified\":false,\"isSpender\":false,\"tenancyUserId\":1490730819930708316,\"thirdPartyLastSeenAccountName\":\"Kensaku\",\"thirdPartyUserId\":\"76561199319518140\",\"tos_version_seen\":\"3\",\"voiceChatModerationConsent\":false}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/profile",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/proxy",
+      "status": 200,
+      "size": 38564,
+      "body": "{\"endpoints\":[{\"datacenterLatencies\":[{\"icao\":\"KORD\",\"latencyNs\":108753021},{\"icao\":\"KCHS\",\"latencyNs\":91678108},{\"icao\":\"WSSS\",\"latencyNs\":167324893},{\"icao\":\"LKPR\",\"latencyNs\":14597707},{\"icao\":\"RJTT\",\"latencyNs\":241362278},{\"icao\":\"ESSA\",\"latencyNs\":26437780},{\"icao\":\"SBSP\",\"latencyNs\":194982094},{\"icao\":\"KBUR\",\"latencyNs\":143994259},{\"icao\":\"KLAX\",\"latencyNs\":141880276},{\"icao\":\"RCMQ\",\"latencyNs\":199426820},{\"icao\":\"YMML\",\"latencyNs\":242293282},{\"icao\":\"VHHH\",\"latencyNs\":194417818},{\"icao\":\""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/proxy",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/quilkin",
+      "status": 200,
+      "size": 217,
+      "body": "{\"failover_cooldown_duration_secs\":10,\"initial_cooldown_duration_secs\":20,\"packet_jitter_threshold_duration_secs\":3,\"packet_loss_threshold_duration_secs\":10,\"packet_loss_threshold_percent\":0.12,\"proxy_failover\":true}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/quilkin",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/anticheat/config",
+      "status": 200,
+      "size": 1155,
+      "body": "{\"data\":\"hwylG0qLXybKHWjQhpaBni5oqcDf0JizHKDtudYJKTbj8JvtRXjEp5P/IRWh9Zs3eyyLrU/P/0vogTEd2DN2g+PvUwlsnFz/CbzxMG0u1hF464UrXhwnyK/xYsNkGT1GnBTlmossnSuQcBkIoUtXyWhyg3R9pWZRcxGLIioKky7qe6kbCq7j9bCYgYr0ZoR2cR31sAqxFZ0Ho8RG/lzBWdCPZyaLazzCKUWqHbTG3TeZpzmmed6KsnTRkFngd5o0alrY6m7zL7B6UELXR1xAultNOoBu59Zp/3MkK3XnJDI4cgTbqTHODvahMlAMH4vUvU1vdBFxJ4tNlmVN8Sqfm0KRzOoNhhNUbSeJx5KEalVhE8HiubvxXa2gKOEgNJFyonqMZLN2QSmhJQa5FJnCJwjk2PWaHu1r4GcmfnRjE5MJA70OUgGb4pEGWGu4uuDMbG45lO+dKcrmaEpQIQuCvihoj8c9rJNsVkoY5Aqj2x/"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/anticheat/config",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/gameserver/status",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/gameserver/status",
+      "status": 400,
+      "size": 71,
+      "body": "{\"reason\":\"rpc error: code = InvalidArgument desc = validation error\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/match/start",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/match/start",
+      "status": 400,
+      "size": 33,
+      "body": "{\"reason\":\"INVALID_MANIFEST_ID\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/match/status",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/scenarios",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/scenarios",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/party",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/party",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/announcements",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/announcements",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/squad/layout",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/notifications",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/party/invite",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/party/invite",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/party/leave",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/party/leave",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/clan",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/clan",
+      "status": 400,
+      "size": 33,
+      "body": "{\"reason\":\"INVALID_NAME_LENGTH\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/feature-flags",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/feature-flags",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/heartbeat",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/heartbeat",
+      "status": 200,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/manifest",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/server",
+      "status": 401,
+      "size": 44,
+      "body": "Invalid IAP credentials: Unable to parse JWT"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/server",
+      "status": 401,
+      "size": 44,
+      "body": "Invalid IAP credentials: Unable to parse JWT"
+    }
+  ],
+  "total": 856
+}

@@ -1,0 +1,209 @@
+{
+  "timestamp": "2026-03-20T19:57:36.573499",
+  "found": [
+    {
+      "method": "GET",
+      "path": "/v1/pioneer/inventory",
+      "status": 200,
+      "size": 481870,
+      "body": "{\"items\":[{\"amount\":1,\"durability\":1,\"etag\":\"1kahhlnmsen1q\",\"gameAssetId\":421801273,\"instanceId\":\"004c2902-1b6d-48c8-840b-6a2901819307\",\"maxDurability\":1,\"slots\":null,\"updatedAt\":1773881260629943000},{\"amount\":1,\"durability\":1,\"etag\":\"v0l042g0o8c2\",\"gameAssetId\":1440007245,\"instanceId\":\"005d4c9e-de2"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/pioneer/inventory",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/pioneer/quests",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/pioneer/quests",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/server",
+      "status": 401,
+      "size": 44,
+      "body": "Invalid IAP credentials: Unable to parse JWT"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/server",
+      "status": 401,
+      "size": 44,
+      "body": "Invalid IAP credentials: Unable to parse JWT"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/server/status",
+      "status": 401,
+      "size": 44,
+      "body": "Invalid IAP credentials: Unable to parse JWT"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/server/status",
+      "status": 401,
+      "size": 44,
+      "body": "Invalid IAP credentials: Unable to parse JWT"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/announcements",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/announcements",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/anticheat/config",
+      "status": 200,
+      "size": 1155,
+      "body": "{\"data\":\"r/zljYK0+1WxTHk7PoW1EyC/xOPL3xNlVvGqHQs65JDUQoyDU3vD66BPd0mxEjmWsD9CXHKNPKVKh+TXhgyHkejVfDlgpseya6KVfFZEpUAIfXGhNfdiL9q757xkOgpoAuelz7bsBcfDpHGiVGZPCYPtQQHPiIKw+AmRL29DysQst+QNbZ/92nXhaW516UVTJyPqPcGn+yMZsUjGyFhYwphMfzJ7uZcirT3DHeSiKO3w53o4ISVw8gYSE9We+ApHunY+ZZj/DjXVxmucnlczNjBTWFCWcJtw7d3"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/anticheat/config",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/gameserver/status",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/gameserver/status",
+      "status": 400,
+      "size": 71,
+      "body": "{\"reason\":\"rpc error: code = InvalidArgument desc = validation error\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/match/start",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/match/start",
+      "status": 400,
+      "size": 33,
+      "body": "{\"reason\":\"INVALID_MANIFEST_ID\"}\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/match/status",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/notifications",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/party",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/party",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/profile",
+      "status": 200,
+      "size": 436,
+      "body": "{\"accountId\":2861568149698259187,\"countryCode\":\"FR\",\"createdAt\":1764797129,\"dateOfBirth\":\"2003-04-17T00:00:00Z\",\"displayName\":{\"discriminator\":\"0463\",\"name\":\"Kensaku\"},\"displayNameCooldownEndsAt\":1767389137,\"email\":\"\",\"emailIsVerified\":false,\"isSpender\":false,\"tenancyUserId\":1490730819930708316,\"thi"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/profile",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/proxy",
+      "status": 200,
+      "size": 37929,
+      "body": "{\"endpoints\":[{\"datacenterLatencies\":[{\"icao\":\"KBUR\",\"latencyNs\":141120457},{\"icao\":\"KORD\",\"latencyNs\":108627209},{\"icao\":\"SBSP\",\"latencyNs\":194201774},{\"icao\":\"KCHS\",\"latencyNs\":92010275},{\"icao\":\"LKPR\",\"latencyNs\":14432101},{\"icao\":\"ESSA\",\"latencyNs\":26352489},{\"icao\":\"VHHH\",\"latencyNs\":195876605}"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/proxy",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/quilkin",
+      "status": 200,
+      "size": 217,
+      "body": "{\"failover_cooldown_duration_secs\":10,\"initial_cooldown_duration_secs\":20,\"packet_jitter_threshold_duration_secs\":3,\"packet_loss_threshold_duration_secs\":10,\"packet_loss_threshold_percent\":0.12,\"proxy_failover\":true}\n"
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/quilkin",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/scenarios",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    },
+    {
+      "method": "POST",
+      "path": "/v1/shared/scenarios",
+      "status": 500,
+      "size": 15,
+      "body": "internal error\n"
+    },
+    {
+      "method": "GET",
+      "path": "/v1/shared/squad/layout",
+      "status": 405,
+      "size": 0,
+      "body": ""
+    }
+  ],
+  "total_tested": 2418
+}

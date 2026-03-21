@@ -1,0 +1,31 @@
+2026-03-20 15:10:46.608 [INFO] Logger initialisé - Dossier: data\logs
+2026-03-20 15:10:46.610 [INFO] Initialisation des composants...
+2026-03-20 15:10:46.644 [INFO] ✓ Tous les composants initialisés
+2026-03-20 15:10:46.905 [INFO] Système opérationnel. En attente de données réseau...
+2026-03-20 15:10:46.993 [INFO] Raccourcis clavier actifs:
+2026-03-20 15:10:46.994 [INFO]   F10 - Toggle ESP
+2026-03-20 15:10:46.994 [INFO]   F11 - Toggle Radar
+2026-03-20 15:10:46.994 [INFO]   F12 - Stats
+2026-03-20 15:10:46.995 [INFO]   ESC - Quitter
+2026-03-20 15:10:52.249 [INFO] Arrêt du système...
+2026-03-20 15:13:21.596 [INFO] Logger initialisé - Dossier: data\logs
+2026-03-20 15:13:21.598 [INFO] Initialisation des composants...
+2026-03-20 15:13:21.629 [INFO] ✓ Tous les composants initialisés
+2026-03-20 15:13:21.884 [INFO] Système opérationnel. En attente de données réseau...
+2026-03-20 15:13:21.967 [INFO] Raccourcis clavier actifs:
+2026-03-20 15:13:21.968 [INFO]   F10 - Toggle ESP
+2026-03-20 15:13:21.969 [INFO]   F11 - Toggle Radar
+2026-03-20 15:13:21.969 [INFO]   F12 - Stats
+2026-03-20 15:13:21.969 [INFO]   ESC - Quitter
+2026-03-20 15:14:01.087 [INFO] Arrêt du système...
+2026-03-20 20:03:00.627 [INFO] Logger initialisé - Dossier: data\logs
+2026-03-20 20:03:00.629 [WARNING] Droits administrateur requis, élévation...
+2026-03-20 20:03:03.745 [INFO] Logger initialisé - Dossier: data\logs
+2026-03-20 20:03:03.746 [INFO] Initialisation des composants...
+2026-03-20 20:03:03.791 [INFO] ✓ Tous les composants initialisés
+2026-03-20 20:03:04.103 [INFO] Système opérationnel. En attente de données réseau...
+2026-03-20 20:03:04.216 [INFO] Raccourcis clavier actifs:
+2026-03-20 20:03:04.217 [INFO]   F10 - Toggle ESP
+2026-03-20 20:03:04.218 [INFO]   F11 - Toggle Radar
+2026-03-20 20:03:04.218 [INFO]   F12 - Stats
+2026-03-20 20:03:04.218 [INFO]   ESC - Quitter

@@ -1,0 +1,3851 @@
+{
+  "endpoints": [
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 199588159
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 242293282
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 8018373
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 26812915
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 109294805
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 241362278
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 194417818
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14622970
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 194982094
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 167636442
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 142803768
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 141880276
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 91678108
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 108601019
+        }
+      ],
+      "host": "34.53.163.10",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "ESSA",
+          "latencyNs": 25970223
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 140702642
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 7770212
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 111590192
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14540496
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 200311257
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 244844048
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 161047027
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 245016452
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 108748791
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 194679956
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 145566607
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 194043649
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 91796203
+        }
+      ],
+      "host": "34.62.249.53",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KORD",
+          "latencyNs": 132983315
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 138339176
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 91652287
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 194792944
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14337844
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 167217781
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 244328846
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 240602481
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 139953331
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 199253049
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 194642333
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 26512561
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 109499335
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 8009215
+        }
+      ],
+      "host": "34.53.233.17",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KORD",
+          "latencyNs": 108692608
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14750806
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 199259512
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 7760493
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 138563687
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 142663246
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 199768370
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 109180024
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 26151278
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 240273415
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 161664967
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 91797222
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 246656935
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 194746574
+        }
+      ],
+      "host": "34.79.247.241",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "SBSP",
+          "latencyNs": 252423807
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 74925063
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 115913030
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 156528370
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 145340136
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 255392805
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 130588172
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 245732853
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 100093388
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 100239291
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 251602067
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 34619615
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 1324278
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 48223099
+        }
+      ],
+      "host": "34.84.17.6",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 100920562
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 145834848
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 253473045
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 839251
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 256113513
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 49789678
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 100131105
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 246850106
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 157806731
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 116299517
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 254310844
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 34599833
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 132702867
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 74008508
+        }
+      ],
+      "host": "136.110.111.72",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "ESSA",
+          "latencyNs": 151773020
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 25204671
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 150536783
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 160570341
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 144055172
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 173764529
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 64519648
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 90009480
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 119370350
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 31570493
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 36656078
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 42059329
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 170100028
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 131762035
+        }
+      ],
+      "host": "34.82.124.215",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "WSSS",
+          "latencyNs": 159123510
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 24888095
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 152581464
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 63361431
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 150835090
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 131551950
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 173210045
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 138346782
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 42886960
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 33432377
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 119200018
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 27354549
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 92254876
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 170248043
+        }
+      ],
+      "host": "34.145.87.56",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 119459117
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 139003436
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 91469646
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 158251423
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 131580736
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 173755644
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 42088572
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 171859918
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 63167476
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 26550785
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 151287704
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 28529548
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 170446152
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 33077372
+        }
+      ],
+      "host": "8.229.247.28",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KCHS",
+          "latencyNs": 65748234
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 36403710
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 25557858
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 41935465
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 119442430
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 151690166
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 92470141
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 131807792
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 162606153
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 139324385
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 161273132
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 170189552
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 172997239
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 31115334
+        }
+      ],
+      "host": "136.109.175.121",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KCHS",
+          "latencyNs": 113802474
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 183815206
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 160319374
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 130607019
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 31588912
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 32832183
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 9184327
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 223532016
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 214946202
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 261901674
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 162463640
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 218140623
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 267615413
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 130821157
+        }
+      ],
+      "host": "34.88.34.60",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "ESSA",
+          "latencyNs": 9080293
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 164919108
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 113258502
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 129530260
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 224168180
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 215868266
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 131236201
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 213891473
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 267439084
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 32556752
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 161830681
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 184360743
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 31679746
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 263215754
+        }
+      ],
+      "host": "35.228.136.153",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KORD",
+          "latencyNs": 130664975
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 268435611
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 183785458
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 131297923
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 32563346
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 9625215
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 222858221
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 160918814
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 31752421
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 264625182
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 217368041
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 113622665
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 167318223
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 216241191
+        }
+      ],
+      "host": "35.228.33.160",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "VHHH",
+          "latencyNs": 217219829
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 222441956
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 130985700
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 31151318
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 130553626
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 161584741
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 162661075
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 214942494
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 8900709
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 32557699
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 112887632
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 262120030
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 183449121
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 267976256
+        }
+      ],
+      "host": "34.88.146.30",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "YMML",
+          "latencyNs": 254990528
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 106971328
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 249164580
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 106249218
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 198941041
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 207561102
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 206075198
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 48295212
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 123464646
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 236327210
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 101701358
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 123804578
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 266717987
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 206896992
+        }
+      ],
+      "host": "34.176.71.197",
+      "qcmpPort": 7600,
+      "region": "brazil",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 233728815
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 100094233
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 248941526
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 205623377
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 197412764
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 266677966
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 48270926
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 106560545
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 207588097
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 123374825
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 206329644
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 106836591
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 255569987
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 124147986
+        }
+      ],
+      "host": "34.176.136.220",
+      "qcmpPort": 7600,
+      "region": "brazil",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "YMML",
+          "latencyNs": 255366638
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 123234913
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 211907563
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 211321077
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 205432250
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 18275941
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 23449864
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 108337444
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 158848537
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 156632504
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 13755350
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 125339436
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 256774980
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 177133186
+        }
+      ],
+      "host": "34.118.15.45",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 158426274
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 180208892
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 257287485
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 123085700
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 23194858
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 108322854
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 125003523
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 17778913
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 203742309
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 157111732
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 257168816
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 215892783
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 13965029
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 210410752
+        }
+      ],
+      "host": "34.118.83.78",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "EHGG",
+          "latencyNs": 17984349
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 156763022
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 108138925
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 158010373
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 124074777
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 126952549
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 212417126
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 256775664
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 211047569
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 23773896
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 204821633
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 173143231
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 255408299
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14040662
+        }
+      ],
+      "host": "34.116.135.39",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "VHHH",
+          "latencyNs": 208381913
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14003660
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 108373133
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 257002058
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 211666344
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 256917268
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 178447461
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 17854481
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 23464579
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 123523310
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 155206536
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 125433937
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 211234518
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 162282578
+        }
+      ],
+      "host": "34.118.79.130",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KCHS",
+          "latencyNs": 117100302
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 137462326
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 208148873
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 156954246
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 255222470
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 808984
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 296469763
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 318840162
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 157110071
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 303040173
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 140033384
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 209788872
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 282879789
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 201383344
+        }
+      ],
+      "host": "34.39.207.105",
+      "qcmpPort": 7600,
+      "region": "brazil",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "YMML",
+          "latencyNs": 302594807
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 299979659
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 155394196
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 208423631
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 136543112
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 117025606
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 153261376
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 200927426
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 1297581
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 138757466
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 207197433
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 254310717
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 285466279
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 319460688
+        }
+      ],
+      "host": "34.95.196.253",
+      "qcmpPort": 7600,
+      "region": "brazil",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "LKPR",
+          "latencyNs": 137851971
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 146474871
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 129176568
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 308637844
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 141735289
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 88972298
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 221499393
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 95789904
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 221825776
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 59977334
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 133759532
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 205265125
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 214918971
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 225270762
+        }
+      ],
+      "host": "35.244.36.170",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KCHS",
+          "latencyNs": 205075763
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 149961937
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 97956082
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 91620206
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 223581015
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 221702349
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 59417000
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 221299177
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 307984563
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 142560222
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 132788396
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 129974633
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 134089165
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 222554711
+        }
+      ],
+      "host": "34.14.155.132",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KCHS",
+          "latencyNs": 186750870
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 1244605
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 36307982
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 160436715
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 280843863
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 130751367
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 128858274
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 13458466
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 123388827
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 220913486
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 200673929
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 154921793
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 200095932
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 40804361
+        }
+      ],
+      "host": "34.81.156.160",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KOMA",
+          "latencyNs": 155107365
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 282446542
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 200568665
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 129369487
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 160177126
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 28527175
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 124908492
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 184535319
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 216903349
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 1116045
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 35344657
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 202734564
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 130495172
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 41914699
+        }
+      ],
+      "host": "35.194.171.234",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 161276075
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 134867761
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 21208021
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 32142570
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 16707508
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 26839279
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 174100458
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 124158108
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 181014027
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 32163190
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 125486443
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 117091787
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 131584737
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 191112587
+        }
+      ],
+      "host": "34.174.179.57",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 161616303
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 174116164
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 191711752
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 20953054
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 125080505
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 117276520
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 32260027
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 26935776
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 32109310
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 122961603
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 181181717
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 16633979
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 131213512
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 134978693
+        }
+      ],
+      "host": "34.174.100.184",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "EHGG",
+          "latencyNs": 116957943
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 31392180
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 124261761
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 160066891
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 174132579
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 191848926
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 16248345
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 21539878
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 124863984
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 26843207
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 135238303
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 181251405
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 131831164
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 32723334
+        }
+      ],
+      "host": "34.174.26.229",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "LKPR",
+          "latencyNs": 123443844
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 27046596
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 124742938
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 32911805
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 117071226
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 21198074
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 16490686
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 159896507
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 132098179
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 134790835
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 174763002
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 181337494
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 192103103
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 32383971
+        }
+      ],
+      "host": "34.174.212.138",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "LKPR",
+          "latencyNs": 105220352
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 158500340
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 117687782
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 58034072
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 57600451
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 185210277
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 202270871
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 206144770
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 223088921
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 31851070
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 98667578
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 106204105
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 29285360
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 1066561
+        }
+      ],
+      "host": "34.139.214.96",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "VHHH",
+          "latencyNs": 200881961
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 106162082
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 29190550
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 222234108
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 57050157
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 1162733
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 58396641
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 105092424
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 185652177
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 117002585
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 207002379
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 98442636
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 31780996
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 159763342
+        }
+      ],
+      "host": "35.237.62.225",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "SBSP",
+          "latencyNs": 117295088
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 98785808
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 28781946
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 186807705
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 1138974
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 57471857
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 200318106
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 156645807
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 220305616
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 206285040
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 120995398
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 31394025
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 105076348
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 57205636
+        }
+      ],
+      "host": "35.190.176.95",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KLAX",
+          "latencyNs": 57364473
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 31470101
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 29305862
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 105142952
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 960022
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 183871831
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 106608005
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 155462579
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 117147766
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 58868509
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 98801123
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 199867874
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 221632547
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 205642560
+        }
+      ],
+      "host": "34.75.134.26",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 13228555
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 31754701
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 114061282
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 211907490
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 143076120
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 210870984
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 930580
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 143904511
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 194677590
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 49984733
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 296002295
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 167208780
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 172716111
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 199776661
+        }
+      ],
+      "host": "35.220.158.249",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KORD",
+          "latencyNs": 171865660
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 191315017
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 193471369
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 144077195
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 1704571
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 32826216
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 209257345
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 49306440
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 112825303
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 296761999
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 143747958
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 163373711
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 200221560
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 13213921
+        }
+      ],
+      "host": "35.220.240.111",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "VHHH",
+          "latencyNs": 203247184
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 210312193
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 61968007
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 28802259
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 96518696
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 115133210
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 175639632
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 62047518
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 158824703
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 225061343
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 94153961
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 27815188
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 87921346
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 12137661
+        }
+      ],
+      "host": "34.86.166.156",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 61150319
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 96357753
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 29295579
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 94668697
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 203914241
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 220571789
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 12149707
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 175829731
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 29535115
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 210187396
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 115214805
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 87893017
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 160404244
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 61342422
+        }
+      ],
+      "host": "34.145.235.251",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KORD",
+          "latencyNs": 28901688
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 87989571
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 12479029
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 64960601
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 96139388
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 181104053
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 162048666
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 202568023
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 115750248
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 28810040
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 94755706
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 222543955
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 62007965
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 210363146
+        }
+      ],
+      "host": "34.21.1.158",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 61182392
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 27713305
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 12181099
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 29171365
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 96202550
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 94179821
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 175704264
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 160685061
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 114851258
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 202751835
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 61480258
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 223428670
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 210434099
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 88240152
+        }
+      ],
+      "host": "35.245.196.254",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KOMA",
+          "latencyNs": 183948684
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 254081974
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 107726982
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 138734088
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 124405659
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 94130889
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 291318777
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 15200573
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 274812446
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 256028655
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 194468312
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 187537701
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 138324834
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 130854329
+        }
+      ],
+      "host": "34.40.245.66",
+      "qcmpPort": 7600,
+      "region": "oceania",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "SBSP",
+          "latencyNs": 291350585
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 124691697
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 194366768
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 95157866
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 257740875
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 137930483
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 130968250
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 253095218
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 274987140
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 183300657
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 14500237
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 138781342
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 187642361
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 105721972
+        }
+      ],
+      "host": "35.189.43.55",
+      "qcmpPort": 7600,
+      "region": "oceania",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "EHGG",
+          "latencyNs": 160587789
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 201677617
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 160169525
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 74205904
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 164994736
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 198541057
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 163656500
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 40630829
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 181346930
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 318064160
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 219002492
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 32417326
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 832190
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 83284306
+        }
+      ],
+      "host": "34.143.161.174",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [],
+      "host": "34.21.188.53",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "LKPR",
+          "latencyNs": 161188657
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 197835796
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 161595091
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 159777827
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 181246186
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 206375651
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 82858835
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 39771929
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 74548410
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 317357579
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 161160597
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 31895783
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 1458194
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 222415328
+        }
+      ],
+      "host": "34.87.33.60",
+      "qcmpPort": 7600,
+      "region": "east-asia",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RJTT",
+          "latencyNs": 100265433
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 46081158
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 153529986
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 57772232
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 164007429
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 143688938
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 150195700
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 146834809
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 155809949
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 676226
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 50832094
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 155163093
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 128343561
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 896281
+        }
+      ],
+      "host": "35.236.61.74",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "SBSP",
+          "latencyNs": 155188343
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 143495730
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 149960479
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 160830385
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 156692035
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 100432065
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 55928445
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 147653080
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 46245286
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 128915029
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 1264891
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 51201293
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 154071792
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 763405
+        }
+      ],
+      "host": "34.186.147.155",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "ESSA",
+          "latencyNs": 155387187
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 1005906
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 146919710
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 165124012
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 51149917
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 150243095
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 46336606
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 1239697
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 154638611
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 101031014
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 154544317
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 128734437
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 58605487
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 143597681
+        }
+      ],
+      "host": "34.94.176.46",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 1629615
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 911080
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 58294807
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 154546561
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 150060782
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 143932486
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 101469323
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 165676892
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 147498996
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 158076213
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 46316323
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 51376501
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 129459120
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 154271448
+        }
+      ],
+      "host": "35.235.115.253",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 134635397
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 213027711
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 216586286
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 90420137
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 106708082
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 164525948
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 180677180
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 181094149
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 172681822
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 127755071
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 99636532
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 267741690
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 182126995
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 88713985
+        }
+      ],
+      "host": "34.166.248.242",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KCHS",
+          "latencyNs": 164967290
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 129913416
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 97840101
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 180836261
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 89444384
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 183534258
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 106358334
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 181511018
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 90591858
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 267292852
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 213815078
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 215535457
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 137548991
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 173751805
+        }
+      ],
+      "host": "34.166.90.56",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "EHGG",
+          "latencyNs": 1061777
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 108287418
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 192522623
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 146205985
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 23869107
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 147603351
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 202904922
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 246872665
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 202632314
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14752721
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 109521461
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 165154686
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 98957402
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 244905373
+        }
+      ],
+      "host": "34.147.97.123",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "VHHH",
+          "latencyNs": 193409002
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 109044729
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 23729773
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 164345904
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 107934020
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 99118760
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 1029644
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14397715
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 203021168
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 247001477
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 201859592
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 161120920
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 247202571
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 149262005
+        }
+      ],
+      "host": "34.12.52.228",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KOMA",
+          "latencyNs": 110334780
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 201482135
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 201132206
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 245503113
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 162048094
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 99032606
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 149387661
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 790663
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 163921554
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 195923183
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 109758424
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14627562
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 245413716
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 24194815
+        }
+      ],
+      "host": "34.158.169.56",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "EHGG",
+          "latencyNs": 1362212
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 203021984
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 107644286
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 150917156
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 99689829
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 203421185
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 14875115
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 247317622
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 201872241
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 161391406
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 245364202
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 24456373
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 157393604
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 109211414
+        }
+      ],
+      "host": "35.204.92.135",
+      "qcmpPort": 7600,
+      "region": "europe",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KOMA",
+          "latencyNs": 991837
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 10457436
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 121530804
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 45976062
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 45287515
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 107318774
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 145768986
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 31719923
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 166483447
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 120573969
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 207895019
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 139778570
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 194915427
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 154855708
+        }
+      ],
+      "host": "35.226.187.133",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "LKPR",
+          "latencyNs": 120480319
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 121200856
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 154719544
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 194909101
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 166393215
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 10110878
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 46582795
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 145678909
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 45975693
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 139231775
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 31696971
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 107905844
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 205172789
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 773877
+        }
+      ],
+      "host": "136.111.157.252",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "RCMQ",
+          "latencyNs": 154604845
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 122136340
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 762425
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 120776188
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 107667021
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 139014968
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 48436104
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 145259590
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 170693815
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 10087026
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 194805473
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 45573045
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 209859819
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 31776809
+        }
+      ],
+      "host": "35.188.111.60",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 47756943
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 119832646
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 151574193
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 195336384
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 122030583
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 47286193
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 1009943
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 140595415
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 11212200
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 163059827
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 145527932
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 32683301
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 210079540
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 107773107
+        }
+      ],
+      "host": "35.225.77.192",
+      "qcmpPort": 7600,
+      "region": "north-america",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "VHHH",
+          "latencyNs": 116152288
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 83176454
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 120207573
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 247735198
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 208320156
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 681898
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 150337317
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 264899585
+        },
+        {
+          "icao": "KBUR",
+          "latencyNs": 150981262
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 195970501
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 200119566
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 247320793
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 303022947
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 120801765
+        }
+      ],
+      "host": "34.129.112.28",
+      "qcmpPort": 7600,
+      "region": "oceania",
+      "trafficPort": 7777
+    },
+    {
+      "datacenterLatencies": [
+        {
+          "icao": "KBUR",
+          "latencyNs": 150847882
+        },
+        {
+          "icao": "KLAX",
+          "latencyNs": 149366273
+        },
+        {
+          "icao": "WSSS",
+          "latencyNs": 83325362
+        },
+        {
+          "icao": "ESSA",
+          "latencyNs": 261269283
+        },
+        {
+          "icao": "SBSP",
+          "latencyNs": 303467932
+        },
+        {
+          "icao": "KORD",
+          "latencyNs": 199665575
+        },
+        {
+          "icao": "RJTT",
+          "latencyNs": 118626928
+        },
+        {
+          "icao": "LKPR",
+          "latencyNs": 247005831
+        },
+        {
+          "icao": "RCMQ",
+          "latencyNs": 121748102
+        },
+        {
+          "icao": "VHHH",
+          "latencyNs": 116268019
+        },
+        {
+          "icao": "EHGG",
+          "latencyNs": 244847455
+        },
+        {
+          "icao": "YMML",
+          "latencyNs": 991165
+        },
+        {
+          "icao": "KOMA",
+          "latencyNs": 194729745
+        },
+        {
+          "icao": "KCHS",
+          "latencyNs": 205840178
+        }
+      ],
+      "host": "34.129.111.40",
+      "qcmpPort": 7600,
+      "region": "oceania",
+      "trafficPort": 7777
+    }
+  ]
+}

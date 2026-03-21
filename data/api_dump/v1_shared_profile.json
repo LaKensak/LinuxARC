@@ -1,0 +1,19 @@
+{
+  "accountId": 2861568149698259187,
+  "countryCode": "FR",
+  "createdAt": 1764797129,
+  "dateOfBirth": "2003-04-17T00:00:00Z",
+  "displayName": {
+    "discriminator": "0463",
+    "name": "Kensaku"
+  },
+  "displayNameCooldownEndsAt": 1767389137,
+  "email": "",
+  "emailIsVerified": false,
+  "isSpender": false,
+  "tenancyUserId": 1490730819930708316,
+  "thirdPartyLastSeenAccountName": "Kensaku",
+  "thirdPartyUserId": "76561199319518140",
+  "tos_version_seen": "3",
+  "voiceChatModerationConsent": false
+}

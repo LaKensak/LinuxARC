@@ -1,0 +1,28 @@
+{
+  "jwt_token": "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk1YTk1YzI2N2JjNDkwMjE2MDJkYzBlNWY5NmI0MTJkODM1NTI4MDAiLCJraWRfdmVyc2lvbiI6IjE3NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOlsiaHR0cHM6Ly9waW9uZWVyLmVtYmFyay5uZXQiXSwiZXhwIjoxNzc0MTE4OTg1LCJleHQiOnsiYXBwX2lkIjoiMTgwODUwMCIsImNsaWVudF9pZCI6ImVtYmFyay1waW9uZWVyIiwiY29tcGFueSI6IiIsImVtYmFya191c2VyX2lkIjoiMjg2MTU2ODE0OTY5ODI1OTE4NyIsImV4dF9wcm92aWRlcl9pZCI6OCwidGVuYW5jeV9pZCI6IjYzNjg0ODU1MjQwMTQxNDk2OTQiLCJ0ZW5hbmN5X25hbWUiOiJwaW9uZWVyLWxpdmUiLCJ0cHVpZCI6Ijc2NTYxMTk5MzE5NTE4MTQwIn0sImlhdCI6MTc3NDAzMjU4NSwiaXNzIjoiaHR0cHM6Ly9hdXRoLmVtYmFyay5uZXQvIiwianRpIjoiNTk0MmFmZDQtYzFmMi00NGZmLThkOTUtMjE3YzE5MDA0YjVhIiwibmJmIjoxNzc0MDMyNTg1LCJzY3AiOltdLCJzdWIiOiIxNDkwNzMwODE5OTMwNzA4MzE2In0.qGr-QPc-9CQkrElx1AZewDKJwf3itHAtC7C_wrhNb_UDD4niJFW0SbskBmh5GBe1gs1WGlglNodp_JNVWiBpjtC0hGgMhAFvTZbhZ9Tzl0NHcJvGQVQgK6KhFiCKox-lgqw2K_Odhd0hk4t7b24totu6X6a1Rwri2_1oT7muJIXw40RS9cIYwLFiPVJtLSPmjMwJzSDNHtPPuFwP2kgAVNn2B-ni7WtGPre6GbLFWNHPGzxR9PZEreBehOr49ns5f3G09MPd8gLIXkD1KGwzjoYATBw7v-VgZJQt2QNZjbL2HdZ534UCWzhnsuz5mGnvF1HtKOeuOT3wQ-7zfJl0Wg",
+  "jwt_raw_response": null,
+  "gameserver": null,
+  "secret_key": null,
+  "routing_token": null,
+  "players": [],
+  "proxy_endpoints": [],
+  "match": null,
+  "anticheat_config": {
+    "data": "HJSjLE/pnuFIjCacQhc1gzlMFz/DY+N7/vZ2qa6kGcOmb8M+pcxeo95M2DQ6rKud8YZbj5nMpowTb8+ucBYuxjsseFFxN886HguAfEHpDUfQ0LCgyUfoI6T81qMNSXXpUp1OPhMDfBhg0JtYxvP817ortdu/NHZBNFryfAGqqNrmwBPgY19XUxIXVwThqrO0rBKdV/pzZvOyp2FASDeczz7FJmI/NWLFMqHzeWVKb2jUP4ZY59CiWAy4B8yiUx+/tQZh7CgO+11DPlkKFO7qMvJWYAeFmGMKK2wbAk44V9hgica65zw6GuMD6ZQsTzOLcJSVpOOAnPh0zVXkpgrQnO8oaDgN8hjImuPBcUZqnHBJ60ijMF8yRFLRoRR95Aaev5UcF5DQfAJ6l08PExjBF/1oMa6J/QUEctqRW34U/+3pN6/c0Fpju4ZX6oxtQ66B3rpb9I9nR2Fy/D8GnnIrCPm2fn/lPXkCKZuuPlGbZxNuP7XiKukBRct527KeNgHn2gavuDTbtciNtGBysvFFlnB27XdE1Cc0KvDJxtNobZGLUnzb0JCG06zJYMde61auWQNkj1jAwJLCJGG0cDB37Pty9VC0Iv8e8/2QEXdYxPskoHUiBvnzIXwL9VqU0ocEm5g2i5HuGHbgjKqrHG9KGcIKQxX8fJ0OKqG0BK5Dzzo/JQwMcn+iseRFoSCxPCaE7wq5V6lLxtm+DLPkw67CnyLA9CCUbmMFq/8oB1g7HBv+tuhPTveh91stNIKFCF8An7FJcz3lDKKNa8o=",
+    "signature": "Ju+uvzcOpdyzpYKEiziMfG5v6HrALqpxqHKEBcQp9+6Fe3ixlV+zmz8HXA/dWf1I9jA7EAl+OV/HmAMyEo2vl0FwJKc67NKeEXh84qE9oLZ12sXHUUGfVrM9geGHRbS9AkDv26vhX64no0jsusp3EMIsI6eOwckI2s5VUQRXAuzehLBEV3dfpNO9b13MCMTxNB7dDybQnXl4B3X86yW8Ywe4y95qm2MvRHEVjDhqjsSkfNzdLJB5AjBYJogABWyShD3hmCAzb/aVpF5V+Z8JRCH4NLZ4gpjwYh2UqVpl92vfG4mTVRQ2aD03qx/tL/KCIQVvwlOrzU2WmHUEyB/DmQ=="
+  },
+  "all_requests": [
+    {
+      "timestamp": "2026-03-20T19:49:23.395151",
+      "method": "POST",
+      "path": "/client2pubsub.Client2PubSub/TransferBatched",
+      "status": 200
+    },
+    {
+      "timestamp": "2026-03-20T19:49:23.412660",
+      "method": "GET",
+      "path": "/v1/shared/anticheat/config",
+      "status": 200
+    }
+  ]
+}

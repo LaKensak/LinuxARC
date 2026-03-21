@@ -1,0 +1,8 @@
+{
+  "failover_cooldown_duration_secs": 10,
+  "initial_cooldown_duration_secs": 20,
+  "packet_jitter_threshold_duration_secs": 3,
+  "packet_loss_threshold_duration_secs": 10,
+  "packet_loss_threshold_percent": 0.12,
+  "proxy_failover": true
+}

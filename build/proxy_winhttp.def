@@ -1,0 +1,21 @@
+LIBRARY winhttp
+EXPORTS
+    WinHttpOpen = xWinHttpOpen
+    WinHttpConnect = xWinHttpConnect
+    WinHttpOpenRequest = xWinHttpOpenRequest
+    WinHttpSendRequest = xWinHttpSendRequest
+    WinHttpReceiveResponse = xWinHttpReceiveResponse
+    WinHttpReadData = xWinHttpReadData
+    WinHttpQueryHeaders = xWinHttpQueryHeaders
+    WinHttpCloseHandle = xWinHttpCloseHandle
+    WinHttpSetOption = xWinHttpSetOption
+    WinHttpQueryOption = xWinHttpQueryOption
+    WinHttpAddRequestHeaders = xWinHttpAddRequestHeaders
+    WinHttpSetCredentials = xWinHttpSetCredentials
+    WinHttpSetTimeouts = xWinHttpSetTimeouts
+    WinHttpSetStatusCallback = xWinHttpSetStatusCallback
+    WinHttpWriteData = xWinHttpWriteData
+    WinHttpQueryDataAvailable = xWinHttpQueryDataAvailable
+    WinHttpCrackUrl = xWinHttpCrackUrl
+    WinHttpCreateUrl = xWinHttpCreateUrl
+    WinHttpCheckPlatform = xWinHttpCheckPlatform

@@ -1,0 +1,6 @@
+{
+  "gameserver_status": {
+    "status": 400,
+    "body": "{\"reason\":\"rpc error: code = InvalidArgument desc = validation error\"}\n"
+  }
+}
