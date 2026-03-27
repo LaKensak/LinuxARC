@@ -1,0 +1,353 @@
+================================================================
+  ARC RAIDERS - EFI LOADER : TUTO COMPLET (VM)
+  Win11 25H2 - Build 26200
+================================================================
+
+Ce tuto te guide de A a Z pour tester l'EFI loader sur une VM
+avant de l'utiliser sur ta machine principale.
+
+
+================================================================
+  PREREQUIS
+================================================================
+
+  [x] Windows 11 25H2 installe (host)
+  [ ] VMware Workstation Pro (gratuit) ou VirtualBox 7+
+  [ ] Rust nightly installe (rustup.rs)
+  [ ] CommDriver.sys compile
+  [ ] Une ISO Windows 11 (pour installer dans la VM)
+
+
+================================================================
+  ETAPE 1 : INSTALLER RUST NIGHTLY
+================================================================
+
+  Si Rust n'est pas installe :
+
+  1. Telecharge rustup depuis https://rustup.rs
+  2. Lance l'installateur, choisis "default"
+  3. Ouvre un nouveau terminal et tape :
+
+     rustup toolchain install nightly
+     rustup component add rust-src --toolchain nightly
+
+  Verifie :
+     rustup show
+     -> doit afficher "nightly-x86_64-pc-windows-msvc"
+
+
+================================================================
+  ETAPE 2 : COMPILER COMMDRIVER.SYS
+================================================================
+
+  Si CommDriver.sys n'est pas deja compile :
+
+  1. Ouvre "x64 Native Tools Command Prompt for VS 2022"
+     (ou Developer Command Prompt)
+
+  2. cd F:\Raid\pythonProject4\hypervisor
+     _build_comm3.cmd
+
+  3. Verifie que le fichier existe :
+     dir CommDriver\build\bin\Release\CommDriver.sys
+
+
+================================================================
+  ETAPE 3 : COMPILER L'EFI LOADER
+================================================================
+
+  1. Ouvre un terminal (PowerShell ou cmd)
+
+  2. cd F:\Raid\pythonProject4\hypervisor\efi_loader
+
+  3. Lance le build :
+     build.bat
+
+     Ce script va :
+     - Copier CommDriver.sys dans efi_loader\driver\
+     - Compiler le loader en EFI (target x86_64-unknown-uefi)
+     - Generer : target\x86_64-unknown-uefi\release\arc-efi-loader.efi
+
+  4. Verifie que le .efi existe :
+     dir target\x86_64-unknown-uefi\release\arc-efi-loader.efi
+
+  NOTE : Si le build echoue avec des erreurs de compilation,
+         c'est normal au premier essai — il faudra peut-etre
+         ajuster le code (voir section TROUBLESHOOTING en bas).
+
+
+================================================================
+  ETAPE 4 : CREER LA VM (VMware Workstation)
+================================================================
+
+  A) CREER LA VM :
+
+  1. VMware > File > New Virtual Machine > Custom
+  2. Hardware compatibility : Workstation 17.x
+  3. "I will install the operating system later"
+  4. Guest OS : Windows 11 x64
+  5. Name : "ArcEFI-Test"
+  6. Firmware type : UEFI  ← IMPORTANT !
+     [x] Secure Boot : DECOCHE (desactive)
+  7. Processors : 2 cores
+  8. RAM : 4 GB minimum (8 GB recommande)
+  9. Disque : 60 GB, store as single file
+  10. Finish
+
+  B) CONFIGURER LA VM :
+
+  1. VM Settings > Options > Advanced
+     - Firmware type : UEFI (verifier)
+     - [x] Enable code profiling (optionnel)
+
+  2. VM Settings > Hardware > CD/DVD
+     - Use ISO image : selectionne ton ISO Windows 11
+     - [x] Connect at power on
+
+  3. VM Settings > Hardware > Add > Hard Disk
+     (optionnel, pour l'USB virtuel - voir etape 5)
+
+  C) INSTALLER WINDOWS 11 DANS LA VM :
+
+  1. Demarre la VM
+  2. Installe Windows 11 normalement
+  3. Une fois installe, installe VMware Tools
+  4. Redemarre
+
+
+================================================================
+  ETAPE 4-BIS : CREER LA VM (VirtualBox)
+================================================================
+
+  Si tu preferes VirtualBox :
+
+  1. New > Name: ArcEFI-Test > Type: Windows 11 (64-bit)
+  2. [x] Enable EFI  ← IMPORTANT
+  3. RAM : 4096 MB, CPU : 2
+  4. Create Virtual Hard Disk : 60 GB
+  5. Settings > System > decocher "Enable Secure Boot"
+  6. Settings > Storage > ajouter ISO Windows 11
+  7. Start > installer Windows 11
+
+
+================================================================
+  ETAPE 5 : PREPARER LA CLE USB VIRTUELLE (IMAGE FAT32)
+================================================================
+
+  On va creer une image disque FAT32 qui simule la cle USB EFI.
+
+  METHODE A — Fichier VMDK (VMware) :
+
+  1. Sur ton HOST, cree un dossier temporaire :
+     mkdir F:\temp\efi_usb
+     mkdir F:\temp\efi_usb\EFI\BOOT
+
+  2. Copie le loader :
+     copy F:\Raid\pythonProject4\hypervisor\efi_loader\target\x86_64-unknown-uefi\release\arc-efi-loader.efi F:\temp\efi_usb\EFI\BOOT\bootx64.efi
+
+  3. Dans VMware :
+     - VM Settings > Add > Hard Disk > SATA
+     - Create new virtual disk > 512 MB > Single file
+     - Finish
+
+  4. Demarre la VM, ouvre diskpart en admin :
+     diskpart
+     list disk
+     select disk 1        (le nouveau disque, PAS disk 0 !)
+     clean
+     convert gpt
+     create partition efi size=100
+     format fs=fat32 label="EFI_USB"
+     assign letter=E
+     exit
+
+  5. Copie les fichiers EFI dans la VM :
+     - Utilise le dossier partage VMware, ou
+     - Drag & drop depuis l'host, ou
+     - Copie via le presse-papier
+
+     Dans la VM :
+     mkdir E:\EFI\BOOT
+     copy \\vmware-host\Shared Folders\...\bootx64.efi E:\EFI\BOOT\bootx64.efi
+
+  METHODE B — Copie directe sur la partition EFI de la VM :
+
+  C'est plus simple : on met le loader directement sur la
+  partition EFI de la VM (pas besoin de 2e disque).
+
+  1. Dans la VM, ouvre PowerShell en admin :
+     mountvol S: /s
+
+  2. Copie le loader :
+     mkdir S:\EFI\ArcLoader
+     copy <chemin>\arc-efi-loader.efi S:\EFI\ArcLoader\loader.efi
+
+  3. Cree l'entree de boot :
+     bcdedit /copy {bootmgr} /d "Arc EFI Loader"
+
+     -> Note le GUID affiche, par exemple : {12345678-abcd-...}
+
+     bcdedit /set {12345678-abcd-...} path \EFI\ArcLoader\loader.efi
+     bcdedit /set {fwbootmgr} displayorder {12345678-abcd-...} /addfirst
+
+  4. Verifie :
+     bcdedit /enum firmware
+
+     -> Tu dois voir "Arc EFI Loader" en premier
+
+
+================================================================
+  ETAPE 6 : TESTER LE BOOT EFI
+================================================================
+
+  METHODE A (2e disque VMDK) :
+
+  1. Eteins la VM
+  2. VM Settings > Options > Advanced > UEFI
+     -> Boot order : mets le 2e disque en premier
+     (ou entre dans le BIOS VM au demarrage avec F2/Echap)
+  3. Demarre la VM
+  4. Tu dois voir :
+     ============================================
+       ARC RAIDERS - EFI LOADER v0.2
+       Target: Win11 25H2 (Build 26200)
+     ============================================
+     [+] Found bootmgfw.efi
+     [+] ImgArchStartBootApplication at 0x...
+     [+] Hook installed
+     [*] Starting Windows Boot Manager...
+     [HOOK] ImgArchStartBootApplication intercepted!
+     [HOOK] OslFwpKernelSetupPhase1 — injection phase!
+     [+] INJECTION COMPLETE
+  5. Windows demarre normalement avec le driver injecte
+
+  METHODE B (entree BIOS) :
+
+  1. Redemarre la VM
+  2. Au menu de boot UEFI, selectionne "Arc EFI Loader"
+  3. Meme affichage que ci-dessus
+  4. Windows demarre avec le driver
+
+
+================================================================
+  ETAPE 7 : VERIFIER QUE LE DRIVER EST CHARGE
+================================================================
+
+  Une fois Windows demarre dans la VM :
+
+  1. Ouvre PowerShell en admin
+
+  2. Verifie la section partagee :
+     Get-SmbOpenFile | findstr ArcComm
+
+     Ou utilise un outil comme WinObj (Sysinternals) pour
+     chercher "Global\ArcComm" dans les sections.
+
+  3. Si tu as copie le projet dans la VM, teste le radar :
+     cd F:\Raid\pythonProject4
+     python tools\radar_windows.py
+
+     -> Si le driver est bien charge, il doit se connecter
+        via la shared memory et lire la memoire du process.
+
+
+================================================================
+  ETAPE 8 : SI CA MARCHE → PASSER SUR LE VRAI PC
+================================================================
+
+  Une fois que tout fonctionne dans la VM :
+
+  1. Cree la cle USB bootable (sur ton vrai PC, en admin) :
+     cd F:\Raid\pythonProject4\hypervisor\efi_loader
+     create_usb.bat
+
+  2. Ou copie manuellement :
+     - Formate une cle USB en FAT32 (GPT)
+     - Cree le dossier : USB:\EFI\BOOT\
+     - Copie arc-efi-loader.efi → USB:\EFI\BOOT\bootx64.efi
+
+  3. Configure le BIOS de ton PC :
+     - Desactive Secure Boot
+     - Garde le mode UEFI (pas CSM/Legacy)
+     - Mets la cle USB en premier dans le boot order
+
+  4. Redemarre → le loader s'execute → Windows boot avec le driver
+
+  5. Lance le jeu puis :
+     python tools\radar_windows.py
+
+
+================================================================
+  TROUBLESHOOTING
+================================================================
+
+  PROBLEME : Le build Rust echoue
+  ─────────────────────────────────
+  → Verifie : rustup show (doit etre nightly)
+  → Verifie : le fichier driver\CommDriver.sys existe
+  → Si erreur "abi_efiapi" : supprime #![feature(abi_efiapi)]
+    dans main.rs (les versions recentes de nightly n'en ont
+    plus besoin car efiapi est stabilise)
+
+  PROBLEME : La VM ne boot pas en UEFI
+  ─────────────────────────────────────
+  → VMware : verifier Firmware = UEFI dans VM Settings
+  → VirtualBox : cocher "Enable EFI" dans System
+  → Le loader ne fonctionne PAS en mode Legacy/BIOS
+
+  PROBLEME : "Could not find bootmgfw.efi"
+  ─────────────────────────────────────────
+  → Windows n'est pas installe en mode UEFI dans la VM
+  → Reinstalle Windows avec le firmware UEFI active
+
+  PROBLEME : "ImgArchStartBootApplication NOT FOUND"
+  ──────────────────────────────────────────────────
+  → La version de Windows dans la VM est differente de l'host
+  → Re-run : python tools\pdb_extract.py auto
+    depuis la VM pour obtenir les signatures de cette version
+
+  PROBLEME : BSOD au boot
+  ────────────────────────
+  → Les signatures ne matchent pas la bonne fonction
+  → Boot sans la cle USB / supprime l'entree bcdedit
+  → Le driver n'est JAMAIS persistant, un boot normal = safe
+
+  PROBLEME : Driver charge mais radar ne marche pas
+  ──────────────────────────────────────────────────
+  → Le driver est mappe dans l'espace de acpiex.sys mais
+    CommDriver a besoin que Ophion (hyperviseur) soit aussi
+    charge pour les VMCALL
+  → Solution : embarquer Ophion.sys aussi, ou adapter
+    CommDriver pour fonctionner sans hyperviseur (CR3 direct)
+
+  PROBLEME : "No space left on device" pendant pip/build
+  ──────────────────────────────────────────────────────
+  → Ton disque C: est plein a 100%
+  → Libere de l'espace ou configure CARGO_HOME sur F:
+    set CARGO_HOME=F:\.cargo
+    set RUSTUP_HOME=F:\.rustup
+
+
+================================================================
+  RESUME DES COMMANDES
+================================================================
+
+  # 1. Build
+  cd F:\Raid\pythonProject4\hypervisor\efi_loader
+  build.bat
+
+  # 2. Copier le .efi
+  copy target\x86_64-unknown-uefi\release\arc-efi-loader.efi <destination>\EFI\BOOT\bootx64.efi
+
+  # 3. Dans la VM (methode partition EFI)
+  mountvol S: /s
+  mkdir S:\EFI\ArcLoader
+  copy arc-efi-loader.efi S:\EFI\ArcLoader\loader.efi
+  bcdedit /copy {bootmgr} /d "Arc EFI Loader"
+  bcdedit /set {GUID} path \EFI\ArcLoader\loader.efi
+  bcdedit /set {fwbootmgr} displayorder {GUID} /addfirst
+
+  # 4. Reboot et selectionner "Arc EFI Loader"
+
+  # 5. Apres le boot
+  python tools\radar_windows.py

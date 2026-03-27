@@ -1,0 +1,28 @@
+BUILD START 
+**********************************************************************
+** Enterprise Windows Driver Kit (WDK) build environment
+** Version ge_release_svc_prod1.26100.6584
+'vswhere.exe' n'est pas reconnu en tant que commande interne
+ou externe, un programme ex‚cutable ou un fichier de commandes.
+**********************************************************************
+** Visual Studio 2022 Developer Command Prompt v17.14.5
+** Copyright (c) 2025 Microsoft Corporation
+**********************************************************************
+Import-Module : Impossible de charger le fichier ou l'assembly 'file:///G:\Program Files\Microsoft Visual 
+Studio\2022\BuildTools\Common7\Tools\Microsoft.VisualStudio.DevShell.dll' ou une de ses d‚pendances. L'op‚ration n'est 
+pas prise en charge. (Exception de HRESULT : 0x80131515)
+Au caractŠre Ligne:1 : 46
++ ... ajor -ge 3){Import-Module 'G:\Program Files\Microsoft Visual Studio\2 ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Import-Module], FileLoadException
+    + FullyQualifiedErrorId : System.IO.FileLoadException,Microsoft.PowerShell.Commands.ImportModuleCommand
+ 
+Send-VsDevShellTelemetry : Le terme ®Send-VsDevShellTelemetry¯ n'est pas reconnu comme nom d'applet de commande, 
+fonction, fichier de script ou programme ex‚cutable. V‚rifiez l'orthographe du nom, ou si un chemin d'accŠs existe, 
+v‚rifiez que le chemin d'accŠs est correct et r‚essayez.
+Au caractŠre Ligne:1 : 171
++ ... icrosoft.VisualStudio.DevShell.dll'; Send-VsDevShellTelemetry -NewIns ...
++                                          ~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (Send-VsDevShellTelemetry:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+ 

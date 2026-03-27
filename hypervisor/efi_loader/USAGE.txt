@@ -1,0 +1,94 @@
+============================================
+  ARC RAIDERS - EFI LOADER
+  Pre-boot driver injection (style Valthrun)
+============================================
+
+COMMENT CA MARCHE:
+  L'EFI loader se lance AVANT Windows via UEFI.
+  Il intercepte la chaine de boot (bootmgfw -> winload)
+  et injecte CommDriver.sys dans la memoire kernel
+  avant que l'anti-cheat ou PatchGuard ne soit actif.
+
+  Le driver n'existe PAS sur le disque de Windows.
+  Il est uniquement en memoire apres chaque boot.
+
+PREREQUIS:
+  - Rust nightly (rustup install nightly)
+  - Secure Boot DESACTIVE dans le BIOS
+  - CSM/Legacy boot DESACTIVE (UEFI uniquement)
+  - Une cle USB (pour le boot) OU acces a la partition EFI
+
+ETAPES:
+  1. Compile CommDriver:
+     > cd hypervisor
+     > _build_comm3.cmd
+
+  2. Build l'EFI loader:
+     > cd hypervisor\efi_loader
+     > build.bat
+     (copie automatiquement CommDriver.sys dans driver/)
+
+  3. Cree la cle USB bootable:
+     > create_usb.bat  (en admin)
+
+  4. Boot depuis la cle USB:
+     - Redemarre le PC
+     - F2/F12/DEL pour entrer dans le BIOS
+     - Desactive Secure Boot
+     - Boot depuis la cle USB
+     - Le loader injecte le driver puis lance Windows
+
+  5. Une fois Windows demarre:
+     > python tools\radar_windows.py
+
+METHODE ALTERNATIVE - PARTITION EFI:
+  Si tu ne veux pas utiliser de cle USB a chaque fois,
+  tu peux installer le loader directement sur la partition EFI:
+
+  1. Monte la partition EFI:
+     > mountvol S: /s
+
+  2. Copie le loader:
+     > mkdir S:\EFI\ArcLoader
+     > copy target\x86_64-unknown-uefi\release\arc-efi-loader.efi S:\EFI\ArcLoader\
+
+  3. Cree une entree de boot UEFI:
+     > bcdedit /copy {bootmgr} /d "Arc Loader"
+     (note le GUID retourne, ex: {xxxxx-xxxx-xxxx})
+     > bcdedit /set {xxxxx} path \EFI\ArcLoader\arc-efi-loader.efi
+     > bcdedit /set {fwbootmgr} displayorder {xxxxx} /addfirst
+
+  4. Au boot, choisis "Arc Loader" dans le menu
+
+  Pour supprimer:
+     > bcdedit /delete {xxxxx}
+     > del S:\EFI\ArcLoader\arc-efi-loader.efi
+
+STRUCTURE DES FICHIERS:
+  efi_loader/
+  ├── Cargo.toml          - Dependances Rust
+  ├── build.bat           - Script de build
+  ├── create_usb.bat      - Creation cle USB bootable
+  ├── create_iso.ps1      - Creation ISO bootable
+  ├── driver/
+  │   └── CommDriver.sys  - Driver embarque (copie auto par build.bat)
+  └── src/
+      ├── main.rs         - Entry point UEFI + boot chain hooks
+      ├── hook.rs         - Inline detour 14 bytes (jmp abs)
+      ├── mapper.rs       - PE parser + section mapper + relocations
+      ├── scanner.rs      - Pattern scanner pour bootmgfw/winload
+      └── winload.rs      - Context switching (Application/Firmware)
+
+NOTES:
+  - Les signatures dans scanner.rs ciblent Windows 10/11 22H2-24H2
+  - Si le hook echoue, il faut mettre a jour les patterns de signature
+  - Le driver hijacke acpiex.sys (driver ACPI charge au boot)
+  - Apres le boot, acpiex.sys fonctionne normalement
+  - Le driver est VOLATILE: un reboot sans le loader = pas de driver
+
+TROUBLESHOOTING:
+  - "Could not find bootmgfw.efi": Verifier que Secure Boot est OFF
+  - "ImgArchStartBootApplication NOT FOUND": Version Windows non supportee
+    -> Mettre a jour les signatures avec un debugger (WinDbg)
+  - BSOD au boot: Les signatures sont incorrectes pour ta version
+    -> Boot normalement sans la cle USB, le driver n'est pas persistent

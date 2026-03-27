@@ -1,0 +1,19 @@
+[package]
+name = "arc-efi-loader"
+version = "0.1.0"
+edition = "2021"
+description = "UEFI pre-boot driver mapper for Arc Raiders"
+
+[dependencies]
+uefi = { version = "0.32", features = ["alloc", "global_allocator", "panic_handler", "logger"] }
+uefi-raw = "0.8"
+log = "0.4"
+
+[profile.release]
+opt-level = "z"
+lto = true
+strip = true
+panic = "abort"
+
+[build-dependencies]
+
