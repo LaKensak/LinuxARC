@@ -13,6 +13,7 @@ import struct
 import time
 import sys
 import math
+import threading
 
 try:
     import glfw
@@ -47,6 +48,8 @@ class Mem:
         self.pid = 0
         self.cr3 = 0
         self.base = 0
+        # Single shared-mem channel: only one thread may hold the driver at a time.
+        self._drv_lock = threading.Lock()
 
     def connect(self):
         h = kernel32.OpenFileMappingW(0xF001F, False, "Global\\ArcComm")
@@ -101,15 +104,16 @@ class Mem:
     def read(self, addr, size):
         if addr < 0x10000 or addr > 0x7FFFFFFFFFFF:
             return b'\x00' * size
-        self.shared.cr3 = self.cr3
-        self.shared.address = addr
-        self.shared.size = size
-        self.shared.command = 2
-        if not self._wait():
-            return b'\x00' * size
-        if self.shared.status != 0:
-            return b'\x00' * size
-        return bytes(self.shared.data[:size])
+        with self._drv_lock:
+            self.shared.cr3 = self.cr3
+            self.shared.address = addr
+            self.shared.size = size
+            self.shared.command = 2
+            if not self._wait():
+                return b'\x00' * size
+            if self.shared.status != 0:
+                return b'\x00' * size
+            return bytes(self.shared.data[:size])
 
     def u64(self, a):
         return struct.unpack('<Q', self.read(a, 8))[0]
@@ -125,13 +129,14 @@ class Mem:
             for i in range(0, n, 8000):
                 out.extend(self.batch_u64(addrs[i:i+8000]))
             return out
-        ctypes.memmove(self.shared.data, struct.pack(f'<{n}Q', *addrs), n * 8)
-        self.shared.cr3 = self.cr3
-        self.shared.size = n
-        self.shared.command = 5
-        if not self._wait(2000) or self.shared.status != 0:
-            return [0] * n
-        return list(struct.unpack(f'<{n}Q', bytes(self.shared.data[:n * 8])))
+        with self._drv_lock:
+            ctypes.memmove(self.shared.data, struct.pack(f'<{n}Q', *addrs), n * 8)
+            self.shared.cr3 = self.cr3
+            self.shared.size = n
+            self.shared.command = 5
+            if not self._wait(2000) or self.shared.status != 0:
+                return [0] * n
+            return list(struct.unpack(f'<{n}Q', bytes(self.shared.data[:n * 8])))
 
     def i32(self, a):
         return struct.unpack('<i', self.read(a, 4))[0]
@@ -294,6 +299,14 @@ class Game:
         self.cam_rot = (0.0, 0.0, 0.0)
         self.cam_fov = 90.0
         self.players = []
+        # Double-buffered snapshots for smooth interpolated rendering.
+        # Worker thread fills these; render thread reads them under lock.
+        self._lock = threading.Lock()
+        self._snap_prev = None     # (ts, players, cam_loc, cam_rot, cam_fov)
+        self._snap_cur = None
+        self._stop = False
+        self._thread = None
+        self.tick_dt_ms = 0.0      # last worker tick time (for HUD)
 
     # ------------------------------------------------------------------
     def _valid(self, ptr):
@@ -324,15 +337,21 @@ class Game:
 
     # ------------------------------------------------------------------
     def _update_camera(self):
-        """FMinimalViewInfo at PCM + 0xCA0 (FTViewTarget) + 0x10 (POV)."""
+        """FMinimalViewInfo at PCM + 0xCA0 (FTViewTarget) + 0x10 (POV).
+        Reads loc(3d) + rot(3d) + fov(f32 packed in u64) in 1 batch IOCTL."""
         if not self.pcm:
             return
         m = self.m
         pov = self.pcm + OFF.PCM_POV
-        loc = m.vec3d(pov + 0x10)   # FMinimalViewInfo.Location
-        rot = m.vec3d(pov + 0x30)   # FMinimalViewInfo.Rotation
-        fov = m.f32(pov + 0x50)     # FMinimalViewInfo.FOV
-
+        # 6 u64 for loc/rot doubles + 1 u64 covering fov f32
+        words = m.batch_u64([
+            pov + 0x10, pov + 0x18, pov + 0x20,   # Location.X/Y/Z
+            pov + 0x30, pov + 0x38, pov + 0x40,   # Rotation.P/Y/R
+            pov + 0x50,                            # FOV (low 32 bits)
+        ])
+        loc = struct.unpack('<ddd', struct.pack('<QQQ', *words[0:3]))
+        rot = struct.unpack('<ddd', struct.pack('<QQQ', *words[3:6]))
+        fov = struct.unpack('<f', struct.pack('<I', words[6] & 0xFFFFFFFF))[0]
         if any(abs(v) > 100 for v in loc) and 10 < fov < 170 and all(abs(v) < 360 for v in rot):
             self.cam_loc = loc
             self.cam_rot = rot
@@ -432,19 +451,22 @@ class Game:
             self.root_component = 0
             self.pcm = 0
             self.actors_ptr = 0
+            self.persistent_level = 0
             print(f"[+] UWorld: 0x{gw:X}")
 
-        # === PersistentLevel ===
-        pl = m.u64(gw + OFF.PersistentLevel)
-        if not self._valid(pl):
-            return False
-        self.persistent_level = pl
-
-        # === Actor array (PersistentLevel + AActors) ===
-        actors_ptr = m.u64(pl + OFF.AActors)
-        if not self._valid(actors_ptr):
-            return False
-        actor_count = m.i32(pl + OFF.AActors + 8)
+        # === PersistentLevel + actors_ptr (cached: stable while UWorld unchanged) ===
+        if not self.persistent_level:
+            pl = m.u64(gw + OFF.PersistentLevel)
+            if not self._valid(pl):
+                return False
+            self.persistent_level = pl
+        if not self.actors_ptr:
+            ap = m.u64(self.persistent_level + OFF.AActors)
+            if not self._valid(ap):
+                return False
+            self.actors_ptr = ap
+        actors_ptr = self.actors_ptr
+        actor_count = m.i32(self.persistent_level + OFF.AActors + 8)
         if actor_count <= 0 or actor_count > 10000:
             return False
 
@@ -460,8 +482,8 @@ class Game:
         if self.player_controller and not self.pcm:
             self._find_camera_manager(all_actors)
 
-        # === Update camera ===
-        self._update_camera()
+        # Camera is refreshed by the dedicated camera thread (~500 Hz),
+        # so don't waste a batch IOCTL here on the slow actor tick.
 
         # === Build entity list (batched) ===
         # Backref check: actor.PlayerState.PawnPrivate == actor → real Pawn
@@ -487,14 +509,28 @@ class Game:
         # Step 3: batch read RootComponent
         roots = m.batch_u64([cand[i] + OFF.RootComponent for i in survivors])
 
+        # Step 4: batch read positions (3 u64 = vec3d) for all valid roots in 1 IOCTL
+        valid_roots = [r for r in roots if self._valid(r)]
+        if not valid_roots:
+            self.players = []
+            return True
+        pos_base = OFF.ComponentToWorld + 0x20
+        pos_addrs = []
+        for r in valid_roots:
+            pos_addrs.extend([r + pos_base, r + pos_base + 8, r + pos_base + 16])
+        pos_words = m.batch_u64(pos_addrs)
+
         targets = []
-        for k, i in enumerate(survivors):
-            root = roots[k]
-            if not self._valid(root):
+        vi = 0  # index into valid_roots/pos_words
+        for k, idx in enumerate(survivors):
+            if not self._valid(roots[k]):
                 continue
-            pos = m.vec3d(root + OFF.ComponentToWorld + 0x20)
-            if pos == (0.0, 0.0, 0.0):
+            w = pos_words[vi*3:vi*3+3]
+            vi += 1
+            if w == [0, 0, 0]:
                 continue
+            pos = struct.unpack('<ddd', struct.pack('<QQQ', *w))
+            actor_addr = cand[idx]
             try:
                 dx = pos[0] - self.cam_loc[0]
                 dy = pos[1] - self.cam_loc[1]
@@ -505,6 +541,7 @@ class Game:
             if dist < 0.5 or dist > 3000:
                 continue
             targets.append({
+                'actor': actor_addr,
                 'pos': pos, 'dist': dist,
                 'hp': -1, 'max_hp': -1,
                 'visible': False,
@@ -513,6 +550,101 @@ class Game:
 
         self.players = targets
         return True
+
+    # ------------------------------------------------------------------
+    # Async snapshot / interpolation pipeline
+    # ------------------------------------------------------------------
+    def _take_snapshot(self):
+        snap = (
+            time.perf_counter(),
+            self.players,
+            self.cam_loc, self.cam_rot, self.cam_fov,
+        )
+        with self._lock:
+            self._snap_prev = self._snap_cur
+            self._snap_cur = snap
+
+    def _worker_loop(self):
+        while not self._stop:
+            t0 = time.perf_counter()
+            try:
+                if self.update():
+                    self._take_snapshot()
+            except Exception as e:
+                print(f"[!] worker err: {e}", flush=True)
+                time.sleep(0.05)
+            self.tick_dt_ms = (time.perf_counter() - t0) * 1000.0
+
+    def _camera_loop(self):
+        """High-frequency camera reader. Camera changes every game frame (60+ Hz),
+        so we read it on its own thread instead of waiting for the slow actor tick.
+        Reads 7 u64 in one batch IOCTL (~1-2 ms) — driver mutex serialises with worker."""
+        while not self._stop:
+            if self.pcm:
+                try:
+                    self._update_camera()
+                except Exception:
+                    pass
+            time.sleep(0.002)  # ~500 Hz cap
+
+    def start_worker(self):
+        self._thread = threading.Thread(target=self._worker_loop, daemon=True)
+        self._thread.start()
+        self._cam_thread = threading.Thread(target=self._camera_loop, daemon=True)
+        self._cam_thread.start()
+
+    def stop_worker(self):
+        self._stop = True
+
+    def interpolated(self):
+        """Return (players, cam_loc, cam_rot, cam_fov). Camera is read live by
+        the dedicated cam thread (~500 Hz), positions are extrapolated from the
+        last two actor snapshots."""
+        # Always use freshest camera (updated by _camera_loop, not the snapshot).
+        cam_loc = self.cam_loc
+        cam_rot = self.cam_rot
+        cam_fov = self.cam_fov
+
+        with self._lock:
+            prev = self._snap_prev
+            cur = self._snap_cur
+        if cur is None:
+            return [], cam_loc, cam_rot, cam_fov
+        if prev is None:
+            return cur[1], cam_loc, cam_rot, cam_fov
+
+        dt_snap = cur[0] - prev[0]
+        if dt_snap <= 1e-4:
+            return cur[1], cam_loc, cam_rot, cam_fov
+
+        # How far past the last snapshot are we? Cap to 1.5x interval to bound drift.
+        ahead = max(0.0, min(time.perf_counter() - cur[0], dt_snap * 1.5))
+        f = ahead / dt_snap  # extrapolation factor: 0=last snap, 1=one tick ahead
+
+        def extrap(p, c):
+            return (
+                c[0] + (c[0] - p[0]) * f,
+                c[1] + (c[1] - p[1]) * f,
+                c[2] + (c[2] - p[2]) * f,
+            )
+
+        prev_by_addr = {p.get('actor', 0): p for p in prev[1]}
+        out = []
+        for p in cur[1]:
+            prev_p = prev_by_addr.get(p.get('actor', 0))
+            if not prev_p:
+                out.append(p)
+                continue
+            pos = extrap(prev_p['pos'], p['pos'])
+            dx = pos[0] - cam_loc[0]
+            dy = pos[1] - cam_loc[1]
+            dz = pos[2] - cam_loc[2]
+            dist = math.sqrt(dx*dx + dy*dy + dz*dz) / 100.0
+            np = dict(p)
+            np['pos'] = pos
+            np['dist'] = dist
+            out.append(np)
+        return out, cam_loc, cam_rot, cam_fov
 
 
 # ---------------------------------------------------------------------------
@@ -576,23 +708,29 @@ def main():
     impl = GlfwRenderer(win)
 
     print("[+] ESP v4 prêt")
+    g.start_worker()
     frame = 0
+    last_diag = time.perf_counter()
+    fps_acc = 0
+    fps_disp = 0.0
 
-    import time as _t
     while not glfw.window_should_close(win):
         glfw.poll_events()
         impl.process_inputs()
 
-        _t0 = _t.perf_counter()
-        ok = g.update()
-        _dt = (_t.perf_counter() - _t0) * 1000.0
+        players, cam_loc, cam_rot, cam_fov = g.interpolated()
 
         frame += 1
-        if frame <= 10 or frame % 30 == 0:
-            vis = sum(1 for p in g.players if p.get('visible'))
-            print(f"[DIAG] f={frame} dt={_dt:.0f}ms ok={ok} "
+        fps_acc += 1
+        now = time.perf_counter()
+        if now - last_diag >= 1.0:
+            fps_disp = fps_acc / (now - last_diag)
+            fps_acc = 0
+            last_diag = now
+            vis = sum(1 for p in players if p.get('visible'))
+            print(f"[DIAG] render={fps_disp:.0f}fps tick={g.tick_dt_ms:.0f}ms "
                   f"pl={getattr(g,'persistent_level',0):X} pc={g.player_controller:X} pcm={g.pcm:X} "
-                  f"targets={len(g.players)} vis={vis}",
+                  f"targets={len(players)} vis={vis}",
                   flush=True)
 
         # --- Render ---
@@ -614,8 +752,8 @@ def main():
             dl = imgui.get_window_draw_list()
 
             n_vis = 0
-            for p in g.players:
-                scr = w2s(p['pos'], g.cam_loc, g.cam_rot, g.cam_fov, SW, SH)
+            for p in players:
+                scr = w2s(p['pos'], cam_loc, cam_rot, cam_fov, SW, SH)
                 if not scr:
                     continue
 
@@ -651,7 +789,8 @@ def main():
 
             # HUD
             dl.add_text((10, 10), 0xFF32FF32,
-                        f"ESP v4 | Targets: {len(g.players)} ({n_vis} visible) | FOV: {g.cam_fov:.0f}")
+                        f"ESP v4 | Targets: {len(players)} ({n_vis} visible) | "
+                        f"FOV: {cam_fov:.0f} | render {fps_disp:.0f}fps tick {g.tick_dt_ms:.0f}ms")
 
         imgui.pop_style_color()
         imgui.render()
