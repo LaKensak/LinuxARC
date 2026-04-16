@@ -189,8 +189,17 @@ class OFF:
     ComponentToWorld = 0x330  # FTransform — UC confirmed 4.9.26
     ComponentVelocity = 0x260
 
-    # === ACharacter ===
-    SkeletalMeshComponent = 0x430
+    # === ACharacter (DIAG confirms 0x438, not 1.25.0's 0x428) ===
+    SkeletalMeshComponent = 0x430        # legacy
+    CharacterMesh = 0x438                # ACharacter → USkeletalMeshComponent*
+
+    # === USkeletalMeshComponent — encrypted bone array path ===
+    # GetBoneArray: rol32(20) → XOR(key) → rol16(12) → extract lo64
+    BoneEncrypted = 0x780          # u64 encrypted value
+    BoneLodData   = 0x810          # u32 flag word for LOD index
+    BoneXorKeyRVA = 0xAD2FC50      # 16-byte XOR key in .rdata
+    ComponentToWorldMesh = 0x330   # same as USceneComponent.ComponentToWorld
+    FTransformSize = 0x60          # UE5 LWC: quat(32)+loc(24)+scale(24)+pad
 
     # === APawn (dump) ===
     PlayerState = 0x3D0       # APawn.PlayerState
@@ -235,6 +244,37 @@ class OFF:
     # === Visibility (C++ source) ===
     LastSubmitTime = 0x49C              # PrimitiveComponent
     LastRenderTimeOnScreen = 0x4A4      # PrimitiveComponent
+
+
+# ---------------------------------------------------------------------------
+# Skeleton mapping (from Arc Raiders C++ esp source — GameBoneMapArcRaiders)
+# Semantic name → bone index in the Arc Raiders mesh. The character rig order
+# is not UE4-standard: arms/legs jump to high indices because of finger chains.
+# ---------------------------------------------------------------------------
+BONE = {
+    'Root': 0,   'Pelvis': 1,
+    'Spine1': 2, 'Spine2': 3, 'Spine3': 4,
+    'Chest': 5,  'Neck': 6,   'Head': 7,
+    'ClavicleL': 8,  'UpperArmL': 9,  'LowerArmL': 10, 'HandL': 11,
+    'ClavicleR': 42, 'UpperArmR': 43, 'LowerArmR': 44, 'HandR': 45,
+    'ThighL': 65, 'CalfL': 66, 'FootL': 67,
+    'ThighR': 69, 'CalfR': 70, 'FootR': 71,
+}
+
+# Segments drawn between bone pairs, in render order.
+SKELETON_LINKS = [
+    ('Pelvis', 'Spine1'), ('Spine1', 'Spine2'), ('Spine2', 'Spine3'),
+    ('Spine3', 'Chest'),  ('Chest', 'Neck'),    ('Neck', 'Head'),
+    ('Chest', 'ClavicleL'), ('ClavicleL', 'UpperArmL'),
+    ('UpperArmL', 'LowerArmL'), ('LowerArmL', 'HandL'),
+    ('Chest', 'ClavicleR'), ('ClavicleR', 'UpperArmR'),
+    ('UpperArmR', 'LowerArmR'), ('LowerArmR', 'HandR'),
+    ('Pelvis', 'ThighL'), ('ThighL', 'CalfL'), ('CalfL', 'FootL'),
+    ('Pelvis', 'ThighR'), ('ThighR', 'CalfR'), ('CalfR', 'FootR'),
+]
+
+# Deduplicated bone index list — the only ones we actually read from memory.
+SKELETON_INDICES = sorted({idx for idx in BONE.values()})
 
 
 # NPC class → display name (UC page 144, YumikoImagwa)
@@ -307,6 +347,13 @@ class Game:
         self._stop = False
         self._thread = None
         self.tick_dt_ms = 0.0      # last worker tick time (for HUD)
+        # Skeleton ESP
+        self.draw_skeleton = True
+        self._bone_xor_key = None        # 16 bytes XOR key, read once from game binary
+        self._skel_diag_left = 10        # print diag for first N attempts
+        self._skel_ok_count = 0          # successful skeleton reads (rolling)
+        self._skel_lock = threading.Lock()
+        self._skel_data = {}             # actor_addr -> {bone_name: (x,y,z)} world-space
 
     # ------------------------------------------------------------------
     def _valid(self, ptr):
@@ -546,15 +593,180 @@ class Game:
                 'hp': -1, 'max_hp': -1,
                 'visible': False,
                 'type': 'player',
+                'bones': None,
             })
 
         self.players = targets
         return True
 
     # ------------------------------------------------------------------
+    # Skeleton ESP — encrypted bone array decrypt + world-space transform
+    # Ported from GetBoneArray (rol32 + XOR + rol16)
+    # ------------------------------------------------------------------
+    @staticmethod
+    def _rol32(val, n):
+        """Rotate left a 32-bit value by n bits."""
+        n &= 31
+        return ((val << n) | (val >> (32 - n))) & 0xFFFFFFFF
+
+    @staticmethod
+    def _rol16(val, n):
+        """Rotate left a 16-bit value by n bits."""
+        n &= 15
+        return ((val << n) | (val >> (16 - n))) & 0xFFFF
+
+    def _load_bone_xor_key(self):
+        """Read the 16-byte XOR key from the game binary (read once, cached)."""
+        if self._bone_xor_key is not None:
+            return self._bone_xor_key
+        m = self.m
+        key = m.read(m.base + OFF.BoneXorKeyRVA, 16)
+        if len(key) != 16 or key == b'\x00' * 16:
+            return None
+        self._bone_xor_key = key
+        print(f"[SKEL] XOR key loaded: {key.hex()}", flush=True)
+        return key
+
+    def _decrypt_bone_array(self, mesh):
+        """GetBoneArray — decrypt the bone FTransform array pointer.
+        Algorithm: read u64 → rol32(20) → XOR(key) → rol16(12) → extract base.
+        Then LOD indirection → final bone array pointer.
+        Returns the usable bone_array_ptr or 0."""
+        m = self.m
+        xor_key = self._load_bone_xor_key()
+        if xor_key is None:
+            return 0
+
+        # 1) Read encrypted u64 at mesh + 0x780
+        encrypted = m.u64(mesh + OFF.BoneEncrypted)
+        if not encrypted:
+            return 0
+
+        # Load into 128-bit register (low 64 = encrypted, high 64 = 0)
+        # Work with 4 x 32-bit dwords: [lo32, hi32, 0, 0]
+        dwords = [
+            encrypted & 0xFFFFFFFF,
+            (encrypted >> 32) & 0xFFFFFFFF,
+            0, 0
+        ]
+
+        # 2) rol32 by 20 on each 32-bit lane (srli32(12) | slli32(20))
+        dwords = [self._rol32(d, 20) for d in dwords]
+
+        # Pack back to 16 bytes
+        xmm0 = struct.pack('<4I', *dwords)
+
+        # 3) XOR with 16-byte key from base + 0xAD2FC50
+        xmm0 = bytes(a ^ b for a, b in zip(xmm0, xor_key))
+
+        # 4) rol16 by 12 on each 16-bit lane (srli16(4) | slli16(12))
+        words = list(struct.unpack('<8H', xmm0))
+        words = [self._rol16(w, 12) for w in words]
+
+        # 5) Extract lo64 → base pointer
+        base = words[0] | (words[1] << 16) | (words[2] << 32) | (words[3] << 48)
+        if not self._valid(base):
+            if self._skel_diag_left > 0:
+                print(f"[SKEL-DIAG] mesh=0x{mesh:X} encrypted=0x{encrypted:X} "
+                      f"base=0x{base:X} (INVALID)", flush=True)
+                self._skel_diag_left -= 1
+            return 0
+
+        # 6) LOD indirection: read u32 at mesh + 0x810
+        flag_word = m.u32(mesh + OFF.BoneLodData)
+        lod_index = (flag_word >> 0x1A) & 0x10
+
+        # 7) bone_array = read_u64(base + lod_index + 0x150)
+        bone_array_ptr = m.u64(base + lod_index + 0x150)
+        if not self._valid(bone_array_ptr):
+            if self._skel_diag_left > 0:
+                print(f"[SKEL-DIAG] mesh=0x{mesh:X} base=0x{base:X} "
+                      f"flag=0x{flag_word:X} lod_idx=0x{lod_index:X} "
+                      f"bone_arr=0x{bone_array_ptr:X} (INVALID)", flush=True)
+                self._skel_diag_left -= 1
+            return 0
+
+        if self._skel_diag_left > 0:
+            print(f"[SKEL-OK] mesh=0x{mesh:X} base=0x{base:X} "
+                  f"lod_idx=0x{lod_index:X} bone_arr=0x{bone_array_ptr:X}", flush=True)
+            self._skel_diag_left -= 1
+
+        return bone_array_ptr
+
+    @staticmethod
+    def _apply_ftransform(ctw, local_loc):
+        """world = ctw.Translation + ctw.Rotation.Rotate(local_loc * ctw.Scale3D).
+        ctw is (qx, qy, qz, qw, tx, ty, tz, sx, sy, sz)."""
+        qx, qy, qz, qw, tx, ty, tz, sx, sy, sz = ctw
+        vx = local_loc[0] * sx
+        vy = local_loc[1] * sy
+        vz = local_loc[2] * sz
+        # Rodrigues via quaternion:
+        xx, yy, zz = qx * qx, qy * qy, qz * qz
+        xy, xz, yz = qx * qy, qx * qz, qy * qz
+        wx, wy, wz = qw * qx, qw * qy, qw * qz
+        rx = vx * (1 - 2 * (yy + zz)) + vy * 2 * (xy - wz)     + vz * 2 * (xz + wy)
+        ry = vx * 2 * (xy + wz)       + vy * (1 - 2 * (xx + zz)) + vz * 2 * (yz - wx)
+        rz = vx * 2 * (xz - wy)       + vy * 2 * (yz + wx)     + vz * (1 - 2 * (xx + yy))
+        return (rx + tx, ry + ty, rz + tz)
+
+    def _read_skeleton_from_array(self, mesh, bone_array):
+        """Read skeleton given pre-decrypted bone_array pointer.
+        Only needs 2 reads: ComponentToWorld + bone blob."""
+        m = self.m
+
+        # Mesh component's ComponentToWorld.
+        ctw_bytes = m.read(mesh + OFF.ComponentToWorldMesh, OFF.FTransformSize)
+        if len(ctw_bytes) != OFF.FTransformSize:
+            return None
+        qx, qy, qz, qw = struct.unpack_from('<4d', ctw_bytes, 0x00)
+        tx, ty, tz    = struct.unpack_from('<3d', ctw_bytes, 0x20)
+        sx, sy, sz    = struct.unpack_from('<3d', ctw_bytes, 0x38)
+        ctw = (qx, qy, qz, qw, tx, ty, tz, sx, sy, sz)
+
+        first = SKELETON_INDICES[0]
+        last  = SKELETON_INDICES[-1]
+        span_bytes = (last - first + 1) * OFF.FTransformSize
+        if span_bytes > 0x10000 - 0x80:
+            return None
+        blob = m.read(bone_array + first * OFF.FTransformSize, span_bytes)
+        if len(blob) != span_bytes:
+            return None
+
+        out = {}
+        for name, idx in BONE.items():
+            base = (idx - first) * OFF.FTransformSize + 0x20  # translation offset
+            if base + 24 > len(blob):
+                continue
+            loc = struct.unpack_from('<3d', blob, base)
+            if loc == (0.0, 0.0, 0.0):
+                continue
+            out[name] = self._apply_ftransform(ctw, loc)
+        return out if out else None
+
+    def _read_skeleton(self, actor, mesh=None):
+        """Convenience wrapper: decrypt + read skeleton."""
+        m = self.m
+        if mesh is None:
+            mesh = m.u64(actor + OFF.CharacterMesh)
+        if not self._valid(mesh):
+            return None
+        bone_array = self._decrypt_bone_array(mesh)
+        if not bone_array:
+            return None
+        return self._read_skeleton_from_array(mesh, bone_array)
+
+    # ------------------------------------------------------------------
     # Async snapshot / interpolation pipeline
     # ------------------------------------------------------------------
     def _take_snapshot(self):
+        # Inject latest bone data from skeleton thread
+        with self._skel_lock:
+            skel = dict(self._skel_data)
+        for p in self.players:
+            bones = skel.get(p.get('actor'))
+            if bones:
+                p['bones'] = bones
         snap = (
             time.perf_counter(),
             self.players,
@@ -587,11 +799,129 @@ class Game:
                     pass
             time.sleep(0.002)  # ~500 Hz cap
 
+    def _skeleton_loop(self):
+        """Dedicated skeleton thread: reads bone data for closest targets
+        independently of the main entity scan. Runs faster since it only
+        does bone decrypt + blob reads (~150-250ms per cycle)."""
+        while not self._stop:
+            players = self.players
+            if not players or not self.draw_skeleton:
+                time.sleep(0.05)
+                continue
+            m = self.m
+            xor_key = self._load_bone_xor_key()
+            if not xor_key:
+                time.sleep(0.1)
+                continue
+
+            # Pick closest 6 targets
+            sorted_p = sorted(players, key=lambda p: p['dist'])[:6]
+            actors = [p['actor'] for p in sorted_p]
+
+            try:
+                # Batch: mesh ptrs
+                mesh_ptrs = m.batch_u64([a + OFF.CharacterMesh for a in actors])
+                valid = [(i, actors[i], mp) for i, mp in enumerate(mesh_ptrs) if self._valid(mp)]
+                if not valid:
+                    time.sleep(0.02)
+                    continue
+
+                # Batch: encrypted + LOD
+                enc_addrs = []
+                for _, _, mp in valid:
+                    enc_addrs.append(mp + OFF.BoneEncrypted)
+                    enc_addrs.append(mp + OFF.BoneLodData)
+                enc_vals = m.batch_u64(enc_addrs)
+
+                # Decrypt in Python
+                bone_jobs = []
+                for vi, (_, actor, mp) in enumerate(valid):
+                    encrypted = enc_vals[vi * 2]
+                    flag_raw  = enc_vals[vi * 2 + 1]
+                    if not encrypted:
+                        continue
+                    d0 = self._rol32(encrypted & 0xFFFFFFFF, 20)
+                    d1 = self._rol32((encrypted >> 32) & 0xFFFFFFFF, 20)
+                    xmm = struct.pack('<4I', d0, d1, 0, 0)
+                    xmm = bytes(a ^ b for a, b in zip(xmm, xor_key))
+                    ws = list(struct.unpack('<8H', xmm))
+                    ws = [self._rol16(w, 12) for w in ws]
+                    base = ws[0] | (ws[1] << 16) | (ws[2] << 32) | (ws[3] << 48)
+                    if not self._valid(base):
+                        continue
+                    lod_index = (int(flag_raw) >> 0x1A) & 0x10
+                    bone_jobs.append((actor, mp, base + lod_index + 0x150))
+
+                if not bone_jobs:
+                    time.sleep(0.02)
+                    continue
+
+                # Batch: final bone array ptrs
+                final_ptrs = m.batch_u64([addr for _, _, addr in bone_jobs])
+
+                # Batch: CTW (10 doubles per mesh)
+                ctw_addrs = []
+                valid_jobs = []
+                for k, (actor, mp, _) in enumerate(bone_jobs):
+                    if self._valid(final_ptrs[k]):
+                        valid_jobs.append((actor, mp, final_ptrs[k]))
+                        for off in range(0, 80, 8):
+                            ctw_addrs.append(mp + OFF.ComponentToWorldMesh + off)
+                if not valid_jobs:
+                    time.sleep(0.02)
+                    continue
+                ctw_vals = m.batch_u64(ctw_addrs)
+
+                # Per-target: decode CTW + read bone blob
+                new_skel = {}
+                first = SKELETON_INDICES[0]
+                last  = SKELETON_INDICES[-1]
+                span = (last - first + 1) * OFF.FTransformSize
+
+                for ji, (actor, mp, bone_arr) in enumerate(valid_jobs):
+                    ci = ji * 10
+                    try:
+                        raw = struct.pack('<10Q', *ctw_vals[ci:ci+10])
+                        qx, qy, qz, qw = struct.unpack_from('<4d', raw, 0)
+                        tx, ty, tz = struct.unpack_from('<3d', raw, 32)
+                        sx, sy, sz = struct.unpack_from('<3d', raw, 56)
+                        ctw = (qx, qy, qz, qw, tx, ty, tz, sx, sy, sz)
+                    except Exception:
+                        continue
+                    blob = m.read(bone_arr + first * OFF.FTransformSize, span)
+                    if len(blob) != span:
+                        continue
+                    out = {}
+                    for name, idx in BONE.items():
+                        boff = (idx - first) * OFF.FTransformSize + 0x20
+                        if boff + 24 > len(blob):
+                            continue
+                        loc = struct.unpack_from('<3d', blob, boff)
+                        if loc == (0.0, 0.0, 0.0):
+                            continue
+                        out[name] = self._apply_ftransform(ctw, loc)
+                    if out:
+                        new_skel[actor] = out
+
+                with self._skel_lock:
+                    self._skel_data.update(new_skel)
+                    # Prune actors no longer in the player list
+                    active = {p['actor'] for p in players}
+                    for k in list(self._skel_data):
+                        if k not in active:
+                            del self._skel_data[k]
+
+            except Exception as e:
+                print(f"[SKEL] thread err: {e}", flush=True)
+                time.sleep(0.05)
+
     def start_worker(self):
         self._thread = threading.Thread(target=self._worker_loop, daemon=True)
         self._thread.start()
         self._cam_thread = threading.Thread(target=self._camera_loop, daemon=True)
         self._cam_thread.start()
+        self._skel_thread = threading.Thread(target=self._skeleton_loop, daemon=True)
+        self._skel_thread.start()
 
     def stop_worker(self):
         self._stop = True
@@ -643,6 +973,14 @@ class Game:
             np = dict(p)
             np['pos'] = pos
             np['dist'] = dist
+            # Translate the skeleton by the same extrapolation delta as the pawn.
+            # This keeps bones coherent without re-reading / re-extrapolating each one.
+            bones = p.get('bones')
+            if bones:
+                ox = pos[0] - p['pos'][0]
+                oy = pos[1] - p['pos'][1]
+                oz = pos[2] - p['pos'][2]
+                np['bones'] = {k: (v[0] + ox, v[1] + oy, v[2] + oz) for k, v in bones.items()}
             out.append(np)
         return out, cam_loc, cam_rot, cam_fov
 
@@ -704,6 +1042,17 @@ def main():
     SW, SH = 1920, 1080
     win = glfw.create_window(SW, SH, "ESP", None, None)
     glfw.make_context_current(win)
+
+    # Make the overlay click-through (WS_EX_TRANSPARENT | WS_EX_LAYERED)
+    import ctypes.wintypes
+    GWL_EXSTYLE = -20
+    WS_EX_LAYERED = 0x80000
+    WS_EX_TRANSPARENT = 0x20
+    user32 = ctypes.windll.user32
+    hwnd = glfw.get_win32_window(win)
+    style = user32.GetWindowLongW(hwnd, GWL_EXSTYLE)
+    user32.SetWindowLongW(hwnd, GWL_EXSTYLE, style | WS_EX_LAYERED | WS_EX_TRANSPARENT)
+
     imgui.create_context()
     impl = GlfwRenderer(win)
 
@@ -713,6 +1062,16 @@ def main():
     last_diag = time.perf_counter()
     fps_acc = 0
     fps_disp = 0.0
+
+    # --- Aimbot settings ---
+    AIM_KEY       = 0x02     # VK_RBUTTON (right mouse). 0x05=XBUTTON2 (side), 0x06=XBUTTON1
+    AIM_BONE      = 'Head'   # target bone
+    AIM_FOV       = 120.0    # screen-pixel radius FOV circle
+    AIM_SMOOTH    = 5.0      # smoothing (higher = slower, 1 = instant snap)
+    AIM_ENABLED   = True
+    DRAW_FOV      = True     # draw FOV circle
+    user32        = ctypes.windll.user32
+    cx, cy        = SW // 2, SH // 2  # screen center
 
     while not glfw.window_should_close(win):
         glfw.poll_events()
@@ -728,9 +1087,10 @@ def main():
             fps_acc = 0
             last_diag = now
             vis = sum(1 for p in players if p.get('visible'))
+            skel_on = sum(1 for p in players if p.get('bones'))
             print(f"[DIAG] render={fps_disp:.0f}fps tick={g.tick_dt_ms:.0f}ms "
                   f"pl={getattr(g,'persistent_level',0):X} pc={g.player_controller:X} pcm={g.pcm:X} "
-                  f"targets={len(players)} vis={vis}",
+                  f"targets={len(players)} vis={vis} skel={skel_on}",
                   flush=True)
 
         # --- Render ---
@@ -743,6 +1103,8 @@ def main():
         # Colors: AABBGGRR (ImGui packed)
         COL_VISIBLE  = 0xFF3232FF   # Red — visible enemy
         COL_HIDDEN   = 0xFF32FFFF   # Yellow — behind wall
+        COL_SKEL     = 0xFF00FF00   # Green — skeleton lines
+        COL_HEAD     = 0xFFFFFF00   # Cyan — head circle
         COL_HP_BG    = 0x80000000   # Semi-transparent black
         COL_HP_FG    = 0xFF32FF32   # Green
         COL_HP_LOW   = 0xFF3232FF   # Red
@@ -752,6 +1114,7 @@ def main():
             dl = imgui.get_window_draw_list()
 
             n_vis = 0
+            n_skel_drawn = 0
             for p in players:
                 scr = w2s(p['pos'], cam_loc, cam_rot, cam_fov, SW, SH)
                 if not scr:
@@ -769,8 +1132,33 @@ def main():
                 box_h = max(8, min(80, int(2000 / max(dist, 1))))
                 box_w = box_h // 2
 
-                # Draw box
-                dl.add_rect((sx - box_w, sy - box_h), (sx + box_w, sy + box_h // 4), col, 0, 0, 2)
+                # Draw box always
+                dl.add_rect((sx - box_w, sy - box_h),
+                            (sx + box_w, sy + box_h // 4), col, 0, 0, 2)
+
+                # Skeleton lines on top (if we have bone data)
+                bones = p.get('bones')
+                if bones:
+                    bone_scr = {}
+                    for name, wpos in bones.items():
+                        bs = w2s(wpos, cam_loc, cam_rot, cam_fov, SW, SH)
+                        if bs:
+                            bone_scr[name] = bs
+                    if bone_scr:
+                        n_skel_drawn += 1
+                        for a_name, b_name in SKELETON_LINKS:
+                            a = bone_scr.get(a_name)
+                            b = bone_scr.get(b_name)
+                            if a and b:
+                                dl.add_line((float(a[0]), float(a[1])),
+                                            (float(b[0]), float(b[1])),
+                                            col, 1.5)
+                        # Head circle
+                        head = bone_scr.get('Head')
+                        if head:
+                            r = max(3, box_h // 8)
+                            dl.add_circle((float(head[0]), float(head[1])),
+                                          float(r), col, 12, 1.5)
 
                 # Distance text
                 dl.add_text((sx + box_w + 4, sy - box_h), COL_WHITE, f"{dist:.0f}m")
@@ -789,8 +1177,43 @@ def main():
 
             # HUD
             dl.add_text((10, 10), 0xFF32FF32,
-                        f"ESP v4 | Targets: {len(players)} ({n_vis} visible) | "
+                        f"ESP v4 | Targets: {len(players)} ({n_vis} visible) skel:{n_skel_drawn} | "
                         f"FOV: {cam_fov:.0f} | render {fps_disp:.0f}fps tick {g.tick_dt_ms:.0f}ms")
+
+            # --- Aimbot FOV circle ---
+            if DRAW_FOV and AIM_ENABLED:
+                dl.add_circle((float(cx), float(cy)), AIM_FOV, 0x40FFFFFF, 64, 1.0)
+
+            # --- Aimbot logic ---
+            if AIM_ENABLED and user32.GetAsyncKeyState(AIM_KEY) & 0x8000:
+                best_target = None
+                best_dist_sq = AIM_FOV * AIM_FOV
+                for p in players:
+                    bones = p.get('bones')
+                    if not bones:
+                        continue
+                    head = bones.get(AIM_BONE)
+                    if not head:
+                        continue
+                    scr_h = w2s(head, cam_loc, cam_rot, cam_fov, SW, SH)
+                    if not scr_h:
+                        continue
+                    hx, hy = scr_h
+                    dx = hx - cx
+                    dy = hy - cy
+                    d2 = dx * dx + dy * dy
+                    if d2 < best_dist_sq:
+                        best_dist_sq = d2
+                        best_target = (dx, dy, hx, hy)
+                if best_target:
+                    dx, dy, hx, hy = best_target
+                    # Smooth mouse move
+                    move_x = int(dx / AIM_SMOOTH)
+                    move_y = int(dy / AIM_SMOOTH)
+                    if move_x != 0 or move_y != 0:
+                        user32.mouse_event(0x0001, move_x, move_y, 0, 0)  # MOUSEEVENTF_MOVE
+                    # Draw target lock indicator
+                    dl.add_circle((float(hx), float(hy)), 6.0, 0xFF0000FF, 12, 2.0)
 
         imgui.pop_style_color()
         imgui.render()
