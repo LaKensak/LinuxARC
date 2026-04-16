@@ -14,6 +14,7 @@
 #define CMD_READ_MEMORY    2
 #define CMD_WRITE_MEMORY   3
 #define CMD_GET_PEB        4
+#define CMD_BATCH_READ_U64 5    // batch read N u64 values: in=N addrs (N*8B), out=N u64 (N*8B)
 #define CMD_PING           0xFF
 
 // Max data buffer (64KB per request)

@@ -322,7 +322,7 @@ find_user_cr3(PEPROCESS process, ULONG64 known_base)
      * Strategy: try known offsets, then try KVAS variants (toggle bit 1),
      * then brute force EPROCESS up to 0xB00.
      */
-    ULONG offsets_to_try[] = { 0x280, 0x388, 0x28, 0x3B8, 0x580 };
+    ULONG offsets_to_try[] = { 0x280, 0x388, 0x28, 0x3B8, 0x580, 0x4C8, 0x590, 0x5A0 };
     ULONG i;
     USHORT sig;
     ULONG64 cr3, test_cr3, phys;
@@ -331,7 +331,7 @@ find_user_cr3(PEPROCESS process, ULONG64 known_base)
     DbgPrintEx(0, 0, "[comm] find_user_cr3: known_base=0x%llx\n", known_base);
 
     /* Try common known offsets first */
-    for (i = 0; i < 5; i++)
+    for (i = 0; i < 8; i++)
     {
         cr3 = *(PULONG64)((PUCHAR)process + offsets_to_try[i]);
 
@@ -392,8 +392,8 @@ find_user_cr3(PEPROCESS process, ULONG64 known_base)
     }
 
     /* Brute force: scan EPROCESS for any CR3 that maps the base to MZ */
-    DbgPrintEx(0, 0, "[comm] Known offsets failed, brute-forcing EPROCESS (0x20-0xB00)...\n");
-    for (i = 0x20; i < 0xB00; i += 8)
+    DbgPrintEx(0, 0, "[comm] Known offsets failed, brute-forcing EPROCESS (0x20-0x1000)...\n");
+    for (i = 0x20; i < 0x1000; i += 8)
     {
         cr3 = *(PULONG64)((PUCHAR)process + i);
         if (cr3 < 0x1000 || cr3 > 0x20000000000ULL)
@@ -471,7 +471,8 @@ find_process(const CHAR *name, PULONG64 out_pid, PULONG64 out_cr3)
                 *out_cr3 = *(PULONG64)((PUCHAR)process + 0x28);
             }
 
-            /* Test if the CR3 can actually read the PE header */
+            /* Test if the CR3 can actually read the PE header.
+             * If it fails, this is a zombie process — skip and try next PID. */
             USHORT mz_test = 0;
             NTSTATUS test_status = read_process_memory(*out_cr3, (ULONG64)section_base, &mz_test, sizeof(mz_test));
             if (NT_SUCCESS(test_status) && mz_test == 0x5A4D)
@@ -481,33 +482,11 @@ find_process(const CHAR *name, PULONG64 out_pid, PULONG64 out_cr3)
             }
             else
             {
-                /* EPROCESS-based CR3 failed — try PFN database scan */
-                DbgPrintEx(0, 0, "[comm] CR3 0x%llx FAILED read test, trying PFN scan...\n", *out_cr3);
-
-                ULONG64 pfn_cr3 = get_cr3_from_pfn(pid, (const char *)image_name);
-                if (pfn_cr3 != 0)
-                {
-                    /* Validate PFN-derived CR3 */
-                    mz_test = 0;
-                    test_status = read_process_memory(pfn_cr3, (ULONG64)section_base, &mz_test, sizeof(mz_test));
-                    if (NT_SUCCESS(test_status) && mz_test == 0x5A4D)
-                    {
-                        *out_cr3 = pfn_cr3;
-                        InterlockedExchange(&g_cr3_works, 1);
-                        DbgPrintEx(0, 0, "[comm] PFN CR3 0x%llx VALIDATED (can read MZ) !!!\n", pfn_cr3);
-                    }
-                    else
-                    {
-                        DbgPrintEx(0, 0, "[comm] PFN CR3 0x%llx also failed MZ test (sig=0x%x)\n",
-                            pfn_cr3, mz_test);
-                        InterlockedExchange(&g_cr3_works, 0);
-                    }
-                }
-                else
-                {
-                    InterlockedExchange(&g_cr3_works, 0);
-                    DbgPrintEx(0, 0, "[comm] PFN scan found nothing — will use MmCopyVirtualMemory fallback\n");
-                }
+                /* CR3 failed — zombie process, skip to next matching PID */
+                DbgPrintEx(0, 0, "[comm] PID=%u CR3 0x%llx FAILED MZ (sig=0x%x) — zombie, skipping\n",
+                    pid, *out_cr3, mz_test);
+                ObDereferenceObject(process);
+                continue;
             }
 
             /* Keep a referenced PEPROCESS for fallback reads */
@@ -539,6 +518,14 @@ read_process_memory_fallback(PEPROCESS target, ULONG64 address, PVOID buffer, UL
     if (!target)
         return STATUS_INVALID_PARAMETER;
 
+    /* Reject kernel-range addresses and obviously bad pointers */
+    if (address == 0 || address >= 0x7FFFFFFFFFFF || size == 0)
+        return STATUS_INVALID_PARAMETER;
+
+    /* Check if the target process is still alive (PsGetProcessExitStatus returns 259/STATUS_PENDING while alive) */
+    if (PsGetProcessExitStatus(target) != STATUS_PENDING)
+        return STATUS_PROCESS_IS_TERMINATING;
+
     status = MmCopyVirtualMemory(
         target, (PVOID)address,
         PsGetCurrentProcess(), buffer,
@@ -554,7 +541,11 @@ read_process_memory(ULONG64 cr3, ULONG64 address, PVOID buffer, ULONG64 size)
 {
     SIZE_T total = 0;
 
-    if (cr3 == 0 || size > TEMP_BUF_SIZE)
+    if (cr3 == 0 || size > TEMP_BUF_SIZE || size == 0)
+        return STATUS_INVALID_PARAMETER;
+
+    /* Reject obviously invalid virtual addresses */
+    if (address == 0 || address >= 0x7FFFFFFFFFFF)
         return STATUS_INVALID_PARAMETER;
 
     while (total < size)
@@ -581,7 +572,11 @@ write_process_memory(ULONG64 cr3, ULONG64 address, PVOID buffer, ULONG64 size)
 {
     SIZE_T total = 0;
 
-    if (cr3 == 0 || size > TEMP_BUF_SIZE)
+    if (cr3 == 0 || size > TEMP_BUF_SIZE || size == 0)
+        return STATUS_INVALID_PARAMETER;
+
+    /* Reject obviously invalid virtual addresses */
+    if (address == 0 || address >= 0x7FFFFFFFFFFF)
         return STATUS_INVALID_PARAMETER;
 
     while (total < size)
@@ -857,6 +852,39 @@ comm_worker_thread(PVOID ctx)
             status = get_peb_and_base(pid, cr3,
                                       &g_shared->peb_address,
                                       &g_shared->image_base);
+            break;
+        }
+
+        case CMD_BATCH_READ_U64:
+        {
+            ULONG64 cr3   = g_shared->cr3 ? g_shared->cr3 : g_target_cr3;
+            ULONG64 count = g_shared->size;
+
+            if (count == 0 || count > (DATA_BUF_SIZE / 16))
+            {
+                status = STATUS_INVALID_PARAMETER;
+                break;
+            }
+
+            /* Layout in g_temp_buf: [addrs (count*8)][results (count*8)] */
+            ULONG64 *addrs   = (ULONG64 *)g_temp_buf;
+            ULONG64 *results = addrs + count;
+            RtlCopyMemory(addrs, g_shared->data, (SIZE_T)(count * 8));
+
+            for (ULONG64 i = 0; i < count; i++)
+            {
+                results[i] = 0;
+                NTSTATUS s = STATUS_UNSUCCESSFUL;
+                if (g_cr3_works && cr3 != 0)
+                    s = read_process_memory(cr3, addrs[i], &results[i], 8);
+                if (!NT_SUCCESS(s) && g_target_process)
+                    s = read_process_memory_fallback(
+                            g_target_process, addrs[i], &results[i], 8);
+                if (!NT_SUCCESS(s))
+                    results[i] = 0;
+            }
+            RtlCopyMemory(g_shared->data, results, (SIZE_T)(count * 8));
+            status = STATUS_SUCCESS;
             break;
         }
 
